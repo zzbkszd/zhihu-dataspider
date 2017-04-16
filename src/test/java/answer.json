@@ -1,0 +1,1771 @@
+{
+  "paging": {
+    "is_end": false,
+    "totals": 3490,
+    "previous": "http://www.zhihu.com/api/v4/members/minmin.gong/answers?sort_by=created&include=data%5B%2A%5D.is_normal%2Csuggest_edit%2Ccomment_count%2Ccan_comment%2Ccontent%2Cvoteup_count%2Creshipment_settings%2Ccomment_permission%2Cmark_infos%2Ccreated_time%2Cupdated_time%2Crelationship.is_authorized%2Cvoting%2Cis_author%2Cis_thanked%2Cis_nothelp%2Cupvoted_followees%3Bdata%5B%2A%5D.author.badge%5B%3F%28type%3Dbest_answerer%29%5D.topics&limit=20&offset=20",
+    "is_start": false,
+    "next": "http://www.zhihu.com/api/v4/members/minmin.gong/answers?sort_by=created&include=data%5B%2A%5D.is_normal%2Csuggest_edit%2Ccomment_count%2Ccan_comment%2Ccontent%2Cvoteup_count%2Creshipment_settings%2Ccomment_permission%2Cmark_infos%2Ccreated_time%2Cupdated_time%2Crelationship.is_authorized%2Cvoting%2Cis_author%2Cis_thanked%2Cis_nothelp%2Cupvoted_followees%3Bdata%5B%2A%5D.author.badge%5B%3F%28type%3Dbest_answerer%29%5D.topics&limit=20&offset=60"
+  },
+  "data": [
+    {
+      "mark_infos": [],
+      "excerpt": "在apple宣布不用pvr前24小时，我收到了一封邮件，问我去不去apple做GPU。原来他们玩真的！ 其实在那之前，apple对GPU已经有很大的控制权，远大于传统意义上的硬件提供商和系统开发商之前的联系。自己搞也并不是太出人意料的事情。",
+      "thumbnail": "",
+      "created_time": 1491329602,
+      "id": 155353694,
+      "voteup_count": 170,
+      "author": {
+        "avatar_url_template": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_{size}.jpg",
+        "badge": [
+          {
+            "topics": [
+              {
+                "name": "计算机图形学",
+                "url": "http://www.zhihu.com/api/v4/topics/19613730",
+                "excerpt": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "introduction": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "avatar_url": "https://pic4.zhimg.com/95b86ea8b502d9aef1b13f621bba2ef3_is.jpg",
+                "type": "topic",
+                "id": "19613730"
+              },
+              {
+                "name": "C++",
+                "url": "http://www.zhihu.com/api/v4/topics/19584970",
+                "excerpt": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "introduction": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "avatar_url": "https://pic1.zhimg.com/9db7191dc_is.jpg",
+                "type": "topic",
+                "id": "19584970"
+              }
+            ],
+            "type": "best_answerer",
+            "description": "优秀回答者"
+          }
+        ],
+        "name": "叛逆者",
+        "is_advertiser": false,
+        "headline": "GPGPU专家",
+        "type": "people",
+        "user_type": "people",
+        "url": "http://www.zhihu.com/api/v4/people/0b21747b1fec79ad8af7e68a2b1ff681",
+        "avatar_url": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_is.jpg",
+        "is_org": false,
+        "gender": 1,
+        "url_token": "minmin.gong",
+        "id": "0b21747b1fec79ad8af7e68a2b1ff681"
+      },
+      "question": {
+        "created": 1491210832,
+        "url": "http://www.zhihu.com/api/v4/questions/57981549",
+        "title": "如何评价 Apple 停止使用 Imagination Technologies 的图像技术？",
+        "updated_time": 1491726106,
+        "question_type": "normal",
+        "type": "question",
+        "id": 57981549
+      },
+      "content": "<p>在apple宣布不用pvr前24小时，我收到了一封邮件，问我去不去apple做GPU。原来他们玩真的！</p><br><p>其实在那之前，apple对GPU已经有很大的控制权，远大于传统意义上的硬件提供商和系统开发商之前的联系。自己搞也并不是太出人意料的事情。</p>",
+      "comment_count": 22,
+      "reshipment_settings": "need_payment",
+      "type": "answer",
+      "suggest_edit": {
+        "status": false,
+        "title": "",
+        "url": "",
+        "tip": "",
+        "reason": "",
+        "unnormal_details": null
+      },
+      "relationship": {
+        "upvoted_followees": [],
+        "voting": 0,
+        "is_nothelp": false,
+        "is_authorized": false,
+        "is_author": false,
+        "is_thanked": false
+      },
+      "is_copyable": true,
+      "is_collapsed": false,
+      "url": "http://www.zhihu.com/api/v4/answers/155353694",
+      "comment_permission": "all",
+      "updated_time": 1491329602,
+      "extras": "",
+      "can_comment": {
+        "status": true,
+        "reason": ""
+      },
+      "is_normal": true
+    },
+    {
+      "mark_infos": [],
+      "excerpt": "合作的前提是取长补短。光有共同的敌人不足以促成合作，必须要有能互相帮助的地方才行。Intel有什么是NV需要的吗？没有。所以。",
+      "thumbnail": "",
+      "created_time": 1491329177,
+      "id": 155353326,
+      "voteup_count": 8,
+      "author": {
+        "avatar_url_template": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_{size}.jpg",
+        "badge": [
+          {
+            "topics": [
+              {
+                "name": "计算机图形学",
+                "url": "http://www.zhihu.com/api/v4/topics/19613730",
+                "excerpt": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "introduction": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "avatar_url": "https://pic4.zhimg.com/95b86ea8b502d9aef1b13f621bba2ef3_is.jpg",
+                "type": "topic",
+                "id": "19613730"
+              },
+              {
+                "name": "C++",
+                "url": "http://www.zhihu.com/api/v4/topics/19584970",
+                "excerpt": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "introduction": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "avatar_url": "https://pic1.zhimg.com/9db7191dc_is.jpg",
+                "type": "topic",
+                "id": "19584970"
+              }
+            ],
+            "type": "best_answerer",
+            "description": "优秀回答者"
+          }
+        ],
+        "name": "叛逆者",
+        "is_advertiser": false,
+        "headline": "http://klayge.org",
+        "type": "people",
+        "user_type": "people",
+        "url": "http://www.zhihu.com/api/v4/people/0b21747b1fec79ad8af7e68a2b1ff681",
+        "avatar_url": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_is.jpg",
+        "is_org": false,
+        "gender": 1,
+        "url_token": "minmin.gong",
+        "id": "0b21747b1fec79ad8af7e68a2b1ff681"
+      },
+      "question": {
+        "created": 1488201887,
+        "url": "http://www.zhihu.com/api/v4/questions/56398679",
+        "title": "若AMD发布ZEN+VEGA架构的APU，会不会使I N两家合作？",
+        "updated_time": 1488201887,
+        "question_type": "normal",
+        "type": "question",
+        "id": 56398679
+      },
+      "content": "<p>合作的前提是取长补短。光有共同的敌人不足以促成合作，必须要有能互相帮助的地方才行。Intel有什么是NV需要的吗？没有。所以。</p>",
+      "comment_count": 6,
+      "reshipment_settings": "need_payment",
+      "type": "answer",
+      "suggest_edit": {
+        "status": false,
+        "title": "",
+        "url": "",
+        "tip": "",
+        "reason": "",
+        "unnormal_details": null
+      },
+      "relationship": {
+        "upvoted_followees": [],
+        "voting": 0,
+        "is_nothelp": false,
+        "is_authorized": false,
+        "is_author": false,
+        "is_thanked": false
+      },
+      "is_copyable": true,
+      "is_collapsed": false,
+      "url": "http://www.zhihu.com/api/v4/answers/155353326",
+      "comment_permission": "all",
+      "updated_time": 1491329177,
+      "extras": "",
+      "can_comment": {
+        "status": true,
+        "reason": ""
+      },
+      "is_normal": true
+    },
+    {
+      "mark_infos": [],
+      "excerpt": "这本书已经在我的书架上10年了。只怕10年前大部分人还不知道Trump是谁吧。不过我纯粹是因为想听他说You are fired，或者像在WWE里面那样抱摔对手。结果没听见也没瞅见。",
+      "thumbnail": "https://pic2.zhimg.com/v2-e7ae4bf276935d1a6273cf24c31637b1_200x112.jpg",
+      "created_time": 1491328646,
+      "id": 155352728,
+      "voteup_count": 15,
+      "author": {
+        "avatar_url_template": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_{size}.jpg",
+        "badge": [
+          {
+            "topics": [
+              {
+                "name": "计算机图形学",
+                "url": "http://www.zhihu.com/api/v4/topics/19613730",
+                "excerpt": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "introduction": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "avatar_url": "https://pic4.zhimg.com/95b86ea8b502d9aef1b13f621bba2ef3_is.jpg",
+                "type": "topic",
+                "id": "19613730"
+              },
+              {
+                "name": "C++",
+                "url": "http://www.zhihu.com/api/v4/topics/19584970",
+                "excerpt": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "introduction": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "avatar_url": "https://pic1.zhimg.com/9db7191dc_is.jpg",
+                "type": "topic",
+                "id": "19584970"
+              }
+            ],
+            "type": "best_answerer",
+            "description": "优秀回答者"
+          }
+        ],
+        "name": "叛逆者",
+        "is_advertiser": false,
+        "headline": "http://klayge.org",
+        "type": "people",
+        "user_type": "people",
+        "url": "http://www.zhihu.com/api/v4/people/0b21747b1fec79ad8af7e68a2b1ff681",
+        "avatar_url": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_is.jpg",
+        "is_org": false,
+        "gender": 1,
+        "url_token": "minmin.gong",
+        "id": "0b21747b1fec79ad8af7e68a2b1ff681"
+      },
+      "question": {
+        "created": 1491121251,
+        "url": "http://www.zhihu.com/api/v4/questions/57944218",
+        "title": "川普在知乎的粉丝群是怎么形成的（一个从无到有的过程）？",
+        "updated_time": 1491127615,
+        "question_type": "normal",
+        "type": "question",
+        "id": 57944218
+      },
+      "content": "<p>这本书已经在我的书架上10年了。只怕10年前大部分人还不知道Trump是谁吧。</p><noscript><img src=\"https://pic2.zhimg.com/v2-e7ae4bf276935d1a6273cf24c31637b1_b.jpg\" data-rawwidth=\"1152\" data-rawheight=\"2048\" class=\"origin_image zh-lightbox-thumb\" width=\"1152\" data-original=\"https://pic2.zhimg.com/v2-e7ae4bf276935d1a6273cf24c31637b1_r.jpg\"></noscript><img src=\"//zhstatic.zhihu.com/assets/zhihu/ztext/whitedot.jpg\" data-rawwidth=\"1152\" data-rawheight=\"2048\" class=\"origin_image zh-lightbox-thumb lazy\" width=\"1152\" data-original=\"https://pic2.zhimg.com/v2-e7ae4bf276935d1a6273cf24c31637b1_r.jpg\" data-actualsrc=\"https://pic2.zhimg.com/v2-e7ae4bf276935d1a6273cf24c31637b1_b.jpg\"><p>不过我纯粹是因为想听他说You are fired，或者像在WWE里面那样抱摔对手。结果没听见也没瞅见。</p>",
+      "comment_count": 5,
+      "reshipment_settings": "need_payment",
+      "type": "answer",
+      "suggest_edit": {
+        "status": false,
+        "title": "",
+        "url": "",
+        "tip": "",
+        "reason": "",
+        "unnormal_details": null
+      },
+      "relationship": {
+        "upvoted_followees": [],
+        "voting": 0,
+        "is_nothelp": false,
+        "is_authorized": false,
+        "is_author": false,
+        "is_thanked": false
+      },
+      "is_copyable": true,
+      "is_collapsed": false,
+      "url": "http://www.zhihu.com/api/v4/answers/155352728",
+      "comment_permission": "all",
+      "updated_time": 1491328646,
+      "extras": "",
+      "can_comment": {
+        "status": true,
+        "reason": ""
+      },
+      "is_normal": true
+    },
+    {
+      "mark_infos": [],
+      "excerpt": "因为等一个人写出了像标准库那样的函数，就会试图把它提交给boost等准标准库，过个几年可能就成为了标准库。如果是标准库已经有的东西，你又为什么要再写一遍呢？觉得自己比写标准库的人聪明？",
+      "thumbnail": "",
+      "created_time": 1491327303,
+      "id": 155351106,
+      "voteup_count": 46,
+      "author": {
+        "avatar_url_template": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_{size}.jpg",
+        "badge": [
+          {
+            "topics": [
+              {
+                "name": "计算机图形学",
+                "url": "http://www.zhihu.com/api/v4/topics/19613730",
+                "excerpt": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "introduction": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "avatar_url": "https://pic4.zhimg.com/95b86ea8b502d9aef1b13f621bba2ef3_is.jpg",
+                "type": "topic",
+                "id": "19613730"
+              },
+              {
+                "name": "C++",
+                "url": "http://www.zhihu.com/api/v4/topics/19584970",
+                "excerpt": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "introduction": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "avatar_url": "https://pic1.zhimg.com/9db7191dc_is.jpg",
+                "type": "topic",
+                "id": "19584970"
+              }
+            ],
+            "type": "best_answerer",
+            "description": "优秀回答者"
+          }
+        ],
+        "name": "叛逆者",
+        "is_advertiser": false,
+        "headline": "微软高级工程师",
+        "type": "people",
+        "user_type": "people",
+        "url": "http://www.zhihu.com/api/v4/people/0b21747b1fec79ad8af7e68a2b1ff681",
+        "avatar_url": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_is.jpg",
+        "is_org": false,
+        "gender": 1,
+        "url_token": "minmin.gong",
+        "id": "0b21747b1fec79ad8af7e68a2b1ff681"
+      },
+      "question": {
+        "created": 1491305791,
+        "url": "http://www.zhihu.com/api/v4/questions/58025855",
+        "title": "为什么大多数人写程序都是调用标准库或者自带函数，而无法写出像标准库那样的函数？",
+        "updated_time": 1491307028,
+        "question_type": "normal",
+        "type": "question",
+        "id": 58025855
+      },
+      "content": "<p>因为等一个人写出了像标准库那样的函数，就会试图把它提交给boost等准标准库，过个几年可能就成为了标准库。</p><p>如果是标准库已经有的东西，你又为什么要再写一遍呢？觉得自己比写标准库的人聪明？</p>",
+      "comment_count": 10,
+      "reshipment_settings": "need_payment",
+      "type": "answer",
+      "suggest_edit": {
+        "status": false,
+        "title": "",
+        "url": "",
+        "tip": "",
+        "reason": "",
+        "unnormal_details": null
+      },
+      "relationship": {
+        "upvoted_followees": [],
+        "voting": 0,
+        "is_nothelp": false,
+        "is_authorized": false,
+        "is_author": false,
+        "is_thanked": false
+      },
+      "is_copyable": true,
+      "is_collapsed": false,
+      "url": "http://www.zhihu.com/api/v4/answers/155351106",
+      "comment_permission": "all",
+      "updated_time": 1491327303,
+      "extras": "",
+      "can_comment": {
+        "status": true,
+        "reason": ""
+      },
+      "is_normal": true
+    },
+    {
+      "mark_infos": [],
+      "excerpt": "我小时候，是因为老师水平不行，完全无法理解计算机的用处。只要不是考试相关的，就反对。他们教出来的其他学生，也都是一个路数。 现在呢，则是因为那些学生成了老师。",
+      "thumbnail": "",
+      "created_time": 1491326692,
+      "id": 155350253,
+      "voteup_count": 97,
+      "author": {
+        "avatar_url_template": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_{size}.jpg",
+        "badge": [
+          {
+            "topics": [
+              {
+                "name": "计算机图形学",
+                "url": "http://www.zhihu.com/api/v4/topics/19613730",
+                "excerpt": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "introduction": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "avatar_url": "https://pic4.zhimg.com/95b86ea8b502d9aef1b13f621bba2ef3_is.jpg",
+                "type": "topic",
+                "id": "19613730"
+              },
+              {
+                "name": "C++",
+                "url": "http://www.zhihu.com/api/v4/topics/19584970",
+                "excerpt": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "introduction": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "avatar_url": "https://pic1.zhimg.com/9db7191dc_is.jpg",
+                "type": "topic",
+                "id": "19584970"
+              }
+            ],
+            "type": "best_answerer",
+            "description": "优秀回答者"
+          }
+        ],
+        "name": "叛逆者",
+        "is_advertiser": false,
+        "headline": "微软高级工程师",
+        "type": "people",
+        "user_type": "people",
+        "url": "http://www.zhihu.com/api/v4/people/0b21747b1fec79ad8af7e68a2b1ff681",
+        "avatar_url": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_is.jpg",
+        "is_org": false,
+        "gender": 1,
+        "url_token": "minmin.gong",
+        "id": "0b21747b1fec79ad8af7e68a2b1ff681"
+      },
+      "question": {
+        "created": 1479143050,
+        "url": "http://www.zhihu.com/api/v4/questions/52624367",
+        "title": "为何少儿编程在国内总是被误解？",
+        "updated_time": 1479143050,
+        "question_type": "normal",
+        "type": "question",
+        "id": 52624367
+      },
+      "content": "<p>我小时候，是因为老师水平不行，完全无法理解计算机的用处。只要不是考试相关的，就反对。他们教出来的其他学生，也都是一个路数。</p><br><p>现在呢，则是因为那些学生成了老师。</p>",
+      "comment_count": 5,
+      "reshipment_settings": "need_payment",
+      "type": "answer",
+      "suggest_edit": {
+        "status": false,
+        "title": "",
+        "url": "",
+        "tip": "",
+        "reason": "",
+        "unnormal_details": null
+      },
+      "relationship": {
+        "upvoted_followees": [],
+        "voting": 0,
+        "is_nothelp": false,
+        "is_authorized": false,
+        "is_author": false,
+        "is_thanked": false
+      },
+      "is_copyable": true,
+      "is_collapsed": false,
+      "url": "http://www.zhihu.com/api/v4/answers/155350253",
+      "comment_permission": "all",
+      "updated_time": 1491326693,
+      "extras": "",
+      "can_comment": {
+        "status": true,
+        "reason": ""
+      },
+      "is_normal": true
+    },
+    {
+      "mark_infos": [],
+      "excerpt": "要说最强，肯定得是这位了，Star Trek里的Q。TNG最后一集里面，他直接引导Enterprise逆转时间，让地球上的生命从来没诞生过。",
+      "thumbnail": "https://pic1.zhimg.com/v2-5ee3e7609b4fe1b1ec67ec08968379b8_200x112.jpg",
+      "created_time": 1491264532,
+      "id": 155193467,
+      "voteup_count": 41,
+      "author": {
+        "avatar_url_template": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_{size}.jpg",
+        "badge": [
+          {
+            "topics": [
+              {
+                "name": "计算机图形学",
+                "url": "http://www.zhihu.com/api/v4/topics/19613730",
+                "excerpt": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "introduction": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "avatar_url": "https://pic4.zhimg.com/95b86ea8b502d9aef1b13f621bba2ef3_is.jpg",
+                "type": "topic",
+                "id": "19613730"
+              },
+              {
+                "name": "C++",
+                "url": "http://www.zhihu.com/api/v4/topics/19584970",
+                "excerpt": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "introduction": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "avatar_url": "https://pic1.zhimg.com/9db7191dc_is.jpg",
+                "type": "topic",
+                "id": "19584970"
+              }
+            ],
+            "type": "best_answerer",
+            "description": "优秀回答者"
+          }
+        ],
+        "name": "叛逆者",
+        "is_advertiser": false,
+        "headline": "http://klayge.org",
+        "type": "people",
+        "user_type": "people",
+        "url": "http://www.zhihu.com/api/v4/people/0b21747b1fec79ad8af7e68a2b1ff681",
+        "avatar_url": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_is.jpg",
+        "is_org": false,
+        "gender": 1,
+        "url_token": "minmin.gong",
+        "id": "0b21747b1fec79ad8af7e68a2b1ff681"
+      },
+      "question": {
+        "created": 1434938403,
+        "url": "http://www.zhihu.com/api/v4/questions/31508306",
+        "title": "电影史上战力第一的怪物是哪个？哥斯拉？金刚？还是异形？如果它们组成联盟，可胜复联？",
+        "updated_time": 1434981084,
+        "question_type": "normal",
+        "type": "question",
+        "id": 31508306
+      },
+      "content": "<p>要说最强，肯定得是这位了，Star Trek里的Q。</p><noscript><img src=\"https://pic1.zhimg.com/v2-5ee3e7609b4fe1b1ec67ec08968379b8_b.jpg\" data-rawwidth=\"350\" data-rawheight=\"314\" class=\"content_image\" width=\"350\"></noscript><img src=\"//zhstatic.zhihu.com/assets/zhihu/ztext/whitedot.jpg\" data-rawwidth=\"350\" data-rawheight=\"314\" class=\"content_image lazy\" width=\"350\" data-actualsrc=\"https://pic1.zhimg.com/v2-5ee3e7609b4fe1b1ec67ec08968379b8_b.jpg\"><p>TNG最后一集里面，他直接引导Enterprise逆转时间，让地球上的生命从来没诞生过。</p>",
+      "comment_count": 11,
+      "reshipment_settings": "need_payment",
+      "type": "answer",
+      "suggest_edit": {
+        "status": false,
+        "title": "",
+        "url": "",
+        "tip": "",
+        "reason": "",
+        "unnormal_details": null
+      },
+      "relationship": {
+        "upvoted_followees": [],
+        "voting": 0,
+        "is_nothelp": false,
+        "is_authorized": false,
+        "is_author": false,
+        "is_thanked": false
+      },
+      "is_copyable": true,
+      "is_collapsed": false,
+      "url": "http://www.zhihu.com/api/v4/answers/155193467",
+      "comment_permission": "all",
+      "updated_time": 1491264532,
+      "extras": "",
+      "can_comment": {
+        "status": true,
+        "reason": ""
+      },
+      "is_normal": true
+    },
+    {
+      "mark_infos": [],
+      "excerpt": "没有任何强制普及的事件。有的部门会发surface和wp，但用不用是你的事情。我不但用ipad，还在公司用ipad遥控BB-8到处跑。因为那个app当时只有ios版。",
+      "thumbnail": "https://pic2.zhimg.com/v2-b4d21f98fe76de9eba2b6f1e23aab445_200x112.jpg",
+      "created_time": 1491258678,
+      "id": 155188759,
+      "voteup_count": 45,
+      "author": {
+        "avatar_url_template": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_{size}.jpg",
+        "badge": [
+          {
+            "topics": [
+              {
+                "name": "计算机图形学",
+                "url": "http://www.zhihu.com/api/v4/topics/19613730",
+                "excerpt": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "introduction": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "avatar_url": "https://pic4.zhimg.com/95b86ea8b502d9aef1b13f621bba2ef3_is.jpg",
+                "type": "topic",
+                "id": "19613730"
+              },
+              {
+                "name": "C++",
+                "url": "http://www.zhihu.com/api/v4/topics/19584970",
+                "excerpt": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "introduction": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "avatar_url": "https://pic1.zhimg.com/9db7191dc_is.jpg",
+                "type": "topic",
+                "id": "19584970"
+              }
+            ],
+            "type": "best_answerer",
+            "description": "优秀回答者"
+          }
+        ],
+        "name": "叛逆者",
+        "is_advertiser": false,
+        "headline": "微软高级工程师",
+        "type": "people",
+        "user_type": "people",
+        "url": "http://www.zhihu.com/api/v4/people/0b21747b1fec79ad8af7e68a2b1ff681",
+        "avatar_url": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_is.jpg",
+        "is_org": false,
+        "gender": 1,
+        "url_token": "minmin.gong",
+        "id": "0b21747b1fec79ad8af7e68a2b1ff681"
+      },
+      "question": {
+        "created": 1383219331,
+        "url": "http://www.zhihu.com/api/v4/questions/21927664",
+        "title": "微软内部的员工会被允许使用iPad么？",
+        "updated_time": 1389825726,
+        "question_type": "normal",
+        "type": "question",
+        "id": 21927664
+      },
+      "content": "<p>没有任何强制普及的事件。有的部门会发surface和wp，但用不用是你的事情。我不但用ipad，还在公司用ipad遥控BB-8到处跑。因为那个app当时只有ios版。</p><noscript><img src=\"https://pic2.zhimg.com/v2-b4d21f98fe76de9eba2b6f1e23aab445_b.jpg\" data-rawwidth=\"450\" data-rawheight=\"450\" class=\"origin_image zh-lightbox-thumb\" width=\"450\" data-original=\"https://pic2.zhimg.com/v2-b4d21f98fe76de9eba2b6f1e23aab445_r.jpg\"></noscript><img src=\"//zhstatic.zhihu.com/assets/zhihu/ztext/whitedot.jpg\" data-rawwidth=\"450\" data-rawheight=\"450\" class=\"origin_image zh-lightbox-thumb lazy\" width=\"450\" data-original=\"https://pic2.zhimg.com/v2-b4d21f98fe76de9eba2b6f1e23aab445_r.jpg\" data-actualsrc=\"https://pic2.zhimg.com/v2-b4d21f98fe76de9eba2b6f1e23aab445_b.jpg\">",
+      "comment_count": 10,
+      "reshipment_settings": "need_payment",
+      "type": "answer",
+      "suggest_edit": {
+        "status": false,
+        "title": "",
+        "url": "",
+        "tip": "",
+        "reason": "",
+        "unnormal_details": null
+      },
+      "relationship": {
+        "upvoted_followees": [],
+        "voting": 0,
+        "is_nothelp": false,
+        "is_authorized": false,
+        "is_author": false,
+        "is_thanked": false
+      },
+      "is_copyable": true,
+      "is_collapsed": false,
+      "url": "http://www.zhihu.com/api/v4/answers/155188759",
+      "comment_permission": "all",
+      "updated_time": 1491258679,
+      "extras": "",
+      "can_comment": {
+        "status": true,
+        "reason": ""
+      },
+      "is_normal": true
+    },
+    {
+      "mark_infos": [],
+      "excerpt": "嚄，为了政治正确，凑齐了一个东欧精壮男、一个非裔自闭宅男、一个腐国女、一个拉丁裔拉拉、一个亚裔。既然这么政治正确，请问怎么不按人口比例分布呢？",
+      "thumbnail": "",
+      "created_time": 1491252859,
+      "id": 155186746,
+      "voteup_count": 18,
+      "author": {
+        "avatar_url_template": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_{size}.jpg",
+        "badge": [
+          {
+            "topics": [
+              {
+                "name": "计算机图形学",
+                "url": "http://www.zhihu.com/api/v4/topics/19613730",
+                "excerpt": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "introduction": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "avatar_url": "https://pic4.zhimg.com/95b86ea8b502d9aef1b13f621bba2ef3_is.jpg",
+                "type": "topic",
+                "id": "19613730"
+              },
+              {
+                "name": "C++",
+                "url": "http://www.zhihu.com/api/v4/topics/19584970",
+                "excerpt": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "introduction": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "avatar_url": "https://pic1.zhimg.com/9db7191dc_is.jpg",
+                "type": "topic",
+                "id": "19584970"
+              }
+            ],
+            "type": "best_answerer",
+            "description": "优秀回答者"
+          }
+        ],
+        "name": "叛逆者",
+        "is_advertiser": false,
+        "headline": "http://klayge.org",
+        "type": "people",
+        "user_type": "people",
+        "url": "http://www.zhihu.com/api/v4/people/0b21747b1fec79ad8af7e68a2b1ff681",
+        "avatar_url": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_is.jpg",
+        "is_org": false,
+        "gender": 1,
+        "url_token": "minmin.gong",
+        "id": "0b21747b1fec79ad8af7e68a2b1ff681"
+      },
+      "question": {
+        "created": 1487657346,
+        "url": "http://www.zhihu.com/api/v4/questions/56102281",
+        "title": "如何评价恐龙战队电影版？",
+        "updated_time": 1487657346,
+        "question_type": "normal",
+        "type": "question",
+        "id": 56102281
+      },
+      "content": "<p>嚄，为了政治正确，凑齐了一个东欧精壮男、一个非裔自闭宅男、一个腐国女、一个拉丁裔拉拉、一个亚裔。既然这么政治正确，请问怎么不按人口比例分布呢？</p>",
+      "comment_count": 2,
+      "reshipment_settings": "need_payment",
+      "type": "answer",
+      "suggest_edit": {
+        "status": false,
+        "title": "",
+        "url": "",
+        "tip": "",
+        "reason": "",
+        "unnormal_details": null
+      },
+      "relationship": {
+        "upvoted_followees": [],
+        "voting": 0,
+        "is_nothelp": false,
+        "is_authorized": false,
+        "is_author": false,
+        "is_thanked": false
+      },
+      "is_copyable": true,
+      "is_collapsed": false,
+      "url": "http://www.zhihu.com/api/v4/answers/155186746",
+      "comment_permission": "all",
+      "updated_time": 1491252859,
+      "extras": "",
+      "can_comment": {
+        "status": true,
+        "reason": ""
+      },
+      "is_normal": true
+    },
+    {
+      "mark_infos": [],
+      "excerpt": "我就说我亲身经历的一事。2007/2008年参与的一篇论文Data-Parallel Octrees for Surface Reconstruction，历经波折，直到2011年才发表。其中就包含了“不能超前”的原因。 首先，那篇论文是基于一个之前的工作，2006年的Poisson Surface Reconstruction。在…",
+      "thumbnail": "",
+      "created_time": 1491250403,
+      "id": 155185917,
+      "voteup_count": 327,
+      "author": {
+        "avatar_url_template": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_{size}.jpg",
+        "badge": [
+          {
+            "topics": [
+              {
+                "name": "计算机图形学",
+                "url": "http://www.zhihu.com/api/v4/topics/19613730",
+                "excerpt": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "introduction": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "avatar_url": "https://pic4.zhimg.com/95b86ea8b502d9aef1b13f621bba2ef3_is.jpg",
+                "type": "topic",
+                "id": "19613730"
+              },
+              {
+                "name": "C++",
+                "url": "http://www.zhihu.com/api/v4/topics/19584970",
+                "excerpt": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "introduction": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "avatar_url": "https://pic1.zhimg.com/9db7191dc_is.jpg",
+                "type": "topic",
+                "id": "19584970"
+              }
+            ],
+            "type": "best_answerer",
+            "description": "优秀回答者"
+          }
+        ],
+        "name": "叛逆者",
+        "is_advertiser": false,
+        "headline": "http://klayge.org",
+        "type": "people",
+        "user_type": "people",
+        "url": "http://www.zhihu.com/api/v4/people/0b21747b1fec79ad8af7e68a2b1ff681",
+        "avatar_url": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_is.jpg",
+        "is_org": false,
+        "gender": 1,
+        "url_token": "minmin.gong",
+        "id": "0b21747b1fec79ad8af7e68a2b1ff681"
+      },
+      "question": {
+        "created": 1490679254,
+        "url": "http://www.zhihu.com/api/v4/questions/57723004",
+        "title": "为什么很多东西不能超前造出来？",
+        "updated_time": 1491358659,
+        "question_type": "normal",
+        "type": "question",
+        "id": 57723004
+      },
+      "content": "<p>我就说我亲身经历的一事。2007/2008年参与的一篇论文Data-Parallel Octrees for Surface Reconstruction，历经波折，直到2011年才发表。其中就包含了“不能超前”的原因。</p><br><p>首先，那篇论文是基于一个之前的工作，2006年的Poisson Surface Reconstruction。在那之前没多久，Poisson的方法才被引入图形和视觉界。能在06年就用到surface reconstruction上已经算很迅速了。Poisson Surface Reconstruction用的是串行计算，一切都在CPU上做。重建一个模型需要2分钟。而我们的工作把整个算法改成可以并行的，搬到GPU，预计只要1秒，有100倍的性能提升。其中需要解决大量从来没人试过的并行化问题，比如用GPU建立Octree、在GPU上做大规模线性方程求解、在GPU上做不规则数据结构。而这些每一个步骤都做完之后，虽然能用但慢的要死，好需要大量针对GPU的调整，才能达到预期的目标。最后，我们甚至超过了预期，重建一个模型只要0.1秒。</p><br><p>也就是说，这里至少要有两个前期的工作需要准备好，我们才能做这件事情。第一是Poisson Surface Reconstruction，没有这个，就缺乏方向。第二是GPU的软硬件发展，没有这个，就缺乏平台。而这些都是在06/07年才成型的，更早的话搞不了。</p><br><p>那么，为什么07/08年就做好了，但11年才发表？因为期间被拒了好多次。</p><br><p>第一次，主要是因为审稿人不懂GPU。当时GPU刚开始发展，别说做表面重建的人，就连做离线渲染的，也刚开始把东西搬到GPU。审稿人有个误会，觉得把一个算法搬到GPU，就只要把代码rebuild一下就好。所以觉得我们的论文是渣渣。拒了。</p><br><p>第二次，理由同前。</p><br><p>第三次，老黄的CUDA逐渐深入人心，越来越多人知道了搬算法也要做大量并行化和优化的工作，不是个simple &amp; naive的事情。所以不在刁难GPU的部分，而是再说既然扫描一个表面需要几个小时甚至几天，花2分钟重建和花0.1秒重建，有关系吗？</p><br><p>...</p><br><p>第N次，Kinect出来了，大家发现，扫描一个表面也可以几秒钟就完成，那么，花0.1秒重建才有意义，等不了2分钟。这才都服气。</p><br><p>所以，万事俱备，得到2010年左右。超前的话，各种问题。</p>",
+      "comment_count": 54,
+      "reshipment_settings": "need_payment",
+      "type": "answer",
+      "suggest_edit": {
+        "status": false,
+        "title": "",
+        "url": "",
+        "tip": "",
+        "reason": "",
+        "unnormal_details": null
+      },
+      "relationship": {
+        "upvoted_followees": [],
+        "voting": 0,
+        "is_nothelp": false,
+        "is_authorized": false,
+        "is_author": false,
+        "is_thanked": false
+      },
+      "is_copyable": true,
+      "is_collapsed": false,
+      "url": "http://www.zhihu.com/api/v4/answers/155185917",
+      "comment_permission": "all",
+      "updated_time": 1491250403,
+      "extras": "",
+      "can_comment": {
+        "status": true,
+        "reason": ""
+      },
+      "is_normal": true
+    },
+    {
+      "mark_infos": [],
+      "excerpt": "不是。因为Visual Studio千秋万代，一统江湖。 可以在Windows和Mac上，用C++/C#/F#/VB，开发Windows/Mac/Android/iOS/Linux/Web/Cloud的程序。这不叫耽误，这叫入行。",
+      "thumbnail": "https://pic2.zhimg.com/v2-7177db39575be6bbbd93a98ccb8e0b19_200x112.jpg",
+      "created_time": 1491243811,
+      "id": 155181758,
+      "voteup_count": 102,
+      "author": {
+        "avatar_url_template": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_{size}.jpg",
+        "badge": [
+          {
+            "topics": [
+              {
+                "name": "计算机图形学",
+                "url": "http://www.zhihu.com/api/v4/topics/19613730",
+                "excerpt": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "introduction": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "avatar_url": "https://pic4.zhimg.com/95b86ea8b502d9aef1b13f621bba2ef3_is.jpg",
+                "type": "topic",
+                "id": "19613730"
+              },
+              {
+                "name": "C++",
+                "url": "http://www.zhihu.com/api/v4/topics/19584970",
+                "excerpt": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "introduction": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "avatar_url": "https://pic1.zhimg.com/9db7191dc_is.jpg",
+                "type": "topic",
+                "id": "19584970"
+              }
+            ],
+            "type": "best_answerer",
+            "description": "优秀回答者"
+          }
+        ],
+        "name": "叛逆者",
+        "is_advertiser": false,
+        "headline": "微软高级工程师",
+        "type": "people",
+        "user_type": "people",
+        "url": "http://www.zhihu.com/api/v4/people/0b21747b1fec79ad8af7e68a2b1ff681",
+        "avatar_url": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_is.jpg",
+        "is_org": false,
+        "gender": 1,
+        "url_token": "minmin.gong",
+        "id": "0b21747b1fec79ad8af7e68a2b1ff681"
+      },
+      "question": {
+        "created": 1490926358,
+        "url": "http://www.zhihu.com/api/v4/questions/57853611",
+        "title": "Visual Studio 是不是坑了一代人？为什么？",
+        "updated_time": 1491373611,
+        "question_type": "normal",
+        "type": "question",
+        "id": 57853611
+      },
+      "content": "<p>不是。因为Visual Studio千秋万代，一统江湖。</p><br><noscript><img src=\"https://pic2.zhimg.com/v2-7177db39575be6bbbd93a98ccb8e0b19_b.jpg\" data-rawwidth=\"1262\" data-rawheight=\"485\" class=\"origin_image zh-lightbox-thumb\" width=\"1262\" data-original=\"https://pic2.zhimg.com/v2-7177db39575be6bbbd93a98ccb8e0b19_r.jpg\"></noscript><img src=\"//zhstatic.zhihu.com/assets/zhihu/ztext/whitedot.jpg\" data-rawwidth=\"1262\" data-rawheight=\"485\" class=\"origin_image zh-lightbox-thumb lazy\" width=\"1262\" data-original=\"https://pic2.zhimg.com/v2-7177db39575be6bbbd93a98ccb8e0b19_r.jpg\" data-actualsrc=\"https://pic2.zhimg.com/v2-7177db39575be6bbbd93a98ccb8e0b19_b.jpg\"><p>可以在Windows和Mac上，用C++/C#/F#/VB，开发Windows/Mac/Android/iOS/Linux/Web/Cloud的程序。这不叫耽误，这叫入行。</p>",
+      "comment_count": 21,
+      "reshipment_settings": "need_payment",
+      "type": "answer",
+      "suggest_edit": {
+        "status": false,
+        "title": "",
+        "url": "",
+        "tip": "",
+        "reason": "",
+        "unnormal_details": null
+      },
+      "relationship": {
+        "upvoted_followees": [],
+        "voting": 0,
+        "is_nothelp": false,
+        "is_authorized": false,
+        "is_author": false,
+        "is_thanked": false
+      },
+      "is_copyable": true,
+      "is_collapsed": false,
+      "url": "http://www.zhihu.com/api/v4/answers/155181758",
+      "comment_permission": "all",
+      "updated_time": 1491243812,
+      "extras": "",
+      "can_comment": {
+        "status": true,
+        "reason": ""
+      },
+      "is_normal": true
+    },
+    {
+      "mark_infos": [],
+      "excerpt": "会因为失去所有企业用户而挂掉",
+      "thumbnail": "",
+      "created_time": 1491241807,
+      "id": 155179522,
+      "voteup_count": 78,
+      "author": {
+        "avatar_url_template": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_{size}.jpg",
+        "badge": [
+          {
+            "topics": [
+              {
+                "name": "计算机图形学",
+                "url": "http://www.zhihu.com/api/v4/topics/19613730",
+                "excerpt": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "introduction": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "avatar_url": "https://pic4.zhimg.com/95b86ea8b502d9aef1b13f621bba2ef3_is.jpg",
+                "type": "topic",
+                "id": "19613730"
+              },
+              {
+                "name": "C++",
+                "url": "http://www.zhihu.com/api/v4/topics/19584970",
+                "excerpt": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "introduction": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "avatar_url": "https://pic1.zhimg.com/9db7191dc_is.jpg",
+                "type": "topic",
+                "id": "19584970"
+              }
+            ],
+            "type": "best_answerer",
+            "description": "优秀回答者"
+          }
+        ],
+        "name": "叛逆者",
+        "is_advertiser": false,
+        "headline": "微软高级工程师",
+        "type": "people",
+        "user_type": "people",
+        "url": "http://www.zhihu.com/api/v4/people/0b21747b1fec79ad8af7e68a2b1ff681",
+        "avatar_url": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_is.jpg",
+        "is_org": false,
+        "gender": 1,
+        "url_token": "minmin.gong",
+        "id": "0b21747b1fec79ad8af7e68a2b1ff681"
+      },
+      "question": {
+        "created": 1491194642,
+        "url": "http://www.zhihu.com/api/v4/questions/57972991",
+        "title": "假如给Windows一次舍弃所有兼容性重新来过的机会，Windows会有什么不同？",
+        "updated_time": 1491194642,
+        "question_type": "normal",
+        "type": "question",
+        "id": 57972991
+      },
+      "content": "<p>会因为失去所有企业用户而挂掉</p>",
+      "comment_count": 2,
+      "reshipment_settings": "need_payment",
+      "type": "answer",
+      "suggest_edit": {
+        "status": false,
+        "title": "",
+        "url": "",
+        "tip": "",
+        "reason": "",
+        "unnormal_details": null
+      },
+      "relationship": {
+        "upvoted_followees": [],
+        "voting": 0,
+        "is_nothelp": false,
+        "is_authorized": false,
+        "is_author": false,
+        "is_thanked": false
+      },
+      "is_copyable": true,
+      "is_collapsed": false,
+      "url": "http://www.zhihu.com/api/v4/answers/155179522",
+      "comment_permission": "all",
+      "updated_time": 1491241808,
+      "extras": "",
+      "can_comment": {
+        "status": true,
+        "reason": ""
+      },
+      "is_normal": true
+    },
+    {
+      "mark_infos": [],
+      "excerpt": "前不久回国了一趟，把国内的手机开起来了。第一天就接到一个陌生号码，177什么的，觉得怪怪的但还是接了。对方一股浓重的胡建口音。“喂，你好，我是你东北的额子，你的黑社会在我手上”“行，你先叫一声爹，黑社会我不要了，喂，你挂什么电话啊，喂”以前…",
+      "thumbnail": "",
+      "created_time": 1490982873,
+      "id": 154703689,
+      "voteup_count": 308,
+      "author": {
+        "avatar_url_template": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_{size}.jpg",
+        "badge": [
+          {
+            "topics": [
+              {
+                "name": "计算机图形学",
+                "url": "http://www.zhihu.com/api/v4/topics/19613730",
+                "excerpt": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "introduction": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "avatar_url": "https://pic4.zhimg.com/95b86ea8b502d9aef1b13f621bba2ef3_is.jpg",
+                "type": "topic",
+                "id": "19613730"
+              },
+              {
+                "name": "C++",
+                "url": "http://www.zhihu.com/api/v4/topics/19584970",
+                "excerpt": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "introduction": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "avatar_url": "https://pic1.zhimg.com/9db7191dc_is.jpg",
+                "type": "topic",
+                "id": "19584970"
+              }
+            ],
+            "type": "best_answerer",
+            "description": "优秀回答者"
+          }
+        ],
+        "name": "叛逆者",
+        "is_advertiser": false,
+        "headline": "http://klayge.org",
+        "type": "people",
+        "user_type": "people",
+        "url": "http://www.zhihu.com/api/v4/people/0b21747b1fec79ad8af7e68a2b1ff681",
+        "avatar_url": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_is.jpg",
+        "is_org": false,
+        "gender": 1,
+        "url_token": "minmin.gong",
+        "id": "0b21747b1fec79ad8af7e68a2b1ff681"
+      },
+      "question": {
+        "created": 1440816674,
+        "url": "http://www.zhihu.com/api/v4/questions/35135576",
+        "title": "你遇到过什么尴尬又好笑的事情吗？",
+        "updated_time": 1486039062,
+        "question_type": "normal",
+        "type": "question",
+        "id": 35135576
+      },
+      "content": "<p>前不久回国了一趟，把国内的手机开起来了。第一天就接到一个陌生号码，177什么的，觉得怪怪的但还是接了。对方一股浓重的胡建口音。</p><p>“喂，你好，我是你东北的额子，你的黑社会在我手上”</p><p>“行，你先叫一声爹，黑社会我不要了，喂，你挂什么电话啊，喂”</p><p>以前在weibo上看到过这样的，没想到被我碰上了，看来他们也会口误。</p>",
+      "comment_count": 36,
+      "reshipment_settings": "need_payment",
+      "type": "answer",
+      "suggest_edit": {
+        "status": false,
+        "title": "",
+        "url": "",
+        "tip": "",
+        "reason": "",
+        "unnormal_details": null
+      },
+      "relationship": {
+        "upvoted_followees": [],
+        "voting": 0,
+        "is_nothelp": false,
+        "is_authorized": false,
+        "is_author": false,
+        "is_thanked": false
+      },
+      "is_copyable": true,
+      "is_collapsed": false,
+      "url": "http://www.zhihu.com/api/v4/answers/154703689",
+      "comment_permission": "all",
+      "updated_time": 1490982874,
+      "extras": "",
+      "can_comment": {
+        "status": true,
+        "reason": ""
+      },
+      "is_normal": true
+    },
+    {
+      "mark_infos": [],
+      "excerpt": "能啊，我现在就算跟人聊天都可以有中断和恢复机制。有时候连着说的一句话里面每一段是对不同人说的，根据重要度决定反应时间。听的人可以根据我脸的朝向和语境知道是跟谁说的。 “今天中午去吃 水开了 肠粉吧”",
+      "thumbnail": "",
+      "created_time": 1490922646,
+      "id": 154542189,
+      "voteup_count": 165,
+      "author": {
+        "avatar_url_template": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_{size}.jpg",
+        "badge": [
+          {
+            "topics": [
+              {
+                "name": "计算机图形学",
+                "url": "http://www.zhihu.com/api/v4/topics/19613730",
+                "excerpt": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "introduction": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "avatar_url": "https://pic4.zhimg.com/95b86ea8b502d9aef1b13f621bba2ef3_is.jpg",
+                "type": "topic",
+                "id": "19613730"
+              },
+              {
+                "name": "C++",
+                "url": "http://www.zhihu.com/api/v4/topics/19584970",
+                "excerpt": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "introduction": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "avatar_url": "https://pic1.zhimg.com/9db7191dc_is.jpg",
+                "type": "topic",
+                "id": "19584970"
+              }
+            ],
+            "type": "best_answerer",
+            "description": "优秀回答者"
+          }
+        ],
+        "name": "叛逆者",
+        "is_advertiser": false,
+        "headline": "微软高级工程师",
+        "type": "people",
+        "user_type": "people",
+        "url": "http://www.zhihu.com/api/v4/people/0b21747b1fec79ad8af7e68a2b1ff681",
+        "avatar_url": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_is.jpg",
+        "is_org": false,
+        "gender": 1,
+        "url_token": "minmin.gong",
+        "id": "0b21747b1fec79ad8af7e68a2b1ff681"
+      },
+      "question": {
+        "created": 1481514440,
+        "url": "http://www.zhihu.com/api/v4/questions/53545897",
+        "title": "编程真的能改变人的思维方式吗？",
+        "updated_time": 1481514440,
+        "question_type": "normal",
+        "type": "question",
+        "id": 53545897
+      },
+      "content": "<p>能啊，我现在就算跟人聊天都可以有中断和恢复机制。有时候连着说的一句话里面每一段是对不同人说的，根据重要度决定反应时间。听的人可以根据我脸的朝向和语境知道是跟谁说的。</p><br><p>“今天中午去吃 水开了 肠粉吧”</p>",
+      "comment_count": 26,
+      "reshipment_settings": "need_payment",
+      "type": "answer",
+      "suggest_edit": {
+        "status": false,
+        "title": "",
+        "url": "",
+        "tip": "",
+        "reason": "",
+        "unnormal_details": null
+      },
+      "relationship": {
+        "upvoted_followees": [],
+        "voting": 0,
+        "is_nothelp": false,
+        "is_authorized": false,
+        "is_author": false,
+        "is_thanked": false
+      },
+      "is_copyable": true,
+      "is_collapsed": false,
+      "url": "http://www.zhihu.com/api/v4/answers/154542189",
+      "comment_permission": "all",
+      "updated_time": 1490922646,
+      "extras": "",
+      "can_comment": {
+        "status": true,
+        "reason": ""
+      },
+      "is_normal": true
+    },
+    {
+      "mark_infos": [],
+      "excerpt": "因为能",
+      "thumbnail": "",
+      "created_time": 1490922300,
+      "id": 154541290,
+      "voteup_count": 36,
+      "author": {
+        "avatar_url_template": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_{size}.jpg",
+        "badge": [
+          {
+            "topics": [
+              {
+                "name": "计算机图形学",
+                "url": "http://www.zhihu.com/api/v4/topics/19613730",
+                "excerpt": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "introduction": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "avatar_url": "https://pic4.zhimg.com/95b86ea8b502d9aef1b13f621bba2ef3_is.jpg",
+                "type": "topic",
+                "id": "19613730"
+              },
+              {
+                "name": "C++",
+                "url": "http://www.zhihu.com/api/v4/topics/19584970",
+                "excerpt": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "introduction": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "avatar_url": "https://pic1.zhimg.com/9db7191dc_is.jpg",
+                "type": "topic",
+                "id": "19584970"
+              }
+            ],
+            "type": "best_answerer",
+            "description": "优秀回答者"
+          }
+        ],
+        "name": "叛逆者",
+        "is_advertiser": false,
+        "headline": "http://klayge.org",
+        "type": "people",
+        "user_type": "people",
+        "url": "http://www.zhihu.com/api/v4/people/0b21747b1fec79ad8af7e68a2b1ff681",
+        "avatar_url": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_is.jpg",
+        "is_org": false,
+        "gender": 1,
+        "url_token": "minmin.gong",
+        "id": "0b21747b1fec79ad8af7e68a2b1ff681"
+      },
+      "question": {
+        "created": 1490237677,
+        "url": "http://www.zhihu.com/api/v4/questions/57495438",
+        "title": "中国为什么要同时制造两艘航母(001和002型)？",
+        "updated_time": 1490940541,
+        "question_type": "normal",
+        "type": "question",
+        "id": 57495438
+      },
+      "content": "<p>因为能</p>",
+      "comment_count": 7,
+      "reshipment_settings": "need_payment",
+      "type": "answer",
+      "suggest_edit": {
+        "status": false,
+        "title": "",
+        "url": "",
+        "tip": "",
+        "reason": "",
+        "unnormal_details": null
+      },
+      "relationship": {
+        "upvoted_followees": [],
+        "voting": 0,
+        "is_nothelp": false,
+        "is_authorized": false,
+        "is_author": false,
+        "is_thanked": false
+      },
+      "is_copyable": true,
+      "is_collapsed": false,
+      "url": "http://www.zhihu.com/api/v4/answers/154541290",
+      "comment_permission": "all",
+      "updated_time": 1490922301,
+      "extras": "",
+      "can_comment": {
+        "status": true,
+        "reason": ""
+      },
+      "is_normal": true
+    },
+    {
+      "mark_infos": [],
+      "excerpt": "<a href=\"https://link.zhihu.com/?target=https%3A//githubengineering.com/cross-platform-ui-in-github-desktop/\" class=\" wrap external\" target=\"_blank\" rel=\"nofollow noreferrer\">Cross-platform UI in GitHub Desktop<i class=\"icon-external\"></i></a>",
+      "thumbnail": "",
+      "created_time": 1490921895,
+      "id": 154540379,
+      "voteup_count": 9,
+      "author": {
+        "avatar_url_template": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_{size}.jpg",
+        "badge": [
+          {
+            "topics": [
+              {
+                "name": "计算机图形学",
+                "url": "http://www.zhihu.com/api/v4/topics/19613730",
+                "excerpt": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "introduction": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "avatar_url": "https://pic4.zhimg.com/95b86ea8b502d9aef1b13f621bba2ef3_is.jpg",
+                "type": "topic",
+                "id": "19613730"
+              },
+              {
+                "name": "C++",
+                "url": "http://www.zhihu.com/api/v4/topics/19584970",
+                "excerpt": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "introduction": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "avatar_url": "https://pic1.zhimg.com/9db7191dc_is.jpg",
+                "type": "topic",
+                "id": "19584970"
+              }
+            ],
+            "type": "best_answerer",
+            "description": "优秀回答者"
+          }
+        ],
+        "name": "叛逆者",
+        "is_advertiser": false,
+        "headline": "http://klayge.org",
+        "type": "people",
+        "user_type": "people",
+        "url": "http://www.zhihu.com/api/v4/people/0b21747b1fec79ad8af7e68a2b1ff681",
+        "avatar_url": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_is.jpg",
+        "is_org": false,
+        "gender": 1,
+        "url_token": "minmin.gong",
+        "id": "0b21747b1fec79ad8af7e68a2b1ff681"
+      },
+      "question": {
+        "created": 1465998646,
+        "url": "http://www.zhihu.com/api/v4/questions/47478756",
+        "title": "GitHub Desktop可能是什么语言写的？",
+        "updated_time": 1465998646,
+        "question_type": "normal",
+        "type": "question",
+        "id": 47478756
+      },
+      "content": "<p><a href=\"https://link.zhihu.com/?target=https%3A//githubengineering.com/cross-platform-ui-in-github-desktop/\" class=\" wrap external\" target=\"_blank\" rel=\"nofollow noreferrer\">Cross-platform UI in GitHub Desktop<i class=\"icon-external\"></i></a></p>",
+      "comment_count": 0,
+      "reshipment_settings": "need_payment",
+      "type": "answer",
+      "suggest_edit": {
+        "status": false,
+        "title": "",
+        "url": "",
+        "tip": "",
+        "reason": "",
+        "unnormal_details": null
+      },
+      "relationship": {
+        "upvoted_followees": [],
+        "voting": 0,
+        "is_nothelp": false,
+        "is_authorized": false,
+        "is_author": false,
+        "is_thanked": false
+      },
+      "is_copyable": true,
+      "is_collapsed": false,
+      "url": "http://www.zhihu.com/api/v4/answers/154540379",
+      "comment_permission": "all",
+      "updated_time": 1490921906,
+      "extras": "",
+      "can_comment": {
+        "status": true,
+        "reason": ""
+      },
+      "is_normal": true
+    },
+    {
+      "mark_infos": [],
+      "excerpt": "哇，扩展坞和电脑，太黑科技了。还有语音AI助理、1440p显示屏、虚拟home键、虹膜识别、无线充电。 哦，我说的是18个月前发布的Lumia 950 XL，不是说S8。",
+      "thumbnail": "",
+      "created_time": 1490921478,
+      "id": 154539385,
+      "voteup_count": 186,
+      "author": {
+        "avatar_url_template": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_{size}.jpg",
+        "badge": [
+          {
+            "topics": [
+              {
+                "name": "计算机图形学",
+                "url": "http://www.zhihu.com/api/v4/topics/19613730",
+                "excerpt": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "introduction": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "avatar_url": "https://pic4.zhimg.com/95b86ea8b502d9aef1b13f621bba2ef3_is.jpg",
+                "type": "topic",
+                "id": "19613730"
+              },
+              {
+                "name": "C++",
+                "url": "http://www.zhihu.com/api/v4/topics/19584970",
+                "excerpt": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "introduction": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "avatar_url": "https://pic1.zhimg.com/9db7191dc_is.jpg",
+                "type": "topic",
+                "id": "19584970"
+              }
+            ],
+            "type": "best_answerer",
+            "description": "优秀回答者"
+          }
+        ],
+        "name": "叛逆者",
+        "is_advertiser": false,
+        "headline": "http://klayge.org",
+        "type": "people",
+        "user_type": "people",
+        "url": "http://www.zhihu.com/api/v4/people/0b21747b1fec79ad8af7e68a2b1ff681",
+        "avatar_url": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_is.jpg",
+        "is_org": false,
+        "gender": 1,
+        "url_token": "minmin.gong",
+        "id": "0b21747b1fec79ad8af7e68a2b1ff681"
+      },
+      "question": {
+        "created": 1490803236,
+        "url": "http://www.zhihu.com/api/v4/questions/57799329",
+        "title": "如何评价三星 DeX 扩展坞？",
+        "updated_time": 1490867411,
+        "question_type": "normal",
+        "type": "question",
+        "id": 57799329
+      },
+      "content": "<p>哇，扩展坞和电脑，太黑科技了。还有语音AI助理、1440p显示屏、虚拟home键、虹膜识别、无线充电。</p><br><p>哦，我说的是18个月前发布的Lumia 950 XL，不是说S8。</p>",
+      "comment_count": 37,
+      "reshipment_settings": "need_payment",
+      "type": "answer",
+      "suggest_edit": {
+        "status": false,
+        "title": "",
+        "url": "",
+        "tip": "",
+        "reason": "",
+        "unnormal_details": null
+      },
+      "relationship": {
+        "upvoted_followees": [],
+        "voting": 0,
+        "is_nothelp": false,
+        "is_authorized": false,
+        "is_author": false,
+        "is_thanked": false
+      },
+      "is_copyable": true,
+      "is_collapsed": false,
+      "url": "http://www.zhihu.com/api/v4/answers/154539385",
+      "comment_permission": "all",
+      "updated_time": 1490921479,
+      "extras": "",
+      "can_comment": {
+        "status": true,
+        "reason": ""
+      },
+      "is_normal": true
+    },
+    {
+      "mark_infos": [],
+      "excerpt": "拿荆轲说事是吧，那知不知道荆轲的匕首是谁给的呢？徐夫人。虽然这人叫徐夫人，但是个男性铸剑师。荆轲跟他买的匕首。学历史的时候老师都强调过吧，徐夫人，姓徐，名夫人，男，夫念第二声。 然而，有一部定位为“历史电视剧”的《火烧阿房宫》，里面的徐夫…",
+      "thumbnail": "",
+      "created_time": 1490905765,
+      "id": 154527031,
+      "voteup_count": 359,
+      "author": {
+        "avatar_url_template": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_{size}.jpg",
+        "badge": [
+          {
+            "topics": [
+              {
+                "name": "计算机图形学",
+                "url": "http://www.zhihu.com/api/v4/topics/19613730",
+                "excerpt": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "introduction": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "avatar_url": "https://pic4.zhimg.com/95b86ea8b502d9aef1b13f621bba2ef3_is.jpg",
+                "type": "topic",
+                "id": "19613730"
+              },
+              {
+                "name": "C++",
+                "url": "http://www.zhihu.com/api/v4/topics/19584970",
+                "excerpt": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "introduction": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "avatar_url": "https://pic1.zhimg.com/9db7191dc_is.jpg",
+                "type": "topic",
+                "id": "19584970"
+              }
+            ],
+            "type": "best_answerer",
+            "description": "优秀回答者"
+          }
+        ],
+        "name": "叛逆者",
+        "is_advertiser": false,
+        "headline": "http://klayge.org",
+        "type": "people",
+        "user_type": "people",
+        "url": "http://www.zhihu.com/api/v4/people/0b21747b1fec79ad8af7e68a2b1ff681",
+        "avatar_url": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_is.jpg",
+        "is_org": false,
+        "gender": 1,
+        "url_token": "minmin.gong",
+        "id": "0b21747b1fec79ad8af7e68a2b1ff681"
+      },
+      "question": {
+        "created": 1490755209,
+        "url": "http://www.zhihu.com/api/v4/questions/57763089",
+        "title": "如何看待人民日报微博转载光明日报文章批评王者荣耀不尊重历史？",
+        "updated_time": 1491125573,
+        "question_type": "normal",
+        "type": "question",
+        "id": 57763089
+      },
+      "content": "<p>拿荆轲说事是吧，那知不知道荆轲的匕首是谁给的呢？徐夫人。虽然这人叫徐夫人，但是个男性铸剑师。荆轲跟他买的匕首。学历史的时候老师都强调过吧，徐夫人，姓徐，名夫人，男，夫念第二声。</p><br><p>然而，有一部定位为“历史电视剧”的《火烧阿房宫》，里面的徐夫人却是刘晓庆演的，女性。</p><br><p>至于《康熙王朝》里开口闭口“我孝庄”的奇葩大错，应该已经广为人知了吧。</p><br><p>那么人民日报敢不敢先怼一下这些定位为历史剧的严肃作品呢？王者荣耀没说自己是历史游戏啊。</p>",
+      "comment_count": 63,
+      "reshipment_settings": "need_payment",
+      "type": "answer",
+      "suggest_edit": {
+        "status": false,
+        "title": "",
+        "url": "",
+        "tip": "",
+        "reason": "",
+        "unnormal_details": null
+      },
+      "relationship": {
+        "upvoted_followees": [],
+        "voting": 0,
+        "is_nothelp": false,
+        "is_authorized": false,
+        "is_author": false,
+        "is_thanked": false
+      },
+      "is_copyable": true,
+      "is_collapsed": false,
+      "url": "http://www.zhihu.com/api/v4/answers/154527031",
+      "comment_permission": "all",
+      "updated_time": 1490905804,
+      "extras": "",
+      "can_comment": {
+        "status": true,
+        "reason": ""
+      },
+      "is_normal": true
+    },
+    {
+      "mark_infos": [],
+      "excerpt": "能。我从vista开始就一直是这么干。",
+      "thumbnail": "",
+      "created_time": 1490904837,
+      "id": 154526712,
+      "voteup_count": 5,
+      "author": {
+        "avatar_url_template": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_{size}.jpg",
+        "badge": [
+          {
+            "topics": [
+              {
+                "name": "计算机图形学",
+                "url": "http://www.zhihu.com/api/v4/topics/19613730",
+                "excerpt": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "introduction": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "avatar_url": "https://pic4.zhimg.com/95b86ea8b502d9aef1b13f621bba2ef3_is.jpg",
+                "type": "topic",
+                "id": "19613730"
+              },
+              {
+                "name": "C++",
+                "url": "http://www.zhihu.com/api/v4/topics/19584970",
+                "excerpt": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "introduction": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "avatar_url": "https://pic1.zhimg.com/9db7191dc_is.jpg",
+                "type": "topic",
+                "id": "19584970"
+              }
+            ],
+            "type": "best_answerer",
+            "description": "优秀回答者"
+          }
+        ],
+        "name": "叛逆者",
+        "is_advertiser": false,
+        "headline": "http://klayge.org",
+        "type": "people",
+        "user_type": "people",
+        "url": "http://www.zhihu.com/api/v4/people/0b21747b1fec79ad8af7e68a2b1ff681",
+        "avatar_url": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_is.jpg",
+        "is_org": false,
+        "gender": 1,
+        "url_token": "minmin.gong",
+        "id": "0b21747b1fec79ad8af7e68a2b1ff681"
+      },
+      "question": {
+        "created": 1490887696,
+        "url": "http://www.zhihu.com/api/v4/questions/57843312",
+        "title": "求助 请问我正版win10过几天用镜像升级15063版系统 能够自动激活吗？",
+        "updated_time": 1490887696,
+        "question_type": "normal",
+        "type": "question",
+        "id": 57843312
+      },
+      "content": "<p>能。我从vista开始就一直是这么干。</p>",
+      "comment_count": 6,
+      "reshipment_settings": "need_payment",
+      "type": "answer",
+      "suggest_edit": {
+        "status": false,
+        "title": "",
+        "url": "",
+        "tip": "",
+        "reason": "",
+        "unnormal_details": null
+      },
+      "relationship": {
+        "upvoted_followees": [],
+        "voting": 0,
+        "is_nothelp": false,
+        "is_authorized": false,
+        "is_author": false,
+        "is_thanked": false
+      },
+      "is_copyable": true,
+      "is_collapsed": false,
+      "url": "http://www.zhihu.com/api/v4/answers/154526712",
+      "comment_permission": "all",
+      "updated_time": 1490904837,
+      "extras": "",
+      "can_comment": {
+        "status": true,
+        "reason": ""
+      },
+      "is_normal": true
+    },
+    {
+      "mark_infos": [],
+      "excerpt": "Drone，被翻译成无人机。其实这件事情跟有没有人没关系，而跟上面有没有人驾驶有关系。如果足够大，能载乘客，那到底是无人机还是有人机还是载人无人机？而且，Borg这种东西，本身就是个人形物体，只是像工蜂（drone的本意）一样干活，所以也用drone来表示。",
+      "thumbnail": "https://pic3.zhimg.com/v2-145868cd151b8b32643901db1712c226_200x112.jpg",
+      "created_time": 1490896809,
+      "id": 154522276,
+      "voteup_count": 28,
+      "author": {
+        "avatar_url_template": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_{size}.jpg",
+        "badge": [
+          {
+            "topics": [
+              {
+                "name": "计算机图形学",
+                "url": "http://www.zhihu.com/api/v4/topics/19613730",
+                "excerpt": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "introduction": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "avatar_url": "https://pic4.zhimg.com/95b86ea8b502d9aef1b13f621bba2ef3_is.jpg",
+                "type": "topic",
+                "id": "19613730"
+              },
+              {
+                "name": "C++",
+                "url": "http://www.zhihu.com/api/v4/topics/19584970",
+                "excerpt": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "introduction": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "avatar_url": "https://pic1.zhimg.com/9db7191dc_is.jpg",
+                "type": "topic",
+                "id": "19584970"
+              }
+            ],
+            "type": "best_answerer",
+            "description": "优秀回答者"
+          }
+        ],
+        "name": "叛逆者",
+        "is_advertiser": false,
+        "headline": "http://klayge.org",
+        "type": "people",
+        "user_type": "people",
+        "url": "http://www.zhihu.com/api/v4/people/0b21747b1fec79ad8af7e68a2b1ff681",
+        "avatar_url": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_is.jpg",
+        "is_org": false,
+        "gender": 1,
+        "url_token": "minmin.gong",
+        "id": "0b21747b1fec79ad8af7e68a2b1ff681"
+      },
+      "question": {
+        "created": 1483840699,
+        "url": "http://www.zhihu.com/api/v4/questions/54530226",
+        "title": "有哪些翻译是原本错误的，但却最终成为了大众认可的主流？",
+        "updated_time": 1485103296,
+        "question_type": "normal",
+        "type": "question",
+        "id": 54530226
+      },
+      "content": "<p>Drone，被翻译成无人机。其实这件事情跟有没有人没关系，而跟上面有没有人驾驶有关系。如果足够大，能载乘客，那到底是无人机还是有人机还是载人无人机？</p><p>而且，Borg这种东西，本身就是个人形物体，只是像工蜂（drone的本意）一样干活，所以也用drone来表示。</p><noscript><img src=\"https://pic3.zhimg.com/v2-145868cd151b8b32643901db1712c226_b.jpg\" data-rawwidth=\"475\" data-rawheight=\"315\" class=\"origin_image zh-lightbox-thumb\" width=\"475\" data-original=\"https://pic3.zhimg.com/v2-145868cd151b8b32643901db1712c226_r.jpg\"></noscript><img src=\"//zhstatic.zhihu.com/assets/zhihu/ztext/whitedot.jpg\" data-rawwidth=\"475\" data-rawheight=\"315\" class=\"origin_image zh-lightbox-thumb lazy\" width=\"475\" data-original=\"https://pic3.zhimg.com/v2-145868cd151b8b32643901db1712c226_r.jpg\" data-actualsrc=\"https://pic3.zhimg.com/v2-145868cd151b8b32643901db1712c226_b.jpg\">",
+      "comment_count": 13,
+      "reshipment_settings": "need_payment",
+      "type": "answer",
+      "suggest_edit": {
+        "status": false,
+        "title": "",
+        "url": "",
+        "tip": "",
+        "reason": "",
+        "unnormal_details": null
+      },
+      "relationship": {
+        "upvoted_followees": [],
+        "voting": 0,
+        "is_nothelp": false,
+        "is_authorized": false,
+        "is_author": false,
+        "is_thanked": false
+      },
+      "is_copyable": true,
+      "is_collapsed": false,
+      "url": "http://www.zhihu.com/api/v4/answers/154522276",
+      "comment_permission": "all",
+      "updated_time": 1490896809,
+      "extras": "",
+      "can_comment": {
+        "status": true,
+        "reason": ""
+      },
+      "is_normal": true
+    },
+    {
+      "mark_infos": [],
+      "excerpt": "计算机和建筑结合的有的是。比如这些<a href=\"https://link.zhihu.com/?target=https%3A//www.microsoft.com/en-us/research/publication/planar-hexagonal-meshing-architecture/\" class=\" wrap external\" target=\"_blank\" rel=\"nofollow noreferrer\">Planar Hexagonal Meshing for Architecture - Microsoft Research<i class=\"icon-external\"></i></a><a href=\"https://link.zhihu.com/?target=https%3A//www.microsoft.com/en-us/research/publication/computing-self-supporting-surfaces-regular-triangulation/\" class=\" wrap external\" target=\"_blank\" rel=\"nofollow noreferrer\">Computing Self-Supporting Surfaces by Regular Triangulation - Microsoft Research<i class=\"icon-external\"></i></a><a href=\"https://link.zhihu.com/?target=https%3A//www.microsoft.com/en-us/research/publication/general-planar-quadrilateral-mesh-design-using-conjugate-direction-field/\" class=\" wrap external\" target=\"_blank\" rel=\"nofollow noreferrer\">General planar quadrilateral mesh design using conjugate direc…<i class=\"icon-external\"></i></a>",
+      "thumbnail": "",
+      "created_time": 1490837338,
+      "id": 154357894,
+      "voteup_count": 9,
+      "author": {
+        "avatar_url_template": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_{size}.jpg",
+        "badge": [
+          {
+            "topics": [
+              {
+                "name": "计算机图形学",
+                "url": "http://www.zhihu.com/api/v4/topics/19613730",
+                "excerpt": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "introduction": "计算机图形学（英语：computer graphics，缩写为CG）是研究计算机在硬件和软件的帮助下创建计算机图形的科学学科，是计算机科学的一个分支领域，主要关注数位合成与操作视觉的图形内容。",
+                "avatar_url": "https://pic4.zhimg.com/95b86ea8b502d9aef1b13f621bba2ef3_is.jpg",
+                "type": "topic",
+                "id": "19613730"
+              },
+              {
+                "name": "C++",
+                "url": "http://www.zhihu.com/api/v4/topics/19584970",
+                "excerpt": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "introduction": "C++是一种使用非常广泛的计算机程序设计语言。它是一种静态数据类型（static data type）检查的，支持多范式（multi-paradigm）的通用程序设计语言。C++支持面向过程编程（Procedures Programming）、数据抽象化（Data Abstraction）、面向对象程序设计（Object-Oriented Programming）、泛型程序设计（Generic-Type Programming）、基于原则设计（Policy-Based Class Design）等多种程序设计风格。 (from Wikipedia)",
+                "avatar_url": "https://pic1.zhimg.com/9db7191dc_is.jpg",
+                "type": "topic",
+                "id": "19584970"
+              }
+            ],
+            "type": "best_answerer",
+            "description": "优秀回答者"
+          }
+        ],
+        "name": "叛逆者",
+        "is_advertiser": false,
+        "headline": "http://klayge.org",
+        "type": "people",
+        "user_type": "people",
+        "url": "http://www.zhihu.com/api/v4/people/0b21747b1fec79ad8af7e68a2b1ff681",
+        "avatar_url": "https://pic3.zhimg.com/ab952a4f1312716c6163c524fdbebdae_is.jpg",
+        "is_org": false,
+        "gender": 1,
+        "url_token": "minmin.gong",
+        "id": "0b21747b1fec79ad8af7e68a2b1ff681"
+      },
+      "question": {
+        "created": 1455704624,
+        "url": "http://www.zhihu.com/api/v4/questions/40475895",
+        "title": "建筑学本科准备修计算机双学位，如何有效将计算机学到的东西结合应用到建筑学？",
+        "updated_time": 1455704692,
+        "question_type": "normal",
+        "type": "question",
+        "id": 40475895
+      },
+      "content": "<p>计算机和建筑结合的有的是。比如这些</p><p><a href=\"https://link.zhihu.com/?target=https%3A//www.microsoft.com/en-us/research/publication/planar-hexagonal-meshing-architecture/\" class=\" wrap external\" target=\"_blank\" rel=\"nofollow noreferrer\">Planar Hexagonal Meshing for Architecture - Microsoft Research<i class=\"icon-external\"></i></a></p><p><a href=\"https://link.zhihu.com/?target=https%3A//www.microsoft.com/en-us/research/publication/computing-self-supporting-surfaces-regular-triangulation/\" class=\" wrap external\" target=\"_blank\" rel=\"nofollow noreferrer\">Computing Self-Supporting Surfaces by Regular Triangulation - Microsoft Research<i class=\"icon-external\"></i></a></p><p><a href=\"https://link.zhihu.com/?target=https%3A//www.microsoft.com/en-us/research/publication/general-planar-quadrilateral-mesh-design-using-conjugate-direction-field/\" class=\" wrap external\" target=\"_blank\" rel=\"nofollow noreferrer\">General planar quadrilateral mesh design using conjugate direction field - Microsoft Research<i class=\"icon-external\"></i></a></p><p>用计算机图形学里面的几何造型优化来做到省材料、自支撑等建筑上需要的目标。</p>",
+      "comment_count": 1,
+      "reshipment_settings": "need_payment",
+      "type": "answer",
+      "suggest_edit": {
+        "status": false,
+        "title": "",
+        "url": "",
+        "tip": "",
+        "reason": "",
+        "unnormal_details": null
+      },
+      "relationship": {
+        "upvoted_followees": [],
+        "voting": 0,
+        "is_nothelp": false,
+        "is_authorized": false,
+        "is_author": false,
+        "is_thanked": false
+      },
+      "is_copyable": true,
+      "is_collapsed": false,
+      "url": "http://www.zhihu.com/api/v4/answers/154357894",
+      "comment_permission": "all",
+      "updated_time": 1490837338,
+      "extras": "",
+      "can_comment": {
+        "status": true,
+        "reason": ""
+      },
+      "is_normal": true
+    }
+  ]
+}
