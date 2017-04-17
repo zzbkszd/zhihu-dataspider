@@ -47,7 +47,13 @@ public class AnswerThread implements Runnable {
                         dataCache.lset("question_ids",questionId);
                     }
 
+
                     int answerId = answer.get("id").getAsInt();
+
+                    if(dataCache.lin("answer_ids",answerId)){
+                        continue;
+                    }
+
                     int voteup = answer.get("voteup_count").getAsInt();
                     int comment = answer.get("comment_count").getAsInt();
                     String content = answer.get("content").getAsString();

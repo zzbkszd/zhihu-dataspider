@@ -28,9 +28,9 @@ public class DBUtils {
 
         dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://192.168.3.9:3306/zhihu?useUnicode=true&characterEncoding=UTF-8");
-        dataSource.setUsername("root");
-        dataSource.setPassword("");
+        dataSource.setUrl("jdbc:mysql://5786f8ea1f83b.bj.cdb.myqcloud.com:17062/zhihu?useUnicode=true&characterEncoding=UTF-8");
+        dataSource.setUsername("cdb_outerroot");
+        dataSource.setPassword("youquer90AVENUE");
 
         runner = new QueryRunner(dataSource);
     }

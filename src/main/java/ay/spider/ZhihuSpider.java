@@ -51,6 +51,13 @@ public class ZhihuSpider {
             cache.lset("question_ids",question.get("questionId"));
         }
 
+
+        List<Map<String,Object>> answers = dbUtils.query("select answerId from answer");
+        for (Map<String, Object> question : questions) {
+            cache.lset("answer_ids",question.get("answerId"));
+        }
+
+
     }
 
 

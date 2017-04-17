@@ -38,7 +38,7 @@ public class Zhihu {
 //        } catch (SQLException e) {
 //            e.printStackTrace();
 //        }
-        new ZhihuSpider().work("151231");
+        new ZhihuSpider().work("e-miao-de-nai-ba");
 //        test();
 //        cleanDB();
     }
