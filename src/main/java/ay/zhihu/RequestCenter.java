@@ -30,7 +30,7 @@ public class RequestCenter {
         int page = 1;
         int size=1;
         while(size<10){
-            String url = getfollowersApi(userKey,page);
+            String url = getFolloweesApi(userKey,page);
             String jsonStr = http.get(url);
             Gson gson = new Gson();
             JsonObject json = gson.fromJson(jsonStr,JsonObject.class);

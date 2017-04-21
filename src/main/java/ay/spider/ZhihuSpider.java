@@ -30,6 +30,12 @@ public class ZhihuSpider {
 
         ArrayBlockingQueue<String> taskQueue = new ArrayBlockingQueue<>(10);
 
+        try {
+            taskQueue.put(rootUser);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         Thread thread = new Thread(new UserInfoThread(taskQueue,rootUser));
         thread.start();
         Thread answer = new Thread(new AnswerThread(taskQueue));
@@ -39,23 +45,23 @@ public class ZhihuSpider {
 
     public void initCache() throws SQLException {
 
-        DBUtils dbUtils = new DBUtils();
-
-        List<Map<String,Object>> users = dbUtils.query("select urlToken from user");
-        for (Map<String, Object> user : users) {
-            cache.lset("user_token_list",user.get("urlToken"));
-        }
-
-        List<Map<String,Object>> questions = dbUtils.query("select questionId from question");
-        for (Map<String, Object> question : questions) {
-            cache.lset("question_ids",question.get("questionId"));
-        }
-
-
-        List<Map<String,Object>> answers = dbUtils.query("select answerId from answer");
-        for (Map<String, Object> question : questions) {
-            cache.lset("answer_ids",question.get("answerId"));
-        }
+//        DBUtils dbUtils = new DBUtils();
+//
+//        List<Map<String,Object>> users = dbUtils.query("select urlToken from user");
+//        for (Map<String, Object> user : users) {
+//            cache.lset("user_token_list",user.get("urlToken"));
+//        }
+//
+//        List<Map<String,Object>> questions = dbUtils.query("select questionId from question");
+//        for (Map<String, Object> question : questions) {
+//            cache.lset("question_ids",question.get("questionId"));
+//        }
+//
+//
+//        List<Map<String,Object>> answers = dbUtils.query("select answerId from answer");
+//        for (Map<String, Object> question : questions) {
+//            cache.lset("answer_ids",question.get("answerId"));
+//        }
 
 
     }

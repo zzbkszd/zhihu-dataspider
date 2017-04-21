@@ -18,7 +18,6 @@ import java.util.concurrent.ArrayBlockingQueue;
  */
 public class UserInfoThread implements Runnable{
 
-    DataCache dataCache = DataCache.getInstant();
     RequestCenter requestCenter = new RequestCenter();
     DBUtils dbUtils = new DBUtils();
     ArrayBlockingQueue<String> taskQueue;
@@ -35,34 +34,43 @@ public class UserInfoThread implements Runnable{
         users.add(rootUser);
         while(true){
             try {
-            List<JsonObject> followees = requestCenter.getAllFollowees(users.poll());
-            for (JsonObject followee : followees) {
-                String token = followee.get("url_token").getAsString();
-                String name = followee.get("name").getAsString();
-                String usertype = followee.get("user_type").getAsString();
-                String url = followee.get("url").getAsString();
-                String uuid = followee.get("id").getAsString();
-                int answercount = followee.get("answer_count").getAsInt();
-                int followerCount = followee.get("follower_count").getAsInt();
-
-                if(dataCache.lin("user_token_list",token)){
+                String ut = users.poll();
+                if(ut==null && users.size()==0){
+                    System.out.println("no more user!");
+                    break;
+                }
+                else if(ut==null){
                     continue;
                 }
+                List<JsonObject> followees = requestCenter.getAllFollowees(ut);
+                System.out.println(followees);
+                for (JsonObject followee : followees) {
+                    String token = followee.get("url_token").getAsString();
+                    String name = followee.get("name").getAsString();
+                    String usertype = followee.get("user_type").getAsString();
+                    String url = followee.get("url").getAsString();
+                    String uuid = followee.get("id").getAsString();
+                    int answercount = followee.get("answer_count").getAsInt();
+                    int followerCount = followee.get("follower_count").getAsInt();
 
-                if(StringUtils.isEmpty(token)){
-                    continue;
-                }
+                    if(dbUtils.query("select id from user where urlToken=?",token).size()>0){
+                        continue;
+                    }
 
-                if(taskQueue!=null)
-                taskQueue.put(token);
+                    if(StringUtils.isEmpty(token)){
+                        continue;
+                    }
 
-                users.add(token);
-                dataCache.lset("user_token_list",token);
+                    if(taskQueue!=null)
+                    taskQueue.put(token);
 
-//                    System.out.println("saving user "+name);
 
-                dbUtils.insert("insert into user(name,usertype,answercount,urlToken,url,followerCount,uuid) values (?,?,?,?,?,?,?)",
-                        name,usertype,answercount,token,url,followerCount,uuid);
+                    users.add(token);
+
+    //                    System.out.println("saving user "+name);
+
+                    dbUtils.insert("insert into user(name,usertype,answercount,urlToken,url,followerCount,uuid) values (?,?,?,?,?,?,?)",
+                            name,usertype,answercount,token,url,followerCount,uuid);
 
             }
 //                Thread.sleep(1000);

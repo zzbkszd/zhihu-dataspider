@@ -29,23 +29,11 @@ public class Zhihu {
 
 
     public static void main(String[] args) throws IOException {
-//        DBUtils dbUtils = new DBUtils();
-//        try {
-//            List<Map<String,Object>> sobj = dbUtils.query("select * from user");
-//            for (Map<String, Object> user : sobj) {
-//                DataCache.getInstant().lset("user_token_list",user.get("urlToken"));
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-        new ZhihuSpider().work("e-miao-de-nai-ba");
-//        test();
-//        cleanDB();
+        new ZhihuSpider().work("li-jiao-40-97");
     }
 
     public static void test() throws IOException {
         HttpUtil http = new HttpUtil();
-
         String url = getFolloweesApi("minmin.gong",1);
         String jsonStr = http.get(url);
         jsonStr = StringEscapeUtils.unescapeHtml4(jsonStr);

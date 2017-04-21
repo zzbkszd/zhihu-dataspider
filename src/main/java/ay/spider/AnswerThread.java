@@ -15,7 +15,6 @@ import java.util.concurrent.ArrayBlockingQueue;
  * Created by 志达 on 2017/4/16.
  */
 public class AnswerThread implements Runnable {
-    DataCache dataCache = DataCache.getInstant();
     RequestCenter requestCenter = new RequestCenter();
     DBUtils dbUtils = new DBUtils();
     ArrayBlockingQueue<String> taskQueue;
@@ -39,18 +38,16 @@ public class AnswerThread implements Runnable {
                     int questionId = question.get("id").getAsInt();
                     String title = question.get("title").getAsString();
                     //添加问题
-                    if(!dataCache.lin("question_ids",questionId)){
+                    if(dbUtils.query("select id from question where questionId=?",questionId).size()==0){
                         long created = question.get("created").getAsLong();
 //                        System.out.println("saving question:"+title);
                         dbUtils.insert("insert into question(title,questionId,created) values (?,?,?)",
                                 title,questionId,new Timestamp(created));
-                        dataCache.lset("question_ids",questionId);
                     }
-
 
                     int answerId = answer.get("id").getAsInt();
 
-                    if(dataCache.lin("answer_ids",answerId)){
+                    if(dbUtils.query("select id from answer where answerId=?",answerId).size()!=0){
                         continue;
                     }
 
