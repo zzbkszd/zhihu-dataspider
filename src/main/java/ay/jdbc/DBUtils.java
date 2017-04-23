@@ -41,12 +41,28 @@ public class DBUtils {
         return runner;
     }
 
-    public void insert(String sql,Object... param) throws SQLException {
-        runner.update(sql,param);
+    public int insert(String sql,Object... param) throws SQLException {
+        return runner.update(sql,param);
     }
 
-    public void update(String sql,Object... param) throws SQLException {
-        runner.update(sql,param);
+    public int update(String sql,Object... param) throws SQLException {
+        return runner.update(sql,param);
+    }
+
+    public void batchInsert(String sql,List<Object[]> param) throws SQLException {
+        System.out.println("batch execute sql :"+sql);
+        System.out.println("batch execute size:"+param.size());
+        Object[][] array = new Object[param.size()][];
+        for(int i=0;i<array.length;i++){
+            array[i] = param.get(i);
+        }
+        runner.insertBatch(sql, new ResultSetHandler<Integer>() {
+            @Override
+            public Integer handle(ResultSet resultSet) throws SQLException {
+                return 1;
+            }
+        },array);
+
     }
 
     public List<Map<String,Object>> query(String sql,Object... param) throws SQLException {

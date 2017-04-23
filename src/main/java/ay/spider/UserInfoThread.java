@@ -22,10 +22,19 @@ public class UserInfoThread implements Runnable{
     DBUtils dbUtils = new DBUtils();
     ArrayBlockingQueue<String> taskQueue;
     String rootUser;
+    boolean useCache = false;
+
+    List<Object[]> userCache = new ArrayList<>();
 
     public UserInfoThread(ArrayBlockingQueue taskQueue, String rootUser){
         this.taskQueue = taskQueue;
         this.rootUser = rootUser;
+    }
+
+    public UserInfoThread(ArrayBlockingQueue taskQueue, String rootUser, boolean useCache){
+        this.taskQueue = taskQueue;
+        this.rootUser = rootUser;
+        this.useCache = useCache;
     }
 
     @Override
@@ -43,7 +52,6 @@ public class UserInfoThread implements Runnable{
                     continue;
                 }
                 List<JsonObject> followees = requestCenter.getAllFollowees(ut);
-                System.out.println(followees);
                 for (JsonObject followee : followees) {
                     String token = followee.get("url_token").getAsString();
                     String name = followee.get("name").getAsString();
@@ -53,7 +61,7 @@ public class UserInfoThread implements Runnable{
                     int answercount = followee.get("answer_count").getAsInt();
                     int followerCount = followee.get("follower_count").getAsInt();
 
-                    if(dbUtils.query("select id from user where urlToken=?",token).size()>0){
+                    if(hasUser(uuid)){
                         continue;
                     }
 
@@ -67,13 +75,15 @@ public class UserInfoThread implements Runnable{
 
                     users.add(token);
 
-    //                    System.out.println("saving user "+name);
+                    userCache.add(new Object[]{name,usertype,answercount,token,url,followerCount,uuid});
+                    if(useCache){
+                        DataCache.getInstant().lset(DataCache.KEY_USER_DIS,uuid);
+                    }
 
-                    dbUtils.insert("insert into user(name,usertype,answercount,urlToken,url,followerCount,uuid) values (?,?,?,?,?,?,?)",
-                            name,usertype,answercount,token,url,followerCount,uuid);
-
-            }
-//                Thread.sleep(1000);
+                }
+                dbUtils.batchInsert("insert into user(name,usertype,answercount,urlToken,url,followerCount,uuid) values (?,?,?,?,?,?,?)",
+                        userCache);
+                userCache.clear();
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (SQLException e) {
@@ -83,6 +93,14 @@ public class UserInfoThread implements Runnable{
             }
         }
 
+    }
+
+    public boolean hasUser(String uuid) throws SQLException {
+        if(useCache){
+            return DataCache.getInstant().lin(DataCache.KEY_USER_DIS,uuid);
+        }else{
+            return dbUtils.query("select id from user where urlToken=?",uuid).size()>0;
+        }
     }
 
 }

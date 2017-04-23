@@ -11,6 +11,10 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class DataCache {
 
+    public static final String KEY_ANSWER_DIS = "KEY_ANSWER_DIS";
+    public static final String KEY_USER_DIS = "KEY_USER_DIS";
+    public static final String KEY_QUESTION_DIS = "KEY_QUESTION_DIS";
+
     Map<String,Object> cache;
 
     private static DataCache dataCache;
