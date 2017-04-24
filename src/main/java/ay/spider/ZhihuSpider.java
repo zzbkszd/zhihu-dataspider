@@ -15,8 +15,11 @@ public class ZhihuSpider {
 
     DataCache cache;
 
-    public ZhihuSpider(){
+    boolean useCache = false;
+
+    public ZhihuSpider(boolean useCache){
         cache = DataCache.getInstant();
+        this.useCache = useCache;
         try {
             initCache();
         } catch (SQLException e) {
@@ -37,14 +40,18 @@ public class ZhihuSpider {
             e.printStackTrace();
         }
 
-        Thread thread = new Thread(new UserInfoThread(taskQueue,rootUser,true));
+        Thread thread = new Thread(new UserInfoThread(taskQueue,rootUser,useCache));
         thread.start();
-        Thread answer = new Thread(new AnswerThread(taskQueue,true));
+        Thread answer = new Thread(new AnswerThread(taskQueue,useCache));
         answer.start();
 
     }
 
     public void initCache() throws SQLException {
+
+        if(!useCache){
+            return;
+        }
 
         DBUtils dbUtils = new DBUtils();
         System.out.println("开始初始化缓存，可能消耗很长时间");
