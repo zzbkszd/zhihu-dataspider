@@ -18,33 +18,23 @@ import java.util.concurrent.ArrayBlockingQueue;
  */
 public class UserInfoThread implements Runnable{
 
-    RequestCenter requestCenter = new RequestCenter();
-    DBUtils dbUtils = new DBUtils();
-    ArrayBlockingQueue<String> taskQueue;
-    String rootUser;
-    boolean useCache = false;
+    private RequestCenter requestCenter = new RequestCenter();
+    private DBUtils dbUtils = new DBUtils();
 
-    List<Object[]> userCache = new ArrayList<>();
+    private ZhihuSpiderContext context;
 
-    public UserInfoThread(ArrayBlockingQueue taskQueue, String rootUser){
-        this.taskQueue = taskQueue;
-        this.rootUser = rootUser;
-    }
+    private List<Object[]> userCache = new ArrayList<>();
 
-    public UserInfoThread(ArrayBlockingQueue taskQueue, String rootUser, boolean useCache){
-        this.taskQueue = taskQueue;
-        this.rootUser = rootUser;
-        this.useCache = useCache;
+    public UserInfoThread(ZhihuSpiderContext context){
+        this.context = context;
     }
 
     @Override
     public void run() {
-        Queue<String> users = new LinkedList<>();
-        users.add(rootUser);
         while(true){
             try {
-                String ut = users.poll();
-                if(ut==null && users.size()==0){
+                String ut = context.getUser4FollowsQueue().poll();
+                if(ut==null && context.getUser4FollowsQueue().size()==0){
                     System.out.println("no more user!");
                     break;
                 }
@@ -69,14 +59,14 @@ public class UserInfoThread implements Runnable{
                         continue;
                     }
 
-                    if(taskQueue!=null)
-                    taskQueue.put(token);
+                    if(context.getCache()!=null)
+                    context.getUser4AnswersQueue().put(token);
 
 
-                    users.add(token);
+                    context.getUser4FollowsQueue().add(token);
 
                     userCache.add(new Object[]{name,usertype,answercount,token,url,followerCount,uuid});
-                    if(useCache){
+                    if(context.isUseCache()){
                         DataCache.getInstant().lset(DataCache.KEY_USER_DIS,uuid);
                     }
 
@@ -96,7 +86,7 @@ public class UserInfoThread implements Runnable{
     }
 
     public boolean hasUser(String uuid) throws SQLException {
-        if(useCache){
+        if(context.isUseCache()){
             return DataCache.getInstant().lin(DataCache.KEY_USER_DIS,uuid);
         }else{
             return dbUtils.query("select id from user where urlToken=?",uuid).size()>0;

@@ -1,5 +1,5 @@
 package ay;
-import ay.spider.ZhihuSpider;
+import ay.spider.ZhihuSpiderContext;
 
 import java.io.IOException;
 
@@ -16,7 +16,7 @@ public class Zhihu {
         System.setProperty("org.apache.commons.logging.simplelog.log.org.apache.http", "ERROR");// "stdout"为标准输出格式，"debug"为调试模式
         System.setProperty("org.apache.commons.logging.simplelog.log.org.apache.http.wire", "ERROR");// "stdout"为标准输出格式，"debug"为调试模式
         //开始工作
-        new ZhihuSpider(true).work("li-gao-fei-68");
+        new ZhihuSpiderContext(true).work("li-gao-fei-68");
     }
 
 }

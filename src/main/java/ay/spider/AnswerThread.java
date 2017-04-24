@@ -19,27 +19,22 @@ import java.util.concurrent.ArrayBlockingQueue;
  * Created by 志达 on 2017/4/16.
  */
 public class AnswerThread implements Runnable {
-    RequestCenter requestCenter = new RequestCenter();
-    DBUtils dbUtils = new DBUtils();
-    ArrayBlockingQueue<String> taskQueue;
-    List<Object[]> answerCache = new ArrayList<>(); //线程内数据缓存，用于批量插入数据库
-    List<Object[]> questionCache = new ArrayList<>(); //线程内数据缓存，用于批量插入数据库
-    boolean useCache = false;
+    private RequestCenter requestCenter = new RequestCenter();
+    private DBUtils dbUtils = new DBUtils();
+    private List<Object[]> answerCache = new ArrayList<>(); //线程内数据缓存，用于批量插入数据库
+    private List<Object[]> questionCache = new ArrayList<>(); //线程内数据缓存，用于批量插入数据库
 
-    public AnswerThread(ArrayBlockingQueue taskQueue){
-        this.taskQueue = taskQueue;
-    }
+    private ZhihuSpiderContext context;
 
-    public AnswerThread(ArrayBlockingQueue taskQueue,boolean useCache){
-        this.taskQueue = taskQueue;
-        this.useCache = useCache;
+    public AnswerThread(ZhihuSpiderContext context){
+        this.context = context;
     }
 
     @Override
     public void run() {
         while(true){
             try {
-                String token = taskQueue.take();
+                String token = context.getUser4AnswersQueue().take();
                 if(StringUtils.isEmpty(token)){
                     continue;
                 }
@@ -53,7 +48,7 @@ public class AnswerThread implements Runnable {
                         long created = question.get("created").getAsLong();
                         questionCache.add(new Object[]{title,questionId,new Timestamp(created)});
 
-                        if(useCache){
+                        if(context.isUseCache()){
                             DataCache.getInstant().lset(DataCache.KEY_QUESTION_DIS,questionId);
                         }
                     }
@@ -74,7 +69,7 @@ public class AnswerThread implements Runnable {
                     String authorId = author.get("id").getAsString();
 
                     answerCache.add(new Object[]{questionId,content,authorId,answerId,new Timestamp(createTime*1000),voteup,comment});
-                    if(useCache){
+                    if(context.isUseCache()){
                         DataCache.getInstant().lset(DataCache.KEY_ANSWER_DIS,answerId);
                     }
 
@@ -89,12 +84,13 @@ public class AnswerThread implements Runnable {
 
             } catch (IOException | SQLException | InterruptedException e) {
                 e.printStackTrace();
+                break;
             }
         }
     }
 
     private boolean hasQuestion(int questionId) throws SQLException{
-        if(useCache){
+        if(context.isUseCache()){
             return DataCache.getInstant().lin(DataCache.KEY_QUESTION_DIS,questionId);
         }else{
             return dbUtils.query("select id from question where questionId=?",questionId).size()==0;
@@ -103,7 +99,7 @@ public class AnswerThread implements Runnable {
     }
 
     private boolean hasAnswer(int answerId) throws SQLException {
-        if(!useCache)
+        if(!context.isUseCache())
             return (dbUtils.query("select id from answer where answerId=?",answerId).size()!=0);
         else{
             return DataCache.getInstant().lin(DataCache.KEY_ANSWER_DIS,answerId);

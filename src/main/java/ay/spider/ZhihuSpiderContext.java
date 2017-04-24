@@ -10,14 +10,48 @@ import java.util.concurrent.ArrayBlockingQueue;
 /**
  * Created by 志达 on 2017/4/16.
  */
-public class ZhihuSpider {
+public class ZhihuSpiderContext {
 
 
     DataCache cache;
 
     boolean useCache = false;
+    ArrayBlockingQueue<String> user4FollowsQueue = new ArrayBlockingQueue<>(10);
+    ArrayBlockingQueue<String> user4AnswersQueue = new ArrayBlockingQueue<>(10);
 
-    public ZhihuSpider(boolean useCache){
+    public DataCache getCache() {
+        return cache;
+    }
+
+    public void setCache(DataCache cache) {
+        this.cache = cache;
+    }
+
+    public boolean isUseCache() {
+        return useCache;
+    }
+
+    public void setUseCache(boolean useCache) {
+        this.useCache = useCache;
+    }
+
+    public ArrayBlockingQueue<String> getUser4FollowsQueue() {
+        return user4FollowsQueue;
+    }
+
+    public void setUser4FollowsQueue(ArrayBlockingQueue<String> user4FollowsQueue) {
+        this.user4FollowsQueue = user4FollowsQueue;
+    }
+
+    public ArrayBlockingQueue<String> getUser4AnswersQueue() {
+        return user4AnswersQueue;
+    }
+
+    public void setUser4AnswersQueue(ArrayBlockingQueue<String> user4AnswersQueue) {
+        this.user4AnswersQueue = user4AnswersQueue;
+    }
+
+    public ZhihuSpiderContext(boolean useCache){
         cache = DataCache.getInstant();
         this.useCache = useCache;
         try {
@@ -31,18 +65,15 @@ public class ZhihuSpider {
 
     public void work(String rootUser){
 
-        //任务队列，多线程阻塞队列实现缓冲区
-        ArrayBlockingQueue<String> taskQueue = new ArrayBlockingQueue<>(10);
-
         try {
-            taskQueue.put(rootUser);
+            user4FollowsQueue.put(rootUser);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        Thread thread = new Thread(new UserInfoThread(taskQueue,rootUser,useCache));
+        Thread thread = new Thread(new UserInfoThread(this));
         thread.start();
-        Thread answer = new Thread(new AnswerThread(taskQueue,useCache));
+        Thread answer = new Thread(new AnswerThread(this));
         answer.start();
 
     }
