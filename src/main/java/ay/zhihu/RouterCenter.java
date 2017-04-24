@@ -5,6 +5,12 @@ package ay.zhihu;
  */
 public class RouterCenter {
 
+    /**
+     * 获取指定用户的所有答案
+     * @param userKey
+     * @param page
+     * @return
+     */
     public static String getAnswersApi(String userKey,int page){
         int pageSize = 20;
         return "https://www.zhihu.com/api/v4/members/"+userKey+"/answers?include=data%5B*%5D.is_normal%2Csuggest_edit%2Ccomment_count%2C" +

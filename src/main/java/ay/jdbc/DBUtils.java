@@ -31,9 +31,6 @@ public class DBUtils {
         dataSource.setUrl("jdbc:mysql://5786f8ea1f83b.bj.cdb.myqcloud.com:17062/zhihu?useUnicode=true&characterEncoding=UTF-8");
         dataSource.setUsername("cdb_outerroot");
         dataSource.setPassword("youquer90AVENUE");
-//        dataSource.setUrl("jdbc:mysql://192.168.20.67:3306/score?useUnicode=true&characterEncoding=UTF-8");
-//        dataSource.setUsername("root");
-//        dataSource.setPassword("f63hiccVEv0mMXi");
 
         runner = new QueryRunner(dataSource);
     }
@@ -49,19 +46,31 @@ public class DBUtils {
         return runner.update(sql,param);
     }
 
-    public void batchInsert(String sql,List<Object[]> param) throws SQLException {
-        System.out.println("batch execute sql :"+sql);
-        System.out.println("batch execute size:"+param.size());
+    /**
+     * 当批量插入失败后，逐条插入以减少忽略的损失
+     * @param sql
+     * @param param
+     */
+    public void failBatchInsert(String sql,List<Object[]> param){
+        for (Object[] objects : param) {
+            try {
+                insert(sql,objects);
+            } catch (SQLException e) {
+                System.out.println("insert fail with error:\n"+e.getMessage()+"\n");
+            }
+        }
+    }
+
+    public void batchInsert(String sql,List<Object[]> param) {
         Object[][] array = new Object[param.size()][];
         for(int i=0;i<array.length;i++){
             array[i] = param.get(i);
         }
-        runner.insertBatch(sql, new ResultSetHandler<Integer>() {
-            @Override
-            public Integer handle(ResultSet resultSet) throws SQLException {
-                return 1;
-            }
-        },array);
+        try {
+            runner.insertBatch(sql, rs ->1 , array);
+        } catch (SQLException e) {
+            failBatchInsert(sql,param);
+        }
 
     }
 

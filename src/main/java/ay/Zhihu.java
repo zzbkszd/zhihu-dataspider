@@ -9,8 +9,6 @@ import java.io.IOException;
  */
 public class Zhihu {
 
-
-
     public static void main(String[] args) throws IOException {
         new ZhihuSpider().work("li-gao-fei-68");
     }

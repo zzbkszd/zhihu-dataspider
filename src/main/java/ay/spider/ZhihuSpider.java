@@ -28,6 +28,7 @@ public class ZhihuSpider {
 
     public void work(String rootUser){
 
+        //任务队列，多线程阻塞队列实现缓冲区
         ArrayBlockingQueue<String> taskQueue = new ArrayBlockingQueue<>(10);
 
         try {
