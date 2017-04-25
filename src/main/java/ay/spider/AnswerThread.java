@@ -82,8 +82,10 @@ public class AnswerThread implements Runnable {
                 answerCache.clear();
                 questionCache.clear();
 
-            } catch (IOException | SQLException | InterruptedException e) {
+            } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
+            } catch (SQLException ex){
+                ex.printStackTrace();
                 break;
             }
         }

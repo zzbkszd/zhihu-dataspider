@@ -33,7 +33,8 @@ public class UserInfoThread implements Runnable{
     public void run() {
         while(true){
             try {
-                String ut = context.getUser4FollowsQueue().poll();
+                String ut = context.getUser4FollowsQueue().get(0);
+                context.getUser4FollowsQueue().remove(0);
                 if(ut==null && context.getUser4FollowsQueue().size()==0){
                     System.out.println("no more user!");
                     break;

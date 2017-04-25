@@ -3,6 +3,7 @@ package ay.spider;
 import ay.jdbc.DBUtils;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -16,7 +17,7 @@ public class ZhihuSpiderContext {
     DataCache cache;
 
     boolean useCache = false;
-    ArrayBlockingQueue<String> user4FollowsQueue = new ArrayBlockingQueue<>(10);
+    ArrayList<String> user4FollowsQueue = new ArrayList<>();//bigger then bigger
     ArrayBlockingQueue<String> user4AnswersQueue = new ArrayBlockingQueue<>(10);
 
     public DataCache getCache() {
@@ -35,11 +36,11 @@ public class ZhihuSpiderContext {
         this.useCache = useCache;
     }
 
-    public ArrayBlockingQueue<String> getUser4FollowsQueue() {
+    public ArrayList<String> getUser4FollowsQueue() {
         return user4FollowsQueue;
     }
 
-    public void setUser4FollowsQueue(ArrayBlockingQueue<String> user4FollowsQueue) {
+    public void setUser4FollowsQueue(ArrayList<String> user4FollowsQueue) {
         this.user4FollowsQueue = user4FollowsQueue;
     }
 
@@ -65,11 +66,7 @@ public class ZhihuSpiderContext {
 
     public void work(String rootUser){
 
-        try {
-            user4FollowsQueue.put(rootUser);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        user4FollowsQueue.add(rootUser);
 
         Thread thread = new Thread(new UserInfoThread(this));
         thread.start();
@@ -87,31 +84,24 @@ public class ZhihuSpiderContext {
         DBUtils dbUtils = new DBUtils();
         System.out.println("开始初始化缓存，可能消耗很长时间");
 
-        List<Map<String,Object>> users = dbUtils.query("select urlToken from user");
-        for (Map<String, Object> user : users) {
+        List<Map<String,Object>> tempData = dbUtils.query("select urlToken from user");
+        for (Map<String, Object> user : tempData) {
             cache.lset(DataCache.KEY_USER_DIS,user.get("uuid"));
         }
-        users = null;
         System.out.println("用户缓存初始化完成");
 
-        List<Map<String,Object>> questions = dbUtils.query("select questionId from question");
-        for (Map<String, Object> question : questions) {
+        tempData = dbUtils.query("select questionId from question");
+        for (Map<String, Object> question : tempData) {
             cache.lset(DataCache.KEY_QUESTION_DIS,question.get("questionId"));
         }
-        questions = null;
         System.out.println("问题缓存初始化完成");
 
 
-        List<Map<String,Object>> answers = dbUtils.query("select answerId from answer");
-        for (Map<String, Object> answer : answers) {
+        tempData = dbUtils.query("select answerId from answer");
+        for (Map<String, Object> answer : tempData) {
             cache.lset(DataCache.KEY_ANSWER_DIS,answer.get("answerId"));
         }
-        answers = null;
         System.out.println("答案缓存初始化完成");
-
-        dbUtils = null;
-
-        System.gc();
 
     }
 
