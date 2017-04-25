@@ -20,7 +20,8 @@ import java.util.concurrent.ArrayBlockingQueue;
  */
 public class AnswerThread implements Runnable {
     private RequestCenter requestCenter = new RequestCenter();
-    private DBUtils dbUtils = new DBUtils();
+    private DBUtils mysqlDB = DBUtils.getMysqlIns();
+    private DBUtils hsqlDB = DBUtils.getHsqlIns();
     private List<Object[]> answerCache = new ArrayList<>(); //线程内数据缓存，用于批量插入数据库
     private List<Object[]> questionCache = new ArrayList<>(); //线程内数据缓存，用于批量插入数据库
 
@@ -44,12 +45,12 @@ public class AnswerThread implements Runnable {
                     int questionId = question.get("id").getAsInt();
                     String title = question.get("title").getAsString();
                     //添加问题
-                    if(hasQuestion(questionId)){
+                    if(!hasQuestion(questionId)){
                         long created = question.get("created").getAsLong();
                         questionCache.add(new Object[]{title,questionId,new Timestamp(created)});
 
                         if(context.isUseCache()){
-                            DataCache.getInstant().lset(DataCache.KEY_QUESTION_DIS,questionId);
+                            hsqlDB.insert("insert into cache_question values(?)",questionId);
                         }
                     }
 
@@ -70,14 +71,14 @@ public class AnswerThread implements Runnable {
 
                     answerCache.add(new Object[]{questionId,content,authorId,answerId,new Timestamp(createTime*1000),voteup,comment});
                     if(context.isUseCache()){
-                        DataCache.getInstant().lset(DataCache.KEY_ANSWER_DIS,answerId);
+                        hsqlDB.insert("insert into cache_answer values (?)",answerId);
                     }
 
                 }
-                dbUtils.batchInsert("insert into answer(questionId,content,authorId,answerId,created_time,voteup_count,comment_count) values (?,?,?,?,?,?,?)"
+                mysqlDB.batchInsert("insert into answer(questionId,content,authorId,answerId,created_time,voteup_count,comment_count) values (?,?,?,?,?,?,?)"
                         ,answerCache);
                 System.out.println("保存答案信息完成："+answerCache.size());
-                dbUtils.batchInsert("insert into question(title,questionId,created) values (?,?,?)",questionCache);
+                mysqlDB.batchInsert("insert into question(title,questionId,created) values (?,?,?)",questionCache);
                 System.out.println("保存问题信息完成："+questionCache.size());
                 answerCache.clear();
                 questionCache.clear();
@@ -93,18 +94,18 @@ public class AnswerThread implements Runnable {
 
     private boolean hasQuestion(int questionId) throws SQLException{
         if(context.isUseCache()){
-            return DataCache.getInstant().lin(DataCache.KEY_QUESTION_DIS,questionId);
+            return hsqlDB.query("select * from cache_question where qid=?",questionId).size()>0;
         }else{
-            return dbUtils.query("select id from question where questionId=?",questionId).size()==0;
+            return mysqlDB.query("select id from question where questionId=?",questionId).size()==0;
         }
 
     }
 
     private boolean hasAnswer(int answerId) throws SQLException {
         if(!context.isUseCache())
-            return (dbUtils.query("select id from answer where answerId=?",answerId).size()!=0);
+            return (mysqlDB.query("select id from answer where answerId=?",answerId).size()!=0);
         else{
-            return DataCache.getInstant().lin(DataCache.KEY_ANSWER_DIS,answerId);
+            return hsqlDB.query("select * from cache_answer where aid=?",answerId).size()>0;
         }
     }
 }

@@ -19,7 +19,8 @@ import java.util.concurrent.ArrayBlockingQueue;
 public class UserInfoThread implements Runnable{
 
     private RequestCenter requestCenter = new RequestCenter();
-    private DBUtils dbUtils = new DBUtils();
+    private DBUtils mysqlDB = DBUtils.getMysqlIns();
+    private DBUtils hsqlDB = DBUtils.getHsqlIns();
 
     private ZhihuSpiderContext context;
 
@@ -33,15 +34,13 @@ public class UserInfoThread implements Runnable{
     public void run() {
         while(true){
             try {
-                String ut = context.getUser4FollowsQueue().get(0);
-                context.getUser4FollowsQueue().remove(0);
-                if(ut==null && context.getUser4FollowsQueue().size()==0){
+
+                if(context.getUser4FollowsQueue().size()==0){
                     System.out.println("no more user!");
                     break;
                 }
-                else if(ut==null){
-                    continue;
-                }
+                String ut = context.getUser4FollowsQueue().get(0);
+                context.getUser4FollowsQueue().remove(0);
                 List<JsonObject> followees = requestCenter.getAllFollowees(ut);
                 for (JsonObject followee : followees) {
                     String token = followee.get("url_token").getAsString();
@@ -60,19 +59,16 @@ public class UserInfoThread implements Runnable{
                         continue;
                     }
 
-                    if(context.getCache()!=null)
                     context.getUser4AnswersQueue().put(token);
-
-
                     context.getUser4FollowsQueue().add(token);
 
                     userCache.add(new Object[]{name,usertype,answercount,token,url,followerCount,uuid});
                     if(context.isUseCache()){
-                        DataCache.getInstant().lset(DataCache.KEY_USER_DIS,uuid);
+                        hsqlDB.insert("insert into cache_user values (?)",uuid);
                     }
 
                 }
-                dbUtils.batchInsert("insert into user(name,usertype,answercount,urlToken,url,followerCount,uuid) values (?,?,?,?,?,?,?)",
+                mysqlDB.batchInsert("insert into user(name,usertype,answercount,urlToken,url,followerCount,uuid) values (?,?,?,?,?,?,?)",
                         userCache);
                 userCache.clear();
             } catch (IOException e) {
@@ -88,9 +84,9 @@ public class UserInfoThread implements Runnable{
 
     public boolean hasUser(String uuid) throws SQLException {
         if(context.isUseCache()){
-            return DataCache.getInstant().lin(DataCache.KEY_USER_DIS,uuid);
+            return hsqlDB.query("select * from cache_user where uuid=?",uuid).size()>0;
         }else{
-            return dbUtils.query("select id from user where urlToken=?",uuid).size()>0;
+            return mysqlDB.query("select id from user where urlToken=?",uuid).size()>0;
         }
     }
 

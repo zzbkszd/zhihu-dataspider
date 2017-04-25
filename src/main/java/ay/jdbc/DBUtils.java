@@ -24,16 +24,44 @@ public class DBUtils {
 
     private QueryRunner runner;
 
-    public DBUtils(){
+    private static class inner {
+        public static DBUtils mysqlIns,hsqlIns;
+        static {
+            BasicDataSource mysqlSource = new BasicDataSource();
+            mysqlSource.setDriverClassName("com.mysql.jdbc.Driver");
+            mysqlSource.setUrl("jdbc:mysql://5786f8ea1f83b.bj.cdb.myqcloud.com:17062/zhihu?useUnicode=true&characterEncoding=UTF-8");
+            mysqlSource.setUsername("cdb_outerroot");
+            mysqlSource.setPassword("youquer90AVENUE");
+            mysqlIns = new DBUtils(mysqlSource);
 
-        dataSource = new BasicDataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://5786f8ea1f83b.bj.cdb.myqcloud.com:17062/zhihu?useUnicode=true&characterEncoding=UTF-8");
-        dataSource.setUsername("cdb_outerroot");
-        dataSource.setPassword("youquer90AVENUE");
+            BasicDataSource hsqlSource = new BasicDataSource();
+            hsqlSource.setDriverClassName("org.hsqldb.jdbcDriver");
+            hsqlSource.setUrl("jdbc:hsqldb:mem:dbname");
+            hsqlSource.setUsername("sa");
+            hsqlSource.setPassword("");
+            hsqlIns = new DBUtils(hsqlSource);
+            try {
+                hsqlIns.update("create table cache_user(uuid varchar(64) not null primary key)");
+                hsqlIns.update("create table cache_answer(aid Integer not null primary key)");
+                hsqlIns.update("create table cache_question(qid Integer not null primary key)");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
+    public static DBUtils getMysqlIns(){
+        return inner.mysqlIns;
+    }
+    public static DBUtils getHsqlIns(){
+        return inner.hsqlIns;
+    }
+
+    public DBUtils(BasicDataSource dataSource){
+        this.dataSource = dataSource;
         runner = new QueryRunner(dataSource);
     }
+
     public QueryRunner getRunner(){
         return runner;
     }

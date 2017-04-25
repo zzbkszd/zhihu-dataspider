@@ -19,10 +19,10 @@ public class DataCache {
 
     private static DataCache dataCache;
 
-    public static DataCache getInstant(){
-        if(dataCache==null) dataCache = new DataCache();
-        return dataCache;
-    }
+//    public static DataCache getInstant(){
+//        if(dataCache==null) dataCache = new DataCache();
+//        return dataCache;
+//    }
 
     private DataCache(){
         cache = new ConcurrentHashMap<>();
