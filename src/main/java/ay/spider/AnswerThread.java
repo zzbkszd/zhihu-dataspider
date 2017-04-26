@@ -1,8 +1,7 @@
 package ay.spider;
 
-import ay.jdbc.DBUtils;
+import ay.common.jdbc.DBUtils;
 import ay.zhihu.RequestCenter;
-import ay.zhihu.pojo.Answer;
 import com.google.gson.JsonObject;
 import org.apache.commons.lang3.StringUtils;
 
@@ -10,9 +9,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ArrayBlockingQueue;
 
 /**
  * 抓取用户的所有答案

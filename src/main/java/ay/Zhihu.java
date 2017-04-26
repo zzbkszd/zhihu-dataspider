@@ -1,5 +1,5 @@
 package ay;
-import ay.jdbc.DBUtils;
+import ay.common.jdbc.DBUtils;
 import ay.spider.ZhihuSpiderContext;
 
 import java.io.IOException;

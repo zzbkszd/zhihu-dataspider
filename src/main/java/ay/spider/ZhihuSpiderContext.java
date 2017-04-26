@@ -1,6 +1,6 @@
 package ay.spider;
 
-import ay.jdbc.DBUtils;
+import ay.common.jdbc.DBUtils;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,8 +12,6 @@ import java.util.concurrent.ArrayBlockingQueue;
  * Created by 志达 on 2017/4/16.
  */
 public class ZhihuSpiderContext {
-
-
 
     boolean useCache = false;
     ArrayList<String> user4FollowsQueue = new ArrayList<>();//bigger then bigger
@@ -47,6 +45,9 @@ public class ZhihuSpiderContext {
     public void work(String rootUser){
 
         user4FollowsQueue.add(rootUser);
+        //此处应当考虑如何实现工作流式调度
+        //任务一-》任务2-》任务3-》任务4，通过统一的API从context中获取任务，交付任务
+        //如何实现一下任务监控，统一日志等工作
 
         Thread thread = new Thread(new UserInfoThread(this));
         thread.start();

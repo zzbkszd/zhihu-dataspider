@@ -1,6 +1,6 @@
 package ay.spider;
 
-import ay.jdbc.DBUtils;
+import ay.common.jdbc.DBUtils;
 import ay.zhihu.RequestCenter;
 import com.google.gson.JsonObject;
 import org.apache.commons.lang3.StringUtils;
@@ -8,10 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ArrayBlockingQueue;
 
 /**
  * Created by 志达 on 2017/4/16.
