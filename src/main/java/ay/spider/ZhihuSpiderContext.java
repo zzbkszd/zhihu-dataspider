@@ -45,8 +45,10 @@ public class ZhihuSpiderContext {
     public void work(String rootUser){
 
         user4FollowsQueue.add(rootUser);
-        //此处应当考虑如何实现工作流式调度
+        //此处应当考虑如何实现工作流式调度（线程编排）
         //任务一-》任务2-》任务3-》任务4，通过统一的API从context中获取任务，交付任务
+        //可以考虑参考类似于netty的过滤器模式？
+        //数据队列应该支持多种实现，诸如内存队列，消息队列等
         //如何实现一下任务监控，统一日志等工作
 
         Thread thread = new Thread(new UserInfoThread(this));
