@@ -13,21 +13,21 @@ public abstract class  WatchedThread<INDATA,OUTDATA> extends Thread {
 
     @Override
     public void run() {
-        super.run();
-        INDATA in = ctx.get...
-        OutBuffer<OUTDATA> out = new OutBuffer<>();
-        while(process(in,out)){
-            INDATA in = ctx.get...
-        }
+//        super.run();
+//        INDATA in = ctx.get...
+//        OutBuffer<OUTDATA> out = new OutBuffer<>();
+//        while(process(in,out)){
+//            INDATA in = ctx.get...
+//        }
     }
 
     public abstract boolean process (INDATA in,OutBuffer<OUTDATA> out);
 
 
     private class OutBuffer<OUTDATA>{
-        public void put(OUTDATA out){
-            ctx.put...
-        }
+//        public void put(OUTDATA out){
+//            ctx.put...
+//        }
     }
 
 }
