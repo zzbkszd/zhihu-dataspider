@@ -31,11 +31,11 @@ public class LTP {
     public static void main(String[] args) {
         DBUtils dbUtils = DBUtils.getMysqlIns();
         try {
-            Map<String,Object> answer = dbUtils.query("select * from answer where id=?",1285600).get(0);
+            Map<String,Object> answer = dbUtils.query("select * from answer where id=?",1307440).get(0);
             String content = (String) answer.get("content");
             System.out.println(content);
-            System.out.println(word(content));
-//            System.out.println(keyExtractor(content));
+//            System.out.println(word(content));
+            System.out.println(keyExtractor(content));
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -47,7 +47,7 @@ public class LTP {
     }
 
     public static String keyExtractor(String text){
-        String keyWordsStr = CLibraryKeyExtractor.instance.KeyExtract_GetKeyWords(text, 10, false);
+        String keyWordsStr = CLibraryKeyExtractor.instance.KeyExtract_GetKeyWords(text, 30, false);
         CLibraryKeyExtractor.instance.KeyExtract_Exit();
         return keyWordsStr;
     }

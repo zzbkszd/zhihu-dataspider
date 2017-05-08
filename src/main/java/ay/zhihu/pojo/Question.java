@@ -11,6 +11,49 @@ public class Question {
     String title;
     Timestamp created;
 
+    String topics,description;
+    int answers,view,attention;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getTopics() {
+        return topics;
+    }
+
+    public void setTopics(String topics) {
+        this.topics = topics;
+    }
+
+    public int getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(int answers) {
+        this.answers = answers;
+    }
+
+    public int getView() {
+        return view;
+    }
+
+    public void setView(int view) {
+        this.view = view;
+    }
+
+    public int getAttention() {
+        return attention;
+    }
+
+    public void setAttention(int attention) {
+        this.attention = attention;
+    }
+
     public int getId() {
         return id;
     }
