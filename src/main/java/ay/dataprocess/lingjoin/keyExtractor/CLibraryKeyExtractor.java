@@ -10,7 +10,7 @@ import com.sun.jna.Native;
  */
 public interface CLibraryKeyExtractor extends Library {
 
-	public CLibraryKeyExtractor instance = (CLibraryKeyExtractor) Native.loadLibrary("G:\\hadoopProject\\zhihu\\lib\\win64\\KeyExtract.dll", CLibraryKeyExtractor.class);
+	public CLibraryKeyExtractor instance = (CLibraryKeyExtractor) Native.loadLibrary("D:/workspace/zhihu/zhihu-dataspider/lib/win64/KeyExtract.dll", CLibraryKeyExtractor.class);
 	
 	public boolean KeyExtract_Init(String sDataPath, int encode, String sLicenceCode);
 	

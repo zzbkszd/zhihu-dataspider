@@ -29,17 +29,12 @@ public class LTP {
     private static String APIKEY = "y161k2c6h4PopkTXmq1EHf8c1AZZcIHHFK8zpMek";
 
     public static void main(String[] args) {
-        DBUtils dbUtils = DBUtils.getMysqlIns();
-        try {
-            Map<String,Object> answer = dbUtils.query("select * from answer where id=?",1307440).get(0);
-            String content = (String) answer.get("content");
-            System.out.println(content);
+        String content = "别让5年后的自己嘲笑现在的自己!";
+        System.out.println(content);
 //            System.out.println(word(content));
-            System.out.println(keyExtractor(content));
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        System.out.println(keyExtractor(content));
+        System.out.println(keyExtractor(content));
+        System.out.println(keyExtractor(content));
     }
 
     public static String word(String text){
@@ -47,7 +42,8 @@ public class LTP {
     }
 
     public static String keyExtractor(String text){
-        String keyWordsStr = CLibraryKeyExtractor.instance.KeyExtract_GetKeyWords(text, 30, false);
+        CLibraryKeyExtractor extractor = CLibraryKeyExtractor.instance;
+        String keyWordsStr = extractor.KeyExtract_GetKeyWords(text, 2, false);
         CLibraryKeyExtractor.instance.KeyExtract_Exit();
         return keyWordsStr;
     }

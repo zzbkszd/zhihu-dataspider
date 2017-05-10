@@ -72,9 +72,7 @@ public class HttpUtil {
         System.out.println("Executing request " + httpget.getRequestLine());
 
         httpget.setHeader("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36");
-//        authorization: oauth c3cef7c66a1843f8b3a9e6a1e3160e20
-//        x-udid: AIDAwYgmoQmPTs2KsmVrD0rAtZ-vHJZ5dLU=
-        httpget.setHeader("authorization","Bearer Mi4wQUJCTVdKM0lSUWdBWUFJUWc0UnRDeGNBQUFCaEFsVk43c3NMV1FCcXEzXzlDdEhyU0ZTei1fUGpzX3dVaUdsc3dn|1492514216|53cc697d11a503c96451bb21cce8434f6d0f9388");
+        httpget.setHeader("authorization","Bearer Mi4wQUJCTVdKM0lSUWdBWUFJUWc0UnRDeGNBQUFCaEFsVk5jVm96V1FCSDFPbEo4LXhpVlJ6SG1TU2NkV3QzWlIzY2R3|1494292166|4bcc17a16e272d38e6b1396f2eb24666b75919cb");
         httpget.setHeader("x-udid","AGACEIOEbQuPTsrGA4MGMz5hroc55uog23Q=");
 //         Create a custom response handler
         String responseBody = httpclient.execute(httpget, STR_HANDLER);

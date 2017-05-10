@@ -1,12 +1,21 @@
 package ay;
+import ay.common.http.HttpUtil;
 import ay.common.jdbc.DBUtils;
 import ay.spider.ZhihuSpiderContext;
+import ay.zhihu.api.Answers;
+import ay.zhihu.api.QuestionApi;
+import ay.zhihu.pojo.Question;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 /**
@@ -15,9 +24,45 @@ import java.util.Map;
 public class Zhihu {
 
     public static void main(String[] args) {
+        Integer[] arr = new Integer[]{1,2,3,0,0,0,5,6,0,0,8};
+        Stream<Integer> integerStream = Stream.of(arr);
+        Arrays.stream(arr);
+        Integer[] output = (Integer[]) integerStream.filter(a->a!=0).collect(Collectors.toList()).toArray(new Integer[0]);
+        for (Integer integer : output) {
+            System.out.println(integer);
+        }
+
+//           updateQuestion();
+//        try {
+//            HttpUtil http = new HttpUtil();
+//            String str = http.get("http://www.zhihu.com/api/v4/questions/57981549");
+//            System.out.println(str);
+////            updateQuestion();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+    }
+
+    public static void updateQuestion(){
+        HttpUtil http = new HttpUtil();
+        DBUtils dbUtils = DBUtils.getMysqlIns();
+        int page=0;
         try {
-            start();
-        } catch (IOException e) {
+            List<Map<String,Object>> questions = dbUtils.query("select questionId from question where questionId > 19661544 limit ?,1000",page*1000);
+            while(questions.size()>0){
+                for (Map<String, Object> q: questions) {
+                    Question question = QuestionApi.questionInfo(http, (Integer) q.get("questionId"));
+                    if(question==null)
+                        continue;
+                    dbUtils.update("update question set topics=?,description=?,answers=?,attention=?,view=?,updatetime=? where questionId=?",
+                            question.getTopics(),question.getDescription(),question.getAnswers(), question.getAttention(),
+                            question.getView(),new Timestamp(System.currentTimeMillis()),question.getId());
+                }
+                page++;
+                questions = dbUtils.query("select questionId from question limit ?,1000",page*1000);
+            }
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

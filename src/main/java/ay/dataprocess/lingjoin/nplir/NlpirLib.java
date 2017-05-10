@@ -11,7 +11,7 @@ import com.sun.jna.Native;
  */
 public interface NlpirLib extends Library {
     // 定义并初始化接口的静态变量，通过JNA调用NLPIR.dll;
-    NlpirLib Instance = (NlpirLib) Native.loadLibrary("G:\\hadoopProject\\zhihu\\lib\\win64\\NLPIR1.dll", NlpirLib.class);
+    NlpirLib Instance = (NlpirLib) Native.loadLibrary("D:/workspace/zhihu/zhihu-dataspider/lib/win64/NLPIR1.dll", NlpirLib.class);
 
     /**
      * 组件初始化

@@ -19,46 +19,28 @@ import java.util.Map;
  */
 public class QuestionApi {
 
-    public static void main(String[] args) {
-        HttpUtil http = new HttpUtil();
-        DBUtils dbUtils = DBUtils.getMysqlIns();
-        int page=0;
-        try {
-            List<Map<String,Object>> questions = dbUtils.query("select questionId from question limit ?,1000",page*1000);
-            while(questions.size()>0){
-                for (Map<String, Object> q: questions) {
-                    Question question = questionInfo(http, (Integer) q.get("questionId"));
-                    if(question==null)
-                        continue;
-                    dbUtils.update("update question set topics=?,description=?,answers=?,attention=?,view=? where questionId=?",
-                            question.getTopics(),question.getDescription(),question.getAnswers(), question.getAttention(), question.getView(),question.getId());
-                }
-                page++;
-                questions = dbUtils.query("select questionId from question limit ?,1000",page*1000);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-
     public static Question questionInfo(HttpUtil http, int questionId){
         String url = "https://www.zhihu.com/question/"+questionId;
         Question question = new Question();
         try {
             Document html = http.getHtml(url);
             Elements topicElements = html.select(".QuestionHeader-topics");
+            if(topicElements.size()==0)
+                return null;
             String topicsStr = topicElements.first().text();
             Element title = html.select(".QuestionHeader-title").first();
             Element desc = html.select(".RichText").first();
-            Element answerCountStr = html.select(".List-headerText").first();
+            if(desc == null)
+                return null;
             question.setId(questionId);
             question.setTopics(topicsStr);
             question.setTitle(title.text());
             question.setDescription(desc.text());
-            String ansIntStr = answerCountStr.text().substring(0,answerCountStr.text().indexOf(' '));
-            question.setAnswers(Integer.parseInt(ansIntStr));
+            Element answerCountStr = html.select(".List-headerText").first();
+            if(answerCountStr!=null){
+                String ansIntStr = answerCountStr.text().substring(0,answerCountStr.text().indexOf(' '));
+                question.setAnswers(Integer.parseInt(ansIntStr));
+            }
 
             Elements border = html.select(".NumberBoard-item");
             for (Element b : border) {
