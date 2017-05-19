@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
  */
 public class GetImages {
 
-    public static final String IMG_REG = ".*?\\\"(https://pic3.*?)\\\".*?";
+    public static final String IMG_REG = ".*?\\\"(https://.*?)\\\".*?";
 
 
 
@@ -23,7 +23,7 @@ public class GetImages {
     public static void main(String[] args) throws Exception {
         DBUtils dbUtils = DBUtils.getMysqlIns();
 
-        List<Map<String,Object>> answers = dbUtils.query("select * from answer limit 10000,50000");
+        List<Map<String,Object>> answers = dbUtils.query("select * from answer limit 60000,50000");
 
         List<String> good_imgs = new ArrayList<>();
 

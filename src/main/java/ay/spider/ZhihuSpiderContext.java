@@ -50,6 +50,7 @@ public class ZhihuSpiderContext {
         //可以考虑参考类似于netty的过滤器模式？
         //数据队列应该支持多种实现，诸如内存队列，消息队列等
         //如何实现一下任务监控，统一日志等工作
+        //全局资源应当放在context中进行管理
 
         Thread thread = new Thread(new UserInfoThread(this));
         thread.start();
