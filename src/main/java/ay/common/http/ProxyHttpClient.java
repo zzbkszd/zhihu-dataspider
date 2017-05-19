@@ -1,6 +1,8 @@
 package ay.common.http;
 
 import ay.common.http.executer.HttpGetExecutor;
+import ay.common.http.proxy.ProxyInfo;
+import ay.common.http.proxy.ProxyPool;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
@@ -14,8 +16,13 @@ public class ProxyHttpClient {
 
     CloseableHttpClient httpclient = HttpClients.createDefault();
 
+    public static void main(String[] args) throws IOException {
+        System.out.println(new StringResponseHandler().handleResponse(new ProxyHttpClient().Get("http://www.baidu.com").execute()));
+    }
+
     public HttpGetExecutor Get(String url){
-        return new HttpGetExecutor(httpclient,url);
+        ProxyInfo proxyInfo = ProxyPool.get();
+        return new HttpGetExecutor(httpclient,url).proxy(proxyInfo);
     }
 
 

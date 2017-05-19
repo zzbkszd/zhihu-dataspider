@@ -14,6 +14,11 @@ public class ProxyInfo implements Delayed {
     long lastConnect;
     boolean able;
 
+    public ProxyInfo(String ip,int port){
+        this.ip = ip;
+        this.port = port;
+    }
+
     public String getIp() {
         return ip;
     }
@@ -62,5 +67,13 @@ public class ProxyInfo implements Delayed {
     @Override
     public int compareTo(Delayed o) {
         return 0;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof ProxyInfo){
+            return (this.port==((ProxyInfo) obj).getPort() && this.ip==((ProxyInfo) obj).getIp());
+        } else
+            return super.equals(obj);
     }
 }
