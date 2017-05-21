@@ -33,7 +33,10 @@ public class Zhihu {
 //        System.out.println(question.getTitle());
 //        System.out.println(question.getDescription());
 //        System.out.println(question.getTopics());
-        updateQuestion();
+//        updateQuestion();
+        DBUtils dbUtils = DBUtils.getMysqlIns();
+//        List<Map<String,Object>> answers =
+
     }
 
     public static void updateQuestion(){

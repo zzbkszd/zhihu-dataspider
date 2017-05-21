@@ -1,7 +1,10 @@
 package ay.dataprocess;
 
 import ay.common.file.io.FileIO;
+import ay.common.http.DownloadResponseHandler;
+import ay.common.http.SimpleHttpClient;
 import ay.common.jdbc.DBUtils;
+import org.apache.http.HttpResponse;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,10 +25,12 @@ public class GetImages {
 
     public static void main(String[] args) throws Exception {
         DBUtils dbUtils = DBUtils.getMysqlIns();
+        SimpleHttpClient httpClient = new SimpleHttpClient();
+        DownloadResponseHandler downloadResponseHandler = new DownloadResponseHandler();
 
-        List<Map<String,Object>> answers = dbUtils.query("select * from answer limit 60000,50000");
-
-        List<String> good_imgs = new ArrayList<>();
+        List<Map<String,Object>> answers = dbUtils.query("select * from answer limit 150000,50000");
+//
+//        List<String> good_imgs = new ArrayList<>();
 
         for (Map<String, Object> answer : answers) {
             String content = (String) answer.get("content");
@@ -36,20 +41,23 @@ public class GetImages {
                 if(voteup_count/images.size()>100){
                     System.out.printf("catch %d images from answer %d with %d voteups \n",images.size(),id,voteup_count);
                     for (String image : images) {
-//                        System.out.println(image);
-                        good_imgs.add(image);
+                        System.out.println("download: "+image);
+                        HttpResponse response = httpClient.Get(image).execute();
+                        FileIO img = new FileIO("G:\\data\\"+image.substring(image.lastIndexOf('/')));
+                        byte[] data = downloadResponseHandler.handleResponse(response);
+                        img.write(data);
                     }
                 }
             }
         }
-        StringBuilder builder = new StringBuilder();
-        builder.append("<html><head></head><body>");
-        for (String good_img : good_imgs) {
-            builder.append("<img src=\""+good_img+"\"/><br/>");
-        }
-        builder.append("</body></html>");
-        FileIO outhtml = new FileIO("D:\\imgs.html");
-        outhtml.write(builder.toString().getBytes());
+//        StringBuilder builder = new StringBuilder();
+//        builder.append("<html><head></head><body>");
+//        for (String good_img : good_imgs) {
+//            builder.append("<img src=\""+good_img+"\"/><br/>");
+//        }
+//        builder.append("</body></html>");
+//        FileIO outhtml = new FileIO("D:\\imgs.html");
+//        outhtml.write(builder.toString().getBytes());
 
     }
 
@@ -61,7 +69,7 @@ public class GetImages {
             String url = matcher.group(1);
             url = url.replace("_b","");
             url = url.replace("_r","");
-            if(!imgs.contains(url))
+            if((url.endsWith(".jpg") || url.endsWith("png")) && !imgs.contains(url))
                 imgs.add(url);
         }
         return imgs;
