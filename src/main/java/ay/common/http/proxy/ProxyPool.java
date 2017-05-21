@@ -62,13 +62,20 @@ public class ProxyPool {
     public static void add(ProxyInfo proxyInfo){
         inner.pool.addProxy(proxyInfo);
     }
+    public static void remove(ProxyInfo proxyInfo){
+        inner.pool.removeProxy(proxyInfo);
+    }
 
     public ProxyInfo getProxy(){
         try {
             if(pool.size()==0){
                 init();
             }
-            return pool.take();
+            ProxyInfo info =null;
+            do {
+                info = pool.take();
+            }while(info==null)     ;
+            return info;
         } catch (InterruptedException e) {
             e.printStackTrace();
             return null;
@@ -79,7 +86,7 @@ public class ProxyPool {
         pool.add(proxy);
     }
 
-    public void remove(ProxyInfo proxyInfo){
+    public void removeProxy(ProxyInfo proxyInfo){
         proxyInfos.remove(proxyInfo);
     }
 

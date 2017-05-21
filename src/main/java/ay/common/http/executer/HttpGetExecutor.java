@@ -54,6 +54,7 @@ public class HttpGetExecutor {
     private HttpResponse tryProxy(int times){
         HttpResponse response = null;
         try {
+            LOG.info("start request");
             response = client.execute(getRequest);
             if(response.getStatusLine().getStatusCode()>300){
                 LOG.error("catch response code :"+response.getStatusLine().getStatusCode());
@@ -63,10 +64,12 @@ public class HttpGetExecutor {
         } catch (IOException e) {
             if(times<100){
                 LOG.error("retry proxy "+times+" times");
+                ProxyPool.remove(proxyInfo);
                 this.proxy(ProxyPool.get());
                 return tryProxy(times+1);
             }
         }
+        ProxyPool.add(proxyInfo);
         return response;
     }
 

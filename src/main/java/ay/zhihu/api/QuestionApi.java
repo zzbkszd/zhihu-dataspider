@@ -4,6 +4,7 @@ import ay.common.http.HttpUtil;
 import ay.common.jdbc.DBUtils;
 import ay.zhihu.pojo.Question;
 import com.google.gson.JsonObject;
+import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -19,51 +20,42 @@ import java.util.Map;
  */
 public class QuestionApi {
 
-    public static Question questionInfo(HttpUtil http, int questionId){
-        String url = "https://www.zhihu.com/question/"+questionId;
-        Question question = new Question();
-        try {
-            Document html = http.getHtml(url);
-            Elements topicElements = html.select(".QuestionHeader-topics");
-            if(topicElements.size()==0)
-                return null;
-            String topicsStr = topicElements.first().text();
-            Element title = html.select(".QuestionHeader-title").first();
-            Element desc = html.select(".RichText").first();
-            if(desc == null)
-                return null;
-            question.setId(questionId);
-            question.setTopics(topicsStr);
-            question.setTitle(title.text());
-            question.setDescription(desc.text());
-            Element answerCountStr = html.select(".List-headerText").first();
-            if(answerCountStr!=null){
-                String ansIntStr = answerCountStr.text().substring(0,answerCountStr.text().indexOf(' '));
-                question.setAnswers(Integer.parseInt(ansIntStr));
-            }
+    public static Question questionInfo(String http){
 
-            Elements border = html.select(".NumberBoard-item");
-            for (Element b : border) {
-                Elements sub = b.children();
-                if(sub.size()==2){
-                    if(sub.first().text().contains("关注者")){
-                        int attentions = Integer.parseInt(sub.last().text());
-                        question.setAttention(attentions);
-                    }else if(sub.first().text().contains("被浏览")){
-                        int view = Integer.parseInt(sub.last().text());
-                        question.setView(view);
-                    }
+        Question question = new Question();
+        Document html = Jsoup.parse(http);
+        Elements topicElements = html.select(".QuestionHeader-topics");
+        if(topicElements.size()==0)
+            return null;
+        String topicsStr = topicElements.first().text();
+        Element title = html.select(".QuestionHeader-title").first();
+        Element desc = html.select(".RichText").first();
+        if(desc == null)
+            return null;
+        question.setTopics(topicsStr);
+        question.setTitle(title.text());
+        question.setDescription(desc.text());
+        Element answerCountStr = html.select(".List-headerText").first();
+        if(answerCountStr!=null){
+            String ansIntStr = answerCountStr.text().substring(0,answerCountStr.text().indexOf(' '));
+            question.setAnswers(Integer.parseInt(ansIntStr));
+        }
+
+        Elements border = html.select(".NumberBoard-item");
+        for (Element b : border) {
+            Elements sub = b.children();
+            if(sub.size()==2){
+                if(sub.first().text().contains("关注者")){
+                    int attentions = Integer.parseInt(sub.last().text());
+                    question.setAttention(attentions);
+                }else if(sub.first().text().contains("被浏览")){
+                    int view = Integer.parseInt(sub.last().text());
+                    question.setView(view);
                 }
             }
-
-            return question;
-
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-        return null;
+
+        return question;
     }
 
     /**

@@ -1,10 +1,14 @@
 package ay;
 import ay.common.http.HttpUtil;
+import ay.common.http.ProxyHttpClient;
 import ay.common.jdbc.DBUtils;
 import ay.spider.ZhihuSpiderContext;
+import ay.zhihu.RequestCenter;
 import ay.zhihu.api.Answers;
 import ay.zhihu.api.QuestionApi;
 import ay.zhihu.pojo.Question;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,42 +26,32 @@ import java.util.stream.Stream;
  * Created by Ay on 2017/4/9.
  */
 public class Zhihu {
-
+    static Log LOG = LogFactory.getLog(Zhihu.class);
     public static void main(String[] args) {
-        Integer[] arr = new Integer[]{1,2,3,0,0,0,5,6,0,0,8};
-        Stream<Integer> integerStream = Stream.of(arr);
-        Arrays.stream(arr);
-        Integer[] output = (Integer[]) integerStream.filter(a->a!=0).collect(Collectors.toList()).toArray(new Integer[0]);
-        for (Integer integer : output) {
-            System.out.println(integer);
-        }
-
-//           updateQuestion();
-//        try {
-//            HttpUtil http = new HttpUtil();
-//            String str = http.get("http://www.zhihu.com/api/v4/questions/57981549");
-//            System.out.println(str);
-////            updateQuestion();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+//        RequestCenter requestCenter = new RequestCenter();
+//        Question question = requestCenter.getQuestionDetail(27301322);
+//        System.out.println(question.getTitle());
+//        System.out.println(question.getDescription());
+//        System.out.println(question.getTopics());
+        updateQuestion();
     }
 
     public static void updateQuestion(){
-        HttpUtil http = new HttpUtil();
         DBUtils dbUtils = DBUtils.getMysqlIns();
+        RequestCenter requestCenter = new RequestCenter();
         int page=0;
         try {
             List<Map<String,Object>> questions = dbUtils.query("select questionId from question where questionId > 19661544 limit ?,1000",page*1000);
             while(questions.size()>0){
                 for (Map<String, Object> q: questions) {
-                    Question question = QuestionApi.questionInfo(http, (Integer) q.get("questionId"));
+                    Question question = requestCenter.getQuestionDetail((Integer) q.get("questionId"));
                     if(question==null)
                         continue;
                     dbUtils.update("update question set topics=?,description=?,answers=?,attention=?,view=?,updatetime=? where questionId=?",
                             question.getTopics(),question.getDescription(),question.getAnswers(), question.getAttention(),
                             question.getView(),new Timestamp(System.currentTimeMillis()),question.getId());
                 }
+                LOG.info("update question info by page :"+page);
                 page++;
                 questions = dbUtils.query("select questionId from question limit ?,1000",page*1000);
             }

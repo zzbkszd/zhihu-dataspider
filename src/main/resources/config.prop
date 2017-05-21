@@ -1,0 +1,20 @@
+
+common.db.mysql.driver=com.mysql.jdbc.Driver
+common.db.mysql.url=jdbc:mysql://5786f8ea1f83b.bj.cdb.myqcloud.com:17062/zhihu?useUnicode=true&characterEncoding=UTF-8
+common.db.mysql.user=cdb_outerroot
+common.db.mysql.pwd = youquer90AVENUE
+
+common.db.hsqldb.driver=org.hsqldb.jdbcDriver
+common.db.hsqldb.url=jdbc:hsqldb:mem:dbname
+common.db.hsqldb.user=sa
+
+common.db.hsqldb.init.cache_user=create table cache_user(uuid varchar(64) not null primary key)
+common.db.hsqldb.init.cache_answer=create table cache_answer(aid Integer not null primary key)
+common.db.hsqldb.init.cache_question=create table cache_question(qid Integer not null primary key)
+
+common.http.proxy.source=http://api.xicidaili.com/free2016.txt
+common.http.proxy.delay=5000
+
+
+
+
