@@ -7,6 +7,7 @@ import org.apache.http.client.ResponseHandler;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 /**
  * Created by SHIZHIDA on 2017/5/19.
@@ -20,6 +21,7 @@ public class StringResponseHandler implements ResponseHandler<String> {
             HttpEntity entity = response.getEntity();
             return entity != null ? EntityUtils.toString(entity) : null;
         } else {
+            System.out.println(Arrays.toString(response.getAllHeaders()));
             throw new ClientProtocolException("Unexpected response status: " + status);
         }
     }

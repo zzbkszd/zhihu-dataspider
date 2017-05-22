@@ -1,11 +1,8 @@
 package ay.spider.thread;
 
 import ay.spider.SpiderContext;
-import ay.spider.ZhihuSpiderContext;
 
 import java.util.Optional;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
