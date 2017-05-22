@@ -14,6 +14,10 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Optional;
 import java.util.Scanner;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 负责更新代理的守护进程
@@ -22,6 +26,16 @@ import java.util.Scanner;
 public class ProxyDaemon extends WatchedThread<Void,Void> {
 
     Log LOG = LogFactory.getLog(ProxyDaemon.class);
+
+    BlockingQueue<Runnable> workQueue = new ArrayBlockingQueue<Runnable>(50);
+    ThreadPoolExecutor executor = new ThreadPoolExecutor(15,50,1000, TimeUnit.MILLISECONDS,workQueue,
+            (r,e)->{if(!e.isShutdown()) {
+                try{
+                    e.getQueue().put(r);
+                } catch (InterruptedException e1) {
+                }
+            }
+            });
 
     public ProxyDaemon(SpiderContext context, boolean isroot) {
         super(context, isroot);
@@ -42,7 +56,7 @@ public class ProxyDaemon extends WatchedThread<Void,Void> {
                 ProxyInfo proxyInfo = new ProxyInfo(proxy[0],Integer.parseInt(proxy[1]));
                 proxyInfo.setAble(true);
                 proxyInfo.setLastUpdate(System.currentTimeMillis());
-                getCtx().execTask(new TestThread(proxyInfo));
+                executor.execute(new TestThread(proxyInfo));
             }
             Thread.sleep(30000);
         } catch (IOException e) {

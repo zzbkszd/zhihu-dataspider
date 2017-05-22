@@ -16,8 +16,8 @@ public class SpiderContext {
 
     List<ThreadChain> chains = new ArrayList<>();
 
-    BlockingQueue<Runnable> workQueue = new ArrayBlockingQueue<Runnable>(50);
-    ThreadPoolExecutor executor = new ThreadPoolExecutor(15,50,1000, TimeUnit.MILLISECONDS,workQueue,
+    BlockingQueue<Runnable> workQueue = new ArrayBlockingQueue<Runnable>(20);
+    ThreadPoolExecutor executor = new ThreadPoolExecutor(15,20,1000, TimeUnit.MILLISECONDS,workQueue,
             (r,e)->{if(!e.isShutdown()) {
                 try{
                     e.getQueue().put(r);
