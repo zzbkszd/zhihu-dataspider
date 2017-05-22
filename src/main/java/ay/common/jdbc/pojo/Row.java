@@ -13,7 +13,7 @@ public class Row extends HashMap<String,Object> {
 
         //直接转为特定类型
         if(this.size()==1){
-            System.out.println("only one");
+//            System.out.println("only one");
             Object only = this.values().iterator().next();
             if(only.getClass().equals(clazz)){
                 return (T) only;

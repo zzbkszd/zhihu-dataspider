@@ -15,6 +15,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import java.io.IOException;
 
 /**
+ * http请求执行
  * Created by SHIZHIDA on 2017/5/19.
  */
 public class HttpExecutor {
@@ -37,6 +38,7 @@ public class HttpExecutor {
         this.url = url;
     }
 
+    //执行请求
     public HttpResponse execute() {
         HttpResponse response = null;
         if(useProxy){
@@ -51,6 +53,11 @@ public class HttpExecutor {
         return response;
     }
 
+    /**
+     * 代理可能会失败，当失败时换个代理重试
+     * @param times
+     * @return
+     */
     private HttpResponse tryProxy(int times){
         HttpResponse response = null;
         try {
@@ -60,7 +67,8 @@ public class HttpExecutor {
                     LOG.error("request for url:"+url);
                     LOG.error("catch response code :"+response.getStatusLine().getStatusCode()+ " reason phrase : "+response.getStatusLine().getReasonPhrase());
                 }
-                if(times<100 && retryProxy){
+                //5次，允许重复，且不是404
+                if(times<5 && retryProxy && response.getStatusLine().getStatusCode()!=404){
                     LOG.error("retry proxy "+times+" times");
                     this.proxy(ProxyPool.get());
                     return tryProxy(times+1);
@@ -71,7 +79,7 @@ public class HttpExecutor {
                 return response;
             }
         } catch (IOException e) {
-            if(times<100 && retryProxy){
+            if(times<5 && retryProxy){
                 LOG.error("retry proxy "+times+" times");
                 this.proxy(ProxyPool.get());
                 return tryProxy(times+1);
@@ -81,6 +89,12 @@ public class HttpExecutor {
         return response;
     }
 
+    /**
+     * 设置代理
+     * @param proxyInfo
+     * @param <T>
+     * @return
+     */
     public <T extends HttpExecutor> T proxy(ProxyInfo proxyInfo){
         this.proxyInfo = proxyInfo;
         HttpHost proxy = new HttpHost(proxyInfo.getIp(),proxyInfo.getPort(),"http");
@@ -93,6 +107,13 @@ public class HttpExecutor {
     }
 
 
+    /**
+     * 设置header
+     * @param key
+     * @param value
+     * @param <T>
+     * @return
+     */
     public <T extends HttpExecutor> T setHeader(String key,String value){
         request.setHeader(key,value);
         return (T) this;
@@ -102,6 +123,12 @@ public class HttpExecutor {
         return retryProxy;
     }
 
+    /**
+     * 是否重试代理，若不重试，当前代理失败后则结束请求
+     * @param retryProxy
+     * @param <T>
+     * @return
+     */
     public <T extends HttpExecutor> T setRetryProxy(boolean retryProxy) {
         this.retryProxy = retryProxy;
         return (T) this;

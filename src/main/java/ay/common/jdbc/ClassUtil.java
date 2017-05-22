@@ -2,6 +2,8 @@ package ay.common.jdbc;
 
 import ay.common.util.StrUtil;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -12,6 +14,8 @@ import java.util.Map;
  * Created by SHIZHIDA on 2017/4/11.
  */
 public class ClassUtil {
+
+    static Log LOG = LogFactory.getLog(ClassUtil.class);
 
     public static <T> T getInstance (Class<T> clazz){
         try {
@@ -40,7 +44,7 @@ public class ClassUtil {
             }
             Field handle = getFieldByName(target,key);
             if(handle==null){
-                System.out.println("null handle :"+key);
+                LOG.warn("null handle :"+key);
                 continue;
             }
             handle.setAccessible(true);

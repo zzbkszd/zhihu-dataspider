@@ -48,15 +48,4 @@ public class LTP {
         return keyWordsStr;
     }
 
-    public static JsonArray postQuery(String content){
-        HttpUtil httpUtil = new HttpUtil();
-        Map<String,String> request = new HashMap<>();
-        request.put("api_key",APIKEY);
-        request.put("text",content);
-        request.put("pattern","ws");
-        request.put("format","json");
-        String json = httpUtil.post("http://api.ltp-cloud.com/analysis/",request);
-        JsonArray jsonObject = new Gson().fromJson(json,JsonArray.class);
-        return jsonObject;
-    }
 }

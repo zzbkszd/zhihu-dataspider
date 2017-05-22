@@ -35,7 +35,11 @@ public class RequestCenter {
 
     public Question getQuestionDetail(int questionId){
         String url = "https://www.zhihu.com/question/"+questionId;
-        Question question = QuestionApi.questionInfo(requestData(url));
+        String http = requestData(url);
+        if(http==null){
+            return null;
+        }
+        Question question = QuestionApi.questionInfo(http);
         question.setId(questionId);
         return question;
     }

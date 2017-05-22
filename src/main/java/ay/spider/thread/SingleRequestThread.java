@@ -1,14 +1,10 @@
 package ay.spider.thread;
 
-import ay.common.http.HttpUtil;
 
 /**
  * Created by SHIZHIDA on 2017/5/19.
  */
 public abstract class SingleRequestThread<T,D> implements Runnable {
-
-
-    HttpUtil http = new HttpUtil();
 
     D data;
     Dist<T> dist;

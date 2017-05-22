@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
+ * 文本handler
  * Created by SHIZHIDA on 2017/5/19.
  */
 public class StringResponseHandler implements ResponseHandler<String> {
@@ -21,7 +22,7 @@ public class StringResponseHandler implements ResponseHandler<String> {
             HttpEntity entity = response.getEntity();
             return entity != null ? EntityUtils.toString(entity) : null;
         } else {
-            System.out.println(Arrays.toString(response.getAllHeaders()));
+//            System.out.println(Arrays.toString(response.getAllHeaders()));
             throw new ClientProtocolException("Unexpected response status: " + status);
         }
     }

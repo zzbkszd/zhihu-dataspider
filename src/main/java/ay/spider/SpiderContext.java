@@ -34,6 +34,10 @@ public class SpiderContext {
         return chain;
     }
 
+    public void enableWatchReport(){
+        execTask(new ReportThread(this));
+    }
+
     public void startUp(){
         for (ThreadChain chain : chains) {
             Iterator<WatchedThread> iter = chain.iterator();

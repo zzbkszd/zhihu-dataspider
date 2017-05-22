@@ -67,6 +67,10 @@ public abstract class  WatchedThread<INDATA,OUTDATA> extends Thread implements D
         return ctx;
     }
 
+    public String getWatchedReport(){
+        return "Not support";
+    }
+
     public void setCtx(SpiderContext ctx) {
         this.ctx = ctx;
     }

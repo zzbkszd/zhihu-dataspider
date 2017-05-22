@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
+ * 文件下载的handler
  * Created by 志达 on 2017/5/21.
  */
 public class DownloadResponseHandler implements ResponseHandler<byte[]> {

@@ -40,7 +40,7 @@ public class ZhihuSpiderContext {
     }
 
     public void work(){
-        context.execTask(new ProxyDaemon(context,true));
+        context.execTask(new ProxyDaemon(context));
         //更新的线程
         context.createChan().append(new WatchedThread<Void,Void>(context,true) {
             @Override

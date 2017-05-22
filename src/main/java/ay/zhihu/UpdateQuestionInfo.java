@@ -1,12 +1,11 @@
-package ay.common.http;
+package ay.zhihu;
 
 import ay.common.http.proxy.ProxyDaemon;
+import ay.common.http.proxy.ProxyPool;
 import ay.common.jdbc.DBUtils;
 import ay.spider.SpiderContext;
 import ay.spider.thread.Dist;
 import ay.spider.thread.WatchedThread;
-import ay.zhihu.RequestCenter;
-import ay.zhihu.RouterCenter;
 import ay.zhihu.pojo.Question;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -29,17 +28,22 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
         System.setProperty("org.apache.commons.logging.simplelog.log.org.apache.http", "ERROR");// "stdout"为标准输出格式，"debug"为调试模式
         System.setProperty("org.apache.commons.logging.simplelog.log.org.apache.http.wire", "ERROR");// "stdout"为标准输出格式，"debug"为调试模式
         SpiderContext context = new SpiderContext();
-        context.execTask(new ProxyDaemon(context,true));
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+//        context.execTask(new ProxyDaemon(context,true));
+        context.execTask(new ProxyDaemon(context));
+        while(ProxyPool.size()<20){
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+        context.enableWatchReport();
         //更新的线程
         context.createChan().append(new UpdateQuestionInfo(context,true));
         context.startUp();
     }
     private int page = 0;
+    private int count= 0;
 
     public UpdateQuestionInfo(SpiderContext context, boolean isroot) {
         super(context, isroot);
@@ -59,12 +63,8 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
         try {
             questions = dbUtils.queryOrm("select * from question where attention is null limit ?,1000",(page*1000)).to(Question.class);
             for (Question question : questions) {
-//                Question q = requestCenter.getQuestionDetail(question.getQuestionId());
-//                dbUtils.update("update question set topics=?,description=?,answers=?,attention=?,view=?,updatetime=? where questionId=?",
-//                        q.getTopics(),q.getDescription(),q.getAnswers(), q.getAttention(),
-//                        q.getView(),new Timestamp(System.currentTimeMillis()),q.getQuestionId());
-//                LOG.info("update question "+q.getTitle()+" success");
                 getCtx().execTask(new Update(question,requestCenter,dbUtils));
+                count++;
             }
             LOG.info("update page "+page+" success");
         } catch (SQLException e) {
@@ -72,6 +72,14 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
         }
         page++;
         return questions.size()>0;
+    }
+
+    @Override
+    public String getWatchedReport() {
+        StringBuilder report = new StringBuilder();
+        report.append("\t updating page:").append(page).append("\n")
+                .append("\t updated count:").append(count).append("\n");
+        return report.toString();
     }
 
     class Update implements Runnable{
@@ -86,12 +94,18 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
 
         @Override
         public void run() {
+            long start = System.currentTimeMillis();
             Question q = center.getQuestionDetail(question.getQuestionId());
+            if(q==null){
+                LOG.error("null question:"+question.getTitle());
+                return;
+            }
             try {
                 dbUtils.update("update question set topics=?,description=?,answers=?,attention=?,view=?,updatetime=? where questionId=?",
                         q.getTopics(),q.getDescription(),q.getAnswers(), q.getAttention(),
                         q.getView(),new Timestamp(System.currentTimeMillis()),question.getQuestionId());
-                LOG.info("update question "+q.getTitle()+" success");
+                long end = System.currentTimeMillis();
+                LOG.info("update question "+question.getTitle()+" success in "+(end-start)+" millis seconds");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
