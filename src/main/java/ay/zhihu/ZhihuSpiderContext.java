@@ -1,11 +1,15 @@
-package ay.spider;
+package ay.zhihu;
 
+import ay.common.http.proxy.ProxyDaemon;
 import ay.common.jdbc.DBUtils;
+import ay.spider.SpiderContext;
+import ay.spider.thread.WatchedThread;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ArrayBlockingQueue;
 
 /**
@@ -13,9 +17,9 @@ import java.util.concurrent.ArrayBlockingQueue;
  */
 public class ZhihuSpiderContext {
 
+    SpiderContext context;
+
     boolean useCache = false;
-    ArrayList<String> user4FollowsQueue = new ArrayList<>();//bigger then bigger
-    ArrayBlockingQueue<String> user4AnswersQueue = new ArrayBlockingQueue<>(10);
 
     public boolean isUseCache() {
         return useCache;
@@ -25,38 +29,26 @@ public class ZhihuSpiderContext {
         this.useCache = useCache;
     }
 
-    public ArrayList<String> getUser4FollowsQueue() {
-        return user4FollowsQueue;
-    }
-
-    public ArrayBlockingQueue<String> getUser4AnswersQueue() {
-        return user4AnswersQueue;
-    }
-
     public ZhihuSpiderContext(boolean useCache){
         this.useCache = useCache;
         try {
             initCache();
+            context = new SpiderContext();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void work(String rootUser){
+    public void work(){
+        context.execTask(new ProxyDaemon(context,true));
+        //更新的线程
+        context.createChan().append(new WatchedThread<Void,Void>(context,true) {
+            @Override
+            public boolean process(Optional in, Optional out) {
 
-        user4FollowsQueue.add(rootUser);
-        //此处应当考虑如何实现工作流式调度（线程编排）
-        //任务一-》任务2-》任务3-》任务4，通过统一的API从context中获取任务，交付任务
-        //可以考虑参考类似于netty的过滤器模式？
-        //数据队列应该支持多种实现，诸如内存队列，消息队列等
-        //如何实现一下任务监控，统一日志等工作
-        //全局资源应当放在context中进行管理
-
-        Thread thread = new Thread(new UserInfoThread(this));
-        thread.start();
-        Thread answer = new Thread(new AnswerThread(this));
-        answer.start();
-
+                return false;
+            }
+        });
     }
 
     public void initCache() throws SQLException {

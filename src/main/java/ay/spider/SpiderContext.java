@@ -4,8 +4,7 @@ import ay.spider.thread.ThreadChain;
 import ay.spider.thread.WatchedThread;
 
 import java.util.*;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 /**
  * 爬虫容器
@@ -17,7 +16,15 @@ public class SpiderContext {
 
     List<ThreadChain> chains = new ArrayList<>();
 
-    Executor executor = Executors.newFixedThreadPool(20);
+    BlockingQueue<Runnable> workQueue = new ArrayBlockingQueue<Runnable>(50);
+    ThreadPoolExecutor executor = new ThreadPoolExecutor(15,50,1000, TimeUnit.MILLISECONDS,workQueue,
+            (r,e)->{if(!e.isShutdown()) {
+                try{
+                    e.getQueue().put(r);
+                } catch (InterruptedException e1) {
+                }
+            }
+            });
 
     public SpiderContext (){}
 

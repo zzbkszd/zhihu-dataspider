@@ -76,4 +76,9 @@ public class ProxyInfo implements Delayed {
         } else
             return super.equals(obj);
     }
+
+    @Override
+    public String toString() {
+        return "Proxy{ip:"+getIp()+",port:"+port+"}";
+    }
 }

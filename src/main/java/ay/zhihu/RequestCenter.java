@@ -1,7 +1,9 @@
 package ay.zhihu;
 
 import ay.common.http.ProxyHttpClient;
-import ay.common.http.StringResponseHandler;
+import ay.common.http.handler.StringResponseHandler;
+import ay.zhihu.api.ApiDecoder;
+import ay.zhihu.api.PagedApi;
 import ay.zhihu.api.QuestionApi;
 import ay.zhihu.pojo.Question;
 import com.google.gson.Gson;
@@ -38,7 +40,7 @@ public class RequestCenter {
         return question;
     }
 
-    private List<JsonObject> requestAllPage(String key,PagedApi api,ApiDecoder decoder){
+    private List<JsonObject> requestAllPage(String key, PagedApi api, ApiDecoder decoder){
         int page = 0;
         List<JsonObject> result = new ArrayList<>();
         do{

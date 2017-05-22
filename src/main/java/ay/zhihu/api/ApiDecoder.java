@@ -1,4 +1,4 @@
-package ay.zhihu;
+package ay.zhihu.api;
 
 import com.google.gson.JsonObject;
 

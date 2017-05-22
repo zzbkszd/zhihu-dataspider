@@ -35,6 +35,9 @@ public class ClassUtil {
     public static Object inject(Map<String,Object> src, Object target) throws IllegalAccessException {
         for (String key : src.keySet()) {
             Object value = src.get(key);
+            if(value==null){
+                continue;
+            }
             Field handle = getFieldByName(target,key);
             if(handle==null){
                 System.out.println("null handle :"+key);

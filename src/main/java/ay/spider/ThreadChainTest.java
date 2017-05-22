@@ -12,7 +12,7 @@ public class ThreadChainTest {
 
     public static void main(String[] args) {
         SpiderContext context = new SpiderContext();
-        context.createChan().append(new WatchedThread<String,String>(context,context.keyGen(),true) {
+        context.createChan().append(new WatchedThread<String,String>(context,true) {
             @Override
             public boolean process(Optional<String> in, Optional<Dist<String>> out) {
                 out.ifPresent(o->{
@@ -25,7 +25,7 @@ public class ThreadChainTest {
                 }
                 return true;
             }
-        }).append(new WatchedThread<String,String>(context,context.keyGen()) {
+        }).append(new WatchedThread<String,String>(context) {
             @Override
             public boolean process(Optional<String> in, Optional<Dist<String>> out) {
                 if(in.isPresent() && out.isPresent()){
@@ -33,7 +33,7 @@ public class ThreadChainTest {
                 }
                 return true;
             }
-        }).append(new WatchedThread<String,String>(context,context.keyGen()) {
+        }).append(new WatchedThread<String,String>(context) {
             @Override
             public boolean process(Optional<String> in, Optional<Dist<String>> out) {
                 System.out.println(in.get()+" output in thread 3");

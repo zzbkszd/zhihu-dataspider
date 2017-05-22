@@ -1,25 +1,17 @@
 package ay;
-import ay.common.http.HttpUtil;
-import ay.common.http.ProxyHttpClient;
 import ay.common.jdbc.DBUtils;
-import ay.spider.ZhihuSpiderContext;
 import ay.zhihu.RequestCenter;
-import ay.zhihu.api.Answers;
-import ay.zhihu.api.QuestionApi;
+import ay.zhihu.ZhihuSpiderContext;
 import ay.zhihu.pojo.Question;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 /**
@@ -71,7 +63,7 @@ public class Zhihu {
         System.setProperty("org.apache.commons.logging.simplelog.log.org.apache.http", "ERROR");// "stdout"为标准输出格式，"debug"为调试模式
         System.setProperty("org.apache.commons.logging.simplelog.log.org.apache.http.wire", "ERROR");// "stdout"为标准输出格式，"debug"为调试模式
         //开始工作
-        new ZhihuSpiderContext(true).work("xie-huang-rui");
+        new ZhihuSpiderContext(true).work();
     }
     public static void cleanDB() {
         DBUtils dbUtils = DBUtils.getMysqlIns();

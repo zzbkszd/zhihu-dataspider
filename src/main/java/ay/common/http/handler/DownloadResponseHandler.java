@@ -1,4 +1,4 @@
-package ay.common.http;
+package ay.common.http.handler;
 
 import ay.common.util.IOUtil;
 import org.apache.http.HttpEntity;

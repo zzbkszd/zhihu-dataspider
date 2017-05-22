@@ -26,15 +26,14 @@ public class QuestionApi {
         Document html = Jsoup.parse(http);
         Elements topicElements = html.select(".QuestionHeader-topics");
         if(topicElements.size()==0)
-            return null;
+            return question;
         String topicsStr = topicElements.first().text();
         Element title = html.select(".QuestionHeader-title").first();
         Element desc = html.select(".RichText").first();
-        if(desc == null)
-            return null;
+        if(desc != null)
+            question.setDescription(desc.text());
         question.setTopics(topicsStr);
         question.setTitle(title.text());
-        question.setDescription(desc.text());
         Element answerCountStr = html.select(".List-headerText").first();
         if(answerCountStr!=null){
             String ansIntStr = answerCountStr.text().substring(0,answerCountStr.text().indexOf(' '));

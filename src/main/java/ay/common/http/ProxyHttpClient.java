@@ -2,6 +2,7 @@ package ay.common.http;
 
 import ay.common.http.executer.HttpGetExecutor;
 import ay.common.http.executer.HttpPostExecutor;
+import ay.common.http.handler.StringResponseHandler;
 import ay.common.http.proxy.ProxyInfo;
 import ay.common.http.proxy.ProxyPool;
 import org.apache.http.impl.client.CloseableHttpClient;

@@ -1,12 +1,11 @@
 package ay.dataprocess;
 
 import ay.common.file.io.FileIO;
-import ay.common.http.DownloadResponseHandler;
+import ay.common.http.handler.DownloadResponseHandler;
 import ay.common.http.SimpleHttpClient;
 import ay.common.jdbc.DBUtils;
 import org.apache.http.HttpResponse;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

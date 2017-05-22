@@ -17,13 +17,13 @@ public abstract class  WatchedThread<INDATA,OUTDATA> extends Thread implements D
     private Dist<OUTDATA> dist;//输出
     private boolean isroot = false;//是否是头结点
 
-    public WatchedThread (SpiderContext context,String key,boolean isroot){
-        this(context,key);
+    public WatchedThread (SpiderContext context,boolean isroot){
+        this(context);
         this.isroot = isroot;
     }
-    public WatchedThread (SpiderContext context,String key){
+    public WatchedThread (SpiderContext context){
         this.ctx = context;
-        this.key = key;
+        this.key = context.keyGen();
         runningFlag = 1;
         src = new LinkedBlockingQueue<>();
     }
@@ -63,12 +63,47 @@ public abstract class  WatchedThread<INDATA,OUTDATA> extends Thread implements D
         return Optional.ofNullable(indata);
     }
 
+    public SpiderContext getCtx() {
+        return ctx;
+    }
 
+    public void setCtx(SpiderContext ctx) {
+        this.ctx = ctx;
+    }
 
+    public String getKey() {
+        return key;
+    }
 
+    public int getRunningFlag() {
+        return runningFlag;
+    }
 
+    public void setRunningFlag(int runningFlag) {
+        this.runningFlag = runningFlag;
+    }
 
-    public abstract boolean process (Optional<INDATA> in,Optional<Dist<OUTDATA>> out);
+    public LinkedBlockingQueue<INDATA> getSrc() {
+        return src;
+    }
+
+    public void setSrc(LinkedBlockingQueue<INDATA> src) {
+        this.src = src;
+    }
+
+    public Dist<OUTDATA> getDist() {
+        return dist;
+    }
+
+    public boolean isIsroot() {
+        return isroot;
+    }
+
+    public void setIsroot(boolean isroot) {
+        this.isroot = isroot;
+    }
+
+    public abstract boolean process (Optional<INDATA> in, Optional<Dist<OUTDATA>> out);
 
 
 }

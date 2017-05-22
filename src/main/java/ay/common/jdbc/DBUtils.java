@@ -1,5 +1,7 @@
 package ay.common.jdbc;
 
+import ay.common.jdbc.pojo.Row;
+import ay.common.jdbc.pojo.RowSet;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
@@ -103,6 +105,9 @@ public class DBUtils {
     public List<Map<String,Object>> query(String sql,Object... param) throws SQLException {
         return runner.query(sql, new RsHandler(),param);
     }
+    public RowSet queryOrm(String sql,Object... param) throws SQLException {
+        return runner.query(sql, new OrmHandler(),param);
+    }
 
     class RsHandler implements ResultSetHandler<List<Map<String,Object>>> {
         public List<Map<String,Object>> handle(ResultSet resultSet) throws SQLException {
@@ -117,6 +122,13 @@ public class DBUtils {
                 rs.add(d);
 
             }
+            return rs;
+        }
+    }
+    class OrmHandler implements ResultSetHandler<RowSet> {
+        public RowSet handle(ResultSet resultSet) throws SQLException {
+            RowSet rs = new RowSet();
+            rs.read(resultSet);
             return rs;
         }
     }

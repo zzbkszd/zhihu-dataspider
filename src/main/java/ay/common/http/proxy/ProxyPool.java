@@ -32,45 +32,19 @@ public class ProxyPool {
 
     public ProxyPool (){}
 
-    public void init(){
-        if(proxyInfos.size()<10){
-            sync();
-            LOG.info("sync "+proxyInfos.size()+" proxys");
-            pool.addAll(proxyInfos);
-        }
-    }
-
-    public void sync(){
-        try {
-            String ips = new HttpUtil().get("http://api.xicidaili.com/free2016.txt");
-            Scanner scanner = new Scanner(new ByteArrayInputStream(ips.getBytes()));
-            while(scanner.hasNextLine()){
-                String[] proxy = scanner.next().split(":");
-                ProxyInfo proxyInfo = new ProxyInfo(proxy[0],Integer.parseInt(proxy[1]));
-                proxyInfo.setAble(true);
-                proxyInfo.setLastUpdate(System.currentTimeMillis());
-                proxyInfos.add(proxyInfo);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static ProxyInfo get(){
+    public static synchronized ProxyInfo get(){
+        System.out.println("last proxy count:"+inner.pool.pool.size());
         return inner.pool.getProxy();
     }
-    public static void add(ProxyInfo proxyInfo){
+    public static synchronized void add(ProxyInfo proxyInfo){
         inner.pool.addProxy(proxyInfo);
     }
-    public static void remove(ProxyInfo proxyInfo){
+    public static synchronized void remove(ProxyInfo proxyInfo){
         inner.pool.removeProxy(proxyInfo);
     }
 
     public ProxyInfo getProxy(){
         try {
-            if(pool.size()==0){
-                init();
-            }
             ProxyInfo info =null;
             do {
                 info = pool.take();

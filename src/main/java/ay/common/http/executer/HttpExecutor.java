@@ -19,17 +19,18 @@ import java.io.IOException;
  */
 public class HttpExecutor {
 
-    Log LOG = LogFactory.getLog(HttpExecutor.class);
+    private Log LOG = LogFactory.getLog(HttpExecutor.class);
 
     protected HttpRequestBase request;
 
-    CloseableHttpClient client;
+    private CloseableHttpClient client;
 
-    String url;
+    private String url;
 
-    boolean useProxy = false;
+    private boolean useProxy = false;
+    private boolean retryProxy = true;
 
-    ProxyInfo proxyInfo = null;
+    private ProxyInfo proxyInfo = null;
 
     public HttpExecutor (CloseableHttpClient client,String url){
         this.client = client;
@@ -55,17 +56,28 @@ public class HttpExecutor {
         try {
             response = client.execute(request);
             if(response.getStatusLine().getStatusCode()>300){
-                LOG.error("catch response code :"+response.getStatusLine().getStatusCode());
+                if(retryProxy){
+                    LOG.error("request for url:"+url);
+                    LOG.error("catch response code :"+response.getStatusLine().getStatusCode()+ " reason phrase : "+response.getStatusLine().getReasonPhrase());
+                }
+                if(times<100 && retryProxy){
+                    LOG.error("retry proxy "+times+" times");
+                    this.proxy(ProxyPool.get());
+                    return tryProxy(times+1);
+                }
             }else{
+                proxyInfo.setLastConnect(System.currentTimeMillis());
+                ProxyPool.add(proxyInfo);
                 return response;
             }
         } catch (IOException e) {
-            if(times<100){
+            if(times<100 && retryProxy){
                 LOG.error("retry proxy "+times+" times");
                 this.proxy(ProxyPool.get());
                 return tryProxy(times+1);
             }
         }
+
         return response;
     }
 
@@ -86,5 +98,12 @@ public class HttpExecutor {
         return (T) this;
     }
 
+    public boolean isRetryProxy() {
+        return retryProxy;
+    }
 
+    public <T extends HttpExecutor> T setRetryProxy(boolean retryProxy) {
+        this.retryProxy = retryProxy;
+        return (T) this;
+    }
 }

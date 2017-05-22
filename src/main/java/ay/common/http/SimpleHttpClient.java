@@ -1,25 +1,19 @@
 package ay.common.http;
 
 import ay.common.http.executer.HttpGetExecutor;
-import ay.common.http.proxy.ProxyInfo;
-import ay.common.http.proxy.ProxyPool;
+import ay.common.http.handler.DownloadResponseHandler;
 import org.apache.http.HttpResponse;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.SSLContexts;
-import org.apache.http.ssl.TrustStrategy;
 
 import javax.net.ssl.SSLContext;
-import java.io.File;
 import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
-import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
 
 /**
  * 带有代理的httpClient
