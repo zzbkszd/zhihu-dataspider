@@ -37,6 +37,9 @@ public class ProxyHttpClient {
         httpclient = HttpClients.custom()
                 .setDefaultRequestConfig(requestConfig)
                 .build();
+        httpclient.getParams().setIntParameter(CoreConnectionPNames.SO_TIMEOUT, 3000);
+        httpclient.getParams().setIntParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 3000);
+
     }
 
 

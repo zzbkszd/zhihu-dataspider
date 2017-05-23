@@ -48,17 +48,16 @@ public class WatchedTask extends WatchedThread {
 
         if(costTime>30000){
             executeFuture.cancel(true);
-            getCtx().appendExecutorPoolSize(1);
-//            localThread.interrupt();
+            localThread.interrupt();
         }
-//        if(costTime>60000){
-//            LOG.error("undead thread!!! "+localThread.getName()+" state is:"+localThread.getState().name());
-
+        if(costTime>60000){
+            LOG.error("undead thread!!! "+localThread.getName()+" state is:"+localThread.getState().name());
+            LOG.error("That thread is interrupted"+localThread.isInterrupted());
 //            StackTraceElement[] stacks = localThread.getStackTrace();
 //            for (StackTraceElement stack : stacks) {
 //                LOG.error("stoping @:"+stack.getClassName()+" method:"+stack.getMethodName()+" line:"+stack.getLineNumber());
 //            }
-//        }
+        }
 //        if(executeFuture.isCancelled()){
 //            getCtx().unregistTask(this);
 //        }
