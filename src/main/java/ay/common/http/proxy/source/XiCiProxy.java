@@ -20,7 +20,6 @@ import java.util.regex.Pattern;
 public class XiCiProxy extends ProxySource {
     @Override
     public List<ProxyInfo> getProxy() {
-        List<ProxyInfo> proxies = new ArrayList<>();
         String ips = new SimpleHttpClient().Get("http://api.xicidaili.com/free2016.txt").executeForString();
         return fromText(ips);
     }

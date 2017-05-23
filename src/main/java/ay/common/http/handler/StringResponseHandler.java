@@ -24,11 +24,10 @@ public class StringResponseHandler implements ResponseHandler<String> {
             HttpEntity entity = response.getEntity();
             if(entity==null)
                 return null;
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            IOUtil.copy(entity.getContent(),byteArrayOutputStream);
-            return new String(byteArrayOutputStream.toByteArray());
+            String body = EntityUtils.toString(entity);
+            EntityUtils.consume(entity);
+            return body;
         } else {
-//            System.out.println(Arrays.toString(response.getAllHeaders()));
             throw new ClientProtocolException("Unexpected response status: " + status);
         }
     }

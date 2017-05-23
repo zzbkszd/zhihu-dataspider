@@ -5,11 +5,15 @@ import ay.common.http.executer.HttpPostExecutor;
 import ay.common.http.handler.StringResponseHandler;
 import ay.common.http.proxy.ProxyInfo;
 import ay.common.http.proxy.ProxyPool;
+import org.apache.http.HttpException;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpResponseInterceptor;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.params.CoreConnectionPNames;
+import org.apache.http.protocol.HttpContext;
 
 import java.io.IOException;
 
@@ -26,8 +30,13 @@ public class ProxyHttpClient {
     }
 
     public ProxyHttpClient(){
-
-        httpclient = HttpClients.createDefault();
+        RequestConfig requestConfig = RequestConfig.custom()
+                .setConnectTimeout(10000)
+                .setConnectionRequestTimeout(10000)
+                .setSocketTimeout(10000).build();
+        httpclient = HttpClients.custom()
+                .setDefaultRequestConfig(requestConfig)
+                .build();
     }
 
 

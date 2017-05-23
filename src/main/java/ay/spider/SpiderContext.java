@@ -29,6 +29,11 @@ public class SpiderContext {
             }
             });
 
+    public void appendExecutorPoolSize(int size){
+        executor.setCorePoolSize(size+executor.getCorePoolSize());
+        executor.setMaximumPoolSize(size+executor.getMaximumPoolSize());
+    }
+
     public ThreadChain createChan(){
         ThreadChain chain = new ThreadChain();
         chains.add(chain);

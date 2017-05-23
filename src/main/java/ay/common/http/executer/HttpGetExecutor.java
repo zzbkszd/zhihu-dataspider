@@ -17,9 +17,9 @@ public class HttpGetExecutor extends HttpExecutor{
         super(client,url);
         request = new HttpGet(url);
         RequestConfig requestConfig = RequestConfig.custom()
-                .setConnectTimeout(20000)
-                .setConnectionRequestTimeout(20000)
-                .setSocketTimeout(20000).build();
+                .setConnectTimeout(8000)
+                .setConnectionRequestTimeout(8000)
+                .setSocketTimeout(8000).build();
         request.setConfig(requestConfig);
     }
 

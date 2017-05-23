@@ -87,7 +87,7 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
         private DBUtils dbUtils;
         public Update(Question question,RequestCenter center,DBUtils dbUtils){
             this.question = question;
-            this.center = center;
+            this.center = new RequestCenter();
             this.dbUtils = dbUtils;
         }
 

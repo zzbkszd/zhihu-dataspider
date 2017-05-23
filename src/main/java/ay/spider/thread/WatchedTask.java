@@ -4,13 +4,14 @@ import ay.spider.SpiderContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import java.io.Closeable;
 import java.util.Optional;
 import java.util.concurrent.Future;
 
 /**
  * Created by SHIZHIDA on 2017/5/23.
  */
-public class WatchedTask extends WatchedThread{
+public class WatchedTask extends WatchedThread {
 
     Log LOG = LogFactory.getLog(WatchedTask.class);
 
@@ -46,16 +47,18 @@ public class WatchedTask extends WatchedThread{
         long costTime=(System.currentTimeMillis()-startTime);
 
         if(costTime>30000){
-//            executeFuture.cancel(true);
+            executeFuture.cancel(true);
+            getCtx().appendExecutorPoolSize(1);
 //            localThread.interrupt();
         }
-        if(costTime>60000){
-            LOG.error("undead thread!!! "+localThread.getName()+" state is:"+localThread.getState().name());
-            StackTraceElement[] stacks = localThread.getStackTrace();
-            for (StackTraceElement stack : stacks) {
-                LOG.error("stoping @:"+stack.getClassName()+" method:"+stack.getMethodName()+" line:"+stack.getLineNumber());
-            }
-        }
+//        if(costTime>60000){
+//            LOG.error("undead thread!!! "+localThread.getName()+" state is:"+localThread.getState().name());
+
+//            StackTraceElement[] stacks = localThread.getStackTrace();
+//            for (StackTraceElement stack : stacks) {
+//                LOG.error("stoping @:"+stack.getClassName()+" method:"+stack.getMethodName()+" line:"+stack.getLineNumber());
+//            }
+//        }
 //        if(executeFuture.isCancelled()){
 //            getCtx().unregistTask(this);
 //        }
