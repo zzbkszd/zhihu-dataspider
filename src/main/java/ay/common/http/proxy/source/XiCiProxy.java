@@ -21,13 +21,7 @@ public class XiCiProxy extends ProxySource {
     @Override
     public List<ProxyInfo> getProxy() {
         List<ProxyInfo> proxies = new ArrayList<>();
-        HttpResponse response = new SimpleHttpClient().Get("http://api.xicidaili.com/free2016.txt").execute();
-        String ips = null;
-        try {
-            ips = new StringResponseHandler().handleResponse(response);
-        } catch (IOException e) {
-            return proxies;
-        }
+        String ips = new SimpleHttpClient().Get("http://api.xicidaili.com/free2016.txt").executeForString();
         return fromText(ips);
     }
 }

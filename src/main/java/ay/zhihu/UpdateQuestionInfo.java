@@ -28,11 +28,10 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
         System.setProperty("org.apache.commons.logging.simplelog.log.org.apache.http", "ERROR");// "stdout"为标准输出格式，"debug"为调试模式
         System.setProperty("org.apache.commons.logging.simplelog.log.org.apache.http.wire", "ERROR");// "stdout"为标准输出格式，"debug"为调试模式
         SpiderContext context = new SpiderContext();
-//        context.execTask(new ProxyDaemon(context,true));
-        context.execTask(new ProxyDaemon(context));
+        context.enableProxyDeamon();
         while(ProxyPool.size()<20){
             try {
-                Thread.sleep(10000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -105,7 +104,7 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
                         q.getTopics(),q.getDescription(),q.getAnswers(), q.getAttention(),
                         q.getView(),new Timestamp(System.currentTimeMillis()),question.getQuestionId());
                 long end = System.currentTimeMillis();
-                LOG.info("update question "+question.getTitle()+" success in "+(end-start)+" millis seconds");
+//                LOG.info("update question "+question.getTitle()+" success in "+(end-start)+" millis seconds");
             } catch (SQLException e) {
                 e.printStackTrace();
             }

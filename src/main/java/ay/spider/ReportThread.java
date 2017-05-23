@@ -25,9 +25,14 @@ public class ReportThread extends WatchedThread<Void,Void> {
             e.printStackTrace();
         }
         StringBuilder report = new StringBuilder("----------------------------------------------------------------------\n");
-        int executingTasks = getCtx().workQueue.size();
-        report.append("executing task count :"+executingTasks).append("\n");
-        report.append("proxy pool size: "+ ProxyPool.size()).append("\n");
+        int proxyPoolSize = ProxyPool.size();
+        int activeTask = getCtx().executor.getActiveCount();
+        report.append("executing task count :"+activeTask).append("\n");
+        report.append("proxy pool size: "+ proxyPoolSize).append("\n");
+//        if(proxyPoolSize>activeTask*2){
+//            getCtx().executor.setCorePoolSize(proxyPoolSize/5+activeTask);
+//            getCtx().executor.setMaximumPoolSize(proxyPoolSize/5+activeTask);
+//        }
         for (ThreadChain chain : getCtx().chains) {
             Iterator<WatchedThread> iterator = chain.iterator();
             while(iterator.hasNext()){
@@ -36,6 +41,9 @@ public class ReportThread extends WatchedThread<Void,Void> {
                 report.append("report for "+thread.getKey()).append("\n");
                 report.append(watchedReport).append("\n");
             }
+        }
+        for(int i=0;i<getCtx().taskHolder.size();i++){
+            report.append(getCtx().taskHolder.get(i).getWatchedReport());
         }
         report.append("----------------------------------------------------------------------\n");
         System.out.println(report.toString());

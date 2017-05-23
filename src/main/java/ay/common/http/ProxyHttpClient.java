@@ -5,8 +5,11 @@ import ay.common.http.executer.HttpPostExecutor;
 import ay.common.http.handler.StringResponseHandler;
 import ay.common.http.proxy.ProxyInfo;
 import ay.common.http.proxy.ProxyPool;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.params.CoreConnectionPNames;
 
 import java.io.IOException;
 
@@ -16,11 +19,17 @@ import java.io.IOException;
  */
 public class ProxyHttpClient {
 
-    CloseableHttpClient httpclient = HttpClients.createDefault();
+    private CloseableHttpClient httpclient;
 
     public static void main(String[] args) throws IOException {
-        System.out.println(new StringResponseHandler().handleResponse(new ProxyHttpClient().Post("http://www.baidu.com").execute()));
+        System.out.println(new ProxyHttpClient().Post("http://www.baidu.com").executeForString());
     }
+
+    public ProxyHttpClient(){
+
+        httpclient = HttpClients.createDefault();
+    }
+
 
     public HttpGetExecutor Get(String url){
         ProxyInfo proxyInfo = ProxyPool.get();

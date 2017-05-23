@@ -1,5 +1,6 @@
 package ay.common.http.executer;
 
+import ay.common.http.handler.StringResponseHandler;
 import ay.common.http.proxy.ProxyInfo;
 import ay.common.http.proxy.ProxyPool;
 import org.apache.commons.logging.Log;
@@ -51,6 +52,17 @@ public class HttpExecutor {
             }
         }
         return response;
+    }
+
+    public String executeForString(){
+        StringResponseHandler handler = new StringResponseHandler();
+        try {
+            String data =  handler.handleResponse(execute());
+            request.releaseConnection();
+            return data;
+        } catch (IOException e) {
+            return null;
+        }
     }
 
     /**

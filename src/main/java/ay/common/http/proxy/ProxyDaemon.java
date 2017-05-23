@@ -61,7 +61,7 @@ public class ProxyDaemon extends WatchedThread<Void,Void> {
                 executor.execute(new TestThread(proxy,this));
             }
             sleeping = true;
-            Thread.sleep(30000);
+            Thread.sleep(10*60000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -100,7 +100,7 @@ public class ProxyDaemon extends WatchedThread<Void,Void> {
                     .setRetryProxy(false)
                     .execute();
             if(response != null && response.getStatusLine().getStatusCode()<300){
-                LOG.info("proxy:"+proxyInfo+" test successed!");
+//                LOG.info("proxy:"+proxyInfo+" test successed!");
                 this.proxyDaemon.successCount++;
                 ProxyPool.add(proxyInfo);
             }else{

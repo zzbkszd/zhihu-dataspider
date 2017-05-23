@@ -1,6 +1,8 @@
 package ay.spider;
 
+import ay.common.http.proxy.ProxyDaemon;
 import ay.spider.thread.ThreadChain;
+import ay.spider.thread.WatchedTask;
 import ay.spider.thread.WatchedThread;
 
 import java.util.*;
@@ -12,12 +14,13 @@ import java.util.concurrent.*;
  */
 public class SpiderContext {
 
-    private long threadKey = Double.doubleToLongBits(Math.random()*1000);
+    private long threadKey = 0;
 
     List<ThreadChain> chains = new ArrayList<>();
 
-    BlockingQueue<Runnable> workQueue = new ArrayBlockingQueue<Runnable>(20);
-    ThreadPoolExecutor executor = new ThreadPoolExecutor(15,20,1000, TimeUnit.MILLISECONDS,workQueue,
+    List<WatchedThread> taskHolder = new Vector<>();
+    BlockingQueue<Runnable> workQueue = new ArrayBlockingQueue<>(10);
+    ThreadPoolExecutor executor = new ThreadPoolExecutor(5,10,1000, TimeUnit.MILLISECONDS,workQueue,
             (r,e)->{if(!e.isShutdown()) {
                 try{
                     e.getQueue().put(r);
@@ -26,8 +29,6 @@ public class SpiderContext {
             }
             });
 
-    public SpiderContext (){}
-
     public ThreadChain createChan(){
         ThreadChain chain = new ThreadChain();
         chains.add(chain);
@@ -35,7 +36,10 @@ public class SpiderContext {
     }
 
     public void enableWatchReport(){
-        execTask(new ReportThread(this));
+        executor.execute(new ReportThread(this));
+    }
+    public void enableProxyDeamon(){
+        executor.execute(new ProxyDaemon(this));
     }
 
     public void startUp(){
@@ -48,7 +52,14 @@ public class SpiderContext {
     }
 
     public void execTask(Runnable runnable){
-        executor.execute(runnable);
+        WatchedTask task = new WatchedTask(this,runnable);
+        taskHolder.add(task);
+        Future f = executor.submit(task);
+        task.setExecuteFuture(f);
+    }
+
+    public void unregistTask(WatchedTask task){
+        taskHolder.remove(task);
     }
 
     public void stop(){
@@ -62,7 +73,7 @@ public class SpiderContext {
 
 
     public String keyGen(){
-        return "*"+(threadKey++ + ++threadKey)+"*";
+        return "[spider thread *"+(threadKey++)+"*]";
     }
 
 

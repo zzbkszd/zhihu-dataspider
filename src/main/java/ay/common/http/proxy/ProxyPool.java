@@ -51,7 +51,7 @@ public class ProxyPool {
      */
     public static synchronized ProxyInfo get(){
         long start = System.currentTimeMillis();
-        System.out.println("last proxy count:"+inner.pool.pool.size());
+//        System.out.println("last proxy count:"+inner.pool.pool.size());
         ProxyInfo proxyInfo = inner.pool.getProxy();
         long end = System.currentTimeMillis();
         if((end-start)>2000){
@@ -79,14 +79,12 @@ public class ProxyPool {
             }while(info==null)     ;
             return info;
         } catch (InterruptedException e) {
-            e.printStackTrace();
             return null;
         }
     }
 
     public void addProxy(ProxyInfo proxy){
         if(!pool.contains(proxy)){
-            System.out.println("add proxy");
             pool.add(proxy);
         }
     }

@@ -107,7 +107,37 @@ public abstract class  WatchedThread<INDATA,OUTDATA> extends Thread implements D
         this.isroot = isroot;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof WatchedThread){
+            return this.getKey().equals(((WatchedThread) obj).getKey());
+        }
+        return super.equals(obj);
+    }
+
     public abstract boolean process (Optional<INDATA> in, Optional<Dist<OUTDATA>> out);
 
+
+    protected Report createReport(){
+        return new Report();
+    }
+
+    protected class Report {
+        StringBuilder builder = new StringBuilder();
+
+        public Report re(String key,String value){
+            builder.append("\t").append(key).append(" : ").append(value).append("\n");
+            return this;
+        }
+
+        public Report title(String key,String value){
+            builder.append(key).append(" : ").append(value).append("\n");
+            return this;
+        }
+
+        public String toString(){
+            return builder.toString();
+        }
+    }
 
 }
