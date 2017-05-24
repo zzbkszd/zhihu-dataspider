@@ -29,11 +29,11 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
         System.setProperty("org.apache.commons.logging.simplelog.log.org.apache.http", "ERROR");// "stdout"为标准输出格式，"debug"为调试模式
         System.setProperty("org.apache.commons.logging.simplelog.log.org.apache.http.wire", "ERROR");// "stdout"为标准输出格式，"debug"为调试模式
         SpiderContext context = new SpiderContext();
-        context.enableProxyDeamon();
+        ProxyDaemon proxyDaemon = context.enableProxyDeamon();
         while(ProxyPool.size()<20){
             try {
                 Thread.sleep(1000);
-                System.out.println(ProxyPool.size());
+                System.out.println(proxyDaemon.getWatchedReport());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -78,7 +78,7 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
     public String getWatchedReport() {
         StringBuilder report = new StringBuilder();
         report.append("\t updating page:").append(page).append("\n")
-                .append("\t updated count:").append(count).append("\n");
+                .append("\t updated count:").append(count.get()).append("\n");
         return report.toString();
     }
 
@@ -106,9 +106,9 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
                             q.getTopics(),q.getDescription(),q.getAnswers(), q.getAttention(),
                             q.getView(),new Timestamp(System.currentTimeMillis()),question.getQuestionId());
                     count.incrementAndGet();
+                    long end = System.currentTimeMillis();
+                    LOG.info("update question "+question.getTitle()+" success in "+(end-start)+" millis seconds");
                 }
-                long end = System.currentTimeMillis();
-//                LOG.info("update question "+question.getTitle()+" success in "+(end-start)+" millis seconds");
             } catch (SQLException e) {
                 e.printStackTrace();
             }

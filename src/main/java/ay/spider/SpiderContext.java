@@ -43,8 +43,10 @@ public class SpiderContext {
     public void enableWatchReport(){
         executor.execute(new ReportThread(this));
     }
-    public void enableProxyDeamon(){
-        executor.execute(new ProxyDaemon(this));
+    public ProxyDaemon enableProxyDeamon(){
+        ProxyDaemon proxyDaemon = new ProxyDaemon(this);
+        executor.execute(proxyDaemon);
+        return proxyDaemon;
     }
 
     public void startUp(){
