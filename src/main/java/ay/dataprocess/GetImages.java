@@ -1,7 +1,7 @@
 package ay.dataprocess;
 
 import ay.common.file.io.FileIO;
-import ay.common.http.handler.DownloadResponseHandler;
+import ay.common.http.handler.ByteResponseHandler;
 import ay.common.http.SimpleHttpClient;
 import ay.common.jdbc.DBUtils;
 import org.apache.http.HttpResponse;
@@ -25,7 +25,7 @@ public class GetImages {
     public static void main(String[] args) throws Exception {
         DBUtils dbUtils = DBUtils.getMysqlIns();
         SimpleHttpClient httpClient = new SimpleHttpClient();
-        DownloadResponseHandler downloadResponseHandler = new DownloadResponseHandler();
+        ByteResponseHandler downloadResponseHandler = new ByteResponseHandler();
 
         List<Map<String,Object>> answers = dbUtils.query("select * from answer limit 150000,50000");
 //

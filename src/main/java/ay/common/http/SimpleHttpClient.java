@@ -1,12 +1,14 @@
 package ay.common.http;
 
 import ay.common.http.executer.HttpGetExecutor;
-import ay.common.http.handler.DownloadResponseHandler;
+import ay.common.http.executer.HttpPostExecutor;
+import ay.common.http.handler.ByteResponseHandler;
 import org.apache.http.HttpResponse;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.SSLContexts;
+import org.apache.http.util.EntityUtils;
 
 import javax.net.ssl.SSLContext;
 import java.io.IOException;
@@ -48,16 +50,19 @@ public class SimpleHttpClient {
     }
 
     public static void main(String[] args) throws IOException {
-        DownloadResponseHandler responseHandler = new DownloadResponseHandler();
+        ByteResponseHandler responseHandler = new ByteResponseHandler();
         SimpleHttpClient httpClient = new SimpleHttpClient();
         HttpResponse response = httpClient.Get("https://pic2.zhimg.com/v2-025052a6366ab1a991f17e39484a9b31.png").execute();
         byte[] img = responseHandler.handleResponse(response);
+        EntityUtils.consume(response.getEntity());
         System.out.println(img.length);
     }
 
     public HttpGetExecutor Get(String url){
         return new HttpGetExecutor(httpclient,url);
     }
-
+    public HttpPostExecutor Post (String url){
+        return new HttpPostExecutor(httpclient,url);
+    }
 
 }

@@ -13,7 +13,7 @@ import java.io.InputStream;
  * 文件下载的handler
  * Created by 志达 on 2017/5/21.
  */
-public class DownloadResponseHandler implements ResponseHandler<byte[]> {
+public class ByteResponseHandler implements ResponseHandler<byte[]> {
     @Override
     public byte[] handleResponse(HttpResponse httpResponse) throws IOException {
         HttpEntity entity = httpResponse.getEntity();

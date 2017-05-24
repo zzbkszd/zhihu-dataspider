@@ -1,7 +1,9 @@
 package ay.common.jdbc;
 
-import ay.common.jdbc.pojo.Row;
 import ay.common.jdbc.pojo.RowSet;
+import static ay.common.util.CommonConfig.*;
+import org.apache.commons.configuration2.Configuration;
+import org.apache.commons.configuration2.builder.fluent.Configurations;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
@@ -9,11 +11,7 @@ import org.apache.commons.dbutils.ResultSetHandler;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import java.util.*;
 
 /**
  * Created by 志达 on 2017/4/15.
@@ -28,16 +26,16 @@ public class DBUtils {
         public static DBUtils mysqlIns,hsqlIns;
         static {
             BasicDataSource mysqlSource = new BasicDataSource();
-            mysqlSource.setDriverClassName("com.mysql.jdbc.Driver");
-            mysqlSource.setUrl("jdbc:mysql://5786f8ea1f83b.bj.cdb.myqcloud.com:17062/zhihu?useUnicode=true&characterEncoding=UTF-8");
-            mysqlSource.setUsername("cdb_outerroot");
-            mysqlSource.setPassword("youquer90AVENUE");
+            mysqlSource.setDriverClassName(getMysqlDriver());
+            mysqlSource.setUrl(getMysqlUrl());
+            mysqlSource.setUsername(getMysqlUser());
+            mysqlSource.setPassword(getMysqlPwd());
             mysqlIns = new DBUtils(mysqlSource);
 
             BasicDataSource hsqlSource = new BasicDataSource();
-            hsqlSource.setDriverClassName("org.hsqldb.jdbcDriver");
-            hsqlSource.setUrl("jdbc:hsqldb:mem:dbname");
-            hsqlSource.setUsername("sa");
+            hsqlSource.setDriverClassName(getHsqldbDriver());
+            hsqlSource.setUrl(getHsqldbUrl());
+            hsqlSource.setUsername(getHsqldbUser());
             hsqlSource.setPassword("");
             hsqlIns = new DBUtils(hsqlSource);
             try {

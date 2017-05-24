@@ -14,6 +14,7 @@ common.db.hsqldb.init.cache_question=create table cache_question(qid Integer not
 
 common.http.proxy.source=http://api.xicidaili.com/free2016.txt
 common.http.proxy.delay=5000
+common.http.timeout=8000
 
 
 

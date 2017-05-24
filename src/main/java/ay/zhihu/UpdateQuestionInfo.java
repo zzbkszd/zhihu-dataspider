@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by SHIZHIDA on 2017/5/22.
@@ -32,6 +33,7 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
         while(ProxyPool.size()<20){
             try {
                 Thread.sleep(1000);
+                System.out.println(ProxyPool.size());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -42,7 +44,7 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
         context.startUp();
     }
     private int page = 0;
-    private int count= 0;
+    private AtomicInteger count= new AtomicInteger(0);
 
     public UpdateQuestionInfo(SpiderContext context, boolean isroot) {
         super(context, isroot);
@@ -63,7 +65,6 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
             questions = dbUtils.queryOrm("select * from question where attention is null limit ?,1000",(page*1000)).to(Question.class);
             for (Question question : questions) {
                 getCtx().execTask(new Update(question,requestCenter,dbUtils));
-                count++;
             }
             LOG.info("update page "+page+" success");
         } catch (SQLException e) {
@@ -100,9 +101,12 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
                 return;
             }
             try {
-                dbUtils.update("update question set topics=?,description=?,answers=?,attention=?,view=?,updatetime=? where questionId=?",
-                        q.getTopics(),q.getDescription(),q.getAnswers(), q.getAttention(),
-                        q.getView(),new Timestamp(System.currentTimeMillis()),question.getQuestionId());
+                if(q.getTopics()!=null){
+                    dbUtils.update("update question set topics=?,description=?,answers=?,attention=?,view=?,updatetime=? where questionId=?",
+                            q.getTopics(),q.getDescription(),q.getAnswers(), q.getAttention(),
+                            q.getView(),new Timestamp(System.currentTimeMillis()),question.getQuestionId());
+                    count.incrementAndGet();
+                }
                 long end = System.currentTimeMillis();
 //                LOG.info("update question "+question.getTitle()+" success in "+(end-start)+" millis seconds");
             } catch (SQLException e) {

@@ -1,5 +1,6 @@
 package ay.common.http.executer;
 
+import ay.common.util.CommonConfig;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.client.config.RequestConfig;
@@ -17,9 +18,9 @@ public class HttpGetExecutor extends HttpExecutor{
         super(client,url);
         request = new HttpGet(url);
         RequestConfig requestConfig = RequestConfig.custom()
-                .setConnectTimeout(8000)
-                .setConnectionRequestTimeout(8000)
-                .setSocketTimeout(8000).build();
+                .setConnectTimeout(CommonConfig.getHttpTimeout())
+                .setConnectionRequestTimeout(CommonConfig.getHttpTimeout())
+                .setSocketTimeout(CommonConfig.getHttpTimeout()).build();
         request.setConfig(requestConfig);
     }
 

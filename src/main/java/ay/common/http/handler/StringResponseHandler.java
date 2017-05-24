@@ -19,6 +19,9 @@ public class StringResponseHandler implements ResponseHandler<String> {
 
     @Override
     public String handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
+        if(response==null){
+            return null;
+        }
         int status = response.getStatusLine().getStatusCode();
         if (status >= 200 && status < 300) {
             HttpEntity entity = response.getEntity();

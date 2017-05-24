@@ -25,7 +25,9 @@ public class KuaiProxy extends ProxySource {
     public List<ProxyInfo> getProxy() {
         SimpleHttpClient httpClient = new SimpleHttpClient();
         StringResponseHandler handler = new StringResponseHandler();
-        HttpResponse response = httpClient.Get("http://dev.kuaidaili.com/api/getproxy/?orderid=1029384893932039&num=100&b_pcchrome=1&b_pcie=1&b_pcff=1&protocol=1&method=1&an_an=1&an_ha=1&sep=1").execute();
+        HttpResponse response = httpClient
+                .Get("http://dev.kuaidaili.com/api/getproxy/?orderid=1029384893932039&num=100&b_pcchrome=1&b_pcie=1&b_pcff=1&protocol=1&method=1&an_an=1&an_ha=1&sep=1")
+                .execute();
         String body = "";
         try {
             body = handler.handleResponse(response);

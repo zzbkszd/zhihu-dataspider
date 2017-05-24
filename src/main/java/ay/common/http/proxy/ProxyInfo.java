@@ -1,5 +1,7 @@
 package ay.common.http.proxy;
 
+import ay.common.util.CommonConfig;
+
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
 
@@ -61,7 +63,7 @@ public class ProxyInfo implements Delayed {
 
     @Override
     public long getDelay(TimeUnit unit) {
-        return unit.toSeconds(5);
+        return unit.toSeconds(CommonConfig.getHttpProxyDelay());
     }
 
     @Override

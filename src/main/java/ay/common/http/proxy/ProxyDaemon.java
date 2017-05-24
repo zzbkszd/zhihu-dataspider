@@ -7,9 +7,11 @@ import ay.common.http.proxy.source.XiCiProxy;
 import ay.spider.SpiderContext;
 import ay.spider.thread.Dist;
 import ay.spider.thread.WatchedThread;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpResponse;
+import org.apache.http.util.EntityUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -20,6 +22,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 负责更新代理的守护进程
@@ -47,8 +50,8 @@ public class ProxyDaemon extends WatchedThread<Void,Void> {
     boolean sleeping = false;
     int count = 0;
 
-    int successCount = 0;
-    int failCount = 0;
+    AtomicInteger successCount = new AtomicInteger(0);
+    AtomicInteger failCount = new AtomicInteger(0);
 
     @Override
     public boolean process(Optional<Void> in, Optional<Dist<Void>> out) {
@@ -95,19 +98,16 @@ public class ProxyDaemon extends WatchedThread<Void,Void> {
         @Override
         public void run() {
             SimpleHttpClient httpClient = new SimpleHttpClient();
-            HttpResponse response = httpClient.Get("http://www.baidu.com")
+            String response = httpClient.Get("http://www.baidu.com")
                     .proxy(proxyInfo)
                     .setRetryProxy(false)
-                    .execute();
-            if(response != null && response.getStatusLine().getStatusCode()<300){
+                    .executeForString();
+            if(StringUtils.isNotEmpty(response)){
 //                LOG.info("proxy:"+proxyInfo+" test successed!");
-                this.proxyDaemon.successCount++;
+                this.proxyDaemon.successCount.incrementAndGet();
                 ProxyPool.add(proxyInfo);
             }else{
-                if(response!=null)
-                    LOG.error(response.getStatusLine().getReasonPhrase());
-//                else LOG.error("response is null");
-                this.proxyDaemon.failCount++;
+                this.proxyDaemon.failCount.incrementAndGet();
             }
         }
     }

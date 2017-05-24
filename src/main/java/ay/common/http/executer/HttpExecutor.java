@@ -3,6 +3,7 @@ package ay.common.http.executer;
 import ay.common.http.handler.StringResponseHandler;
 import ay.common.http.proxy.ProxyInfo;
 import ay.common.http.proxy.ProxyPool;
+import org.apache.commons.dbcp.PoolablePreparedStatement;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpHost;
@@ -12,6 +13,7 @@ import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 
@@ -55,14 +57,25 @@ public class HttpExecutor {
     }
 
     public String executeForString(){
+        HttpResponse response = execute();
         StringResponseHandler handler = new StringResponseHandler();
         try {
-            String data =  handler.handleResponse(execute());
-            request.releaseConnection();
+            String data =  handler.handleResponse(response);
             return data;
         } catch (IOException e) {
             return null;
+        }finally {
+            request.releaseConnection();
         }
+    }
+
+    public boolean revertProxy(){
+        if(this.proxyInfo==null)
+            return false;
+        proxyInfo.setLastConnect(System.currentTimeMillis());
+        ProxyPool.add(proxyInfo);
+        this.proxyInfo=null;
+        return true;
     }
 
     /**
@@ -86,8 +99,7 @@ public class HttpExecutor {
                     return tryProxy(times+1);
                 }
             }else{
-                proxyInfo.setLastConnect(System.currentTimeMillis());
-                ProxyPool.add(proxyInfo);
+                revertProxy();
                 return response;
             }
         } catch (IOException e) {
@@ -109,6 +121,29 @@ public class HttpExecutor {
      */
     public <T extends HttpExecutor> T proxy(ProxyInfo proxyInfo){
         this.proxyInfo = proxyInfo;
+        HttpHost proxy = new HttpHost(proxyInfo.getIp(),proxyInfo.getPort(),"http");
+        RequestConfig config = RequestConfig.custom()
+                .setProxy(proxy)
+                .build();
+        request.setConfig(config);
+        useProxy = true;
+        return (T) this;
+    }
+
+    /**
+     * 设置代理
+     * @param localIfNull 当失败时返回本地连接,否则尝试获取新的代理
+     * @param <T>
+     * @return
+     */
+    public <T extends HttpExecutor> T autoProxy(boolean localIfNull){
+        this.proxyInfo = ProxyPool.get();
+        if(proxyInfo==null){
+            LOG.warn("no proxy for use!");
+            if(localIfNull)
+                return (T)this;
+            else return autoProxy(localIfNull);
+        }
         HttpHost proxy = new HttpHost(proxyInfo.getIp(),proxyInfo.getPort(),"http");
         RequestConfig config = RequestConfig.custom()
                 .setProxy(proxy)
