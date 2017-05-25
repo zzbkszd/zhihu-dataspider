@@ -75,7 +75,7 @@ public class ProxyInfo implements Delayed {
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof ProxyInfo){
-            return (this.port==((ProxyInfo) obj).getPort() && this.ip==((ProxyInfo) obj).getIp());
+            return (this.port==((ProxyInfo) obj).getPort() && this.ip.equals(((ProxyInfo) obj).getIp()));
         } else
             return super.equals(obj);
     }

@@ -32,7 +32,7 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
         ProxyDaemon proxyDaemon = context.enableProxyDeamon();
         while(ProxyPool.size()<20){
             try {
-                Thread.sleep(1000);
+                Thread.sleep(3000);
                 System.out.println(proxyDaemon.getWatchedReport());
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -43,6 +43,7 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
         context.createChan().append(new UpdateQuestionInfo(context,true));
         context.startUp();
     }
+
     private int page = 0;
     private AtomicInteger count= new AtomicInteger(0);
 
@@ -109,7 +110,7 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
                     long end = System.currentTimeMillis();
                     LOG.info("update question "+question.getTitle()+" success in "+(end-start)+" millis seconds");
                 }else{
-//                    LOG.warn("question content is null ! - "+question.getTitle());
+                    LOG.warn("question content is null ! - "+question.getTitle());
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
