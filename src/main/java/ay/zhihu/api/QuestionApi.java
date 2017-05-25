@@ -25,8 +25,9 @@ public class QuestionApi {
         Question question = new Question();
         Document html = Jsoup.parse(http);
         Elements topicElements = html.select(".QuestionHeader-topics");
-        if(topicElements.size()==0)
+        if(topicElements.size()==0){
             return question;
+        }
         String topicsStr = topicElements.first().text();
         Element title = html.select(".QuestionHeader-title").first();
         Element desc = html.select(".RichText").first();

@@ -2,6 +2,7 @@ package ay.common.http.proxy;
 
 import ay.common.util.CommonConfig;
 
+import java.net.InetSocketAddress;
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
 
@@ -82,5 +83,16 @@ public class ProxyInfo implements Delayed {
     @Override
     public String toString() {
         return "Proxy{ip:"+getIp()+",port:"+port+"}";
+    }
+
+    public InetSocketAddress address(){
+        return new InetSocketAddress(getIp(),getPort());
+    }
+
+    /**
+     * 归还代理
+     */
+    public void revert() {
+        ProxyPool.add(this);
     }
 }

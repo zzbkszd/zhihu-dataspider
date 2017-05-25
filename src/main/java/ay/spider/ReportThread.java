@@ -29,10 +29,8 @@ public class ReportThread extends WatchedThread<Void,Void> {
         int activeTask = getCtx().executor.getActiveCount();
         report.append("executing task count :"+activeTask).append("\n");
         report.append("proxy pool size: "+ proxyPoolSize).append("\n");
-//        if(proxyPoolSize>activeTask*2){
-//            getCtx().executor.setCorePoolSize(proxyPoolSize/5+activeTask);
-//            getCtx().executor.setMaximumPoolSize(proxyPoolSize/5+activeTask);
-//        }
+        //弹性控制代理数量与线程池大小
+        getCtx().flexExecutor();
         for (ThreadChain chain : getCtx().chains) {
             Iterator<WatchedThread> iterator = chain.iterator();
             while(iterator.hasNext()){
@@ -42,7 +40,8 @@ public class ReportThread extends WatchedThread<Void,Void> {
                 report.append(watchedReport).append("\n");
             }
         }
-        for(int i=0;i<getCtx().taskHolder.size();i++){
+        int runningTask = getCtx().taskHolder.size();
+        for(int i=0;i<(5<runningTask?5:runningTask);i++){
             report.append(getCtx().taskHolder.get(i).getWatchedReport());
         }
         report.append("----------------------------------------------------------------------\n");

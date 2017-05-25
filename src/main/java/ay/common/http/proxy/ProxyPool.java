@@ -27,16 +27,27 @@ public class ProxyPool {
 
     long lastSync = System.currentTimeMillis();//上次同步时间
 
-    public static void main(String[] args) {
-        ProxyInfo info = new ProxyInfo("127.0.0.1",8888);
-        ProxyPool.add(info);
-        ProxyPool.add(info);
-        ProxyPool.get();
-        ProxyPool.get();
-    }
+    boolean proxyLeak = false;
+    long release = 0;
 
     public static int size() {
         return inner.pool.pool.size();
+    }
+
+    /**
+     * 代理不足
+     * @return
+     */
+    public static boolean isLeak(){
+        return inner.pool.proxyLeak;
+    }
+
+    /**
+     * 取消代理不足
+     */
+    public static void releaseLeak(){
+        inner.pool.proxyLeak = false;
+        inner.pool.release = System.currentTimeMillis();
     }
 
     private static class inner {
@@ -56,6 +67,11 @@ public class ProxyPool {
         long end = System.currentTimeMillis();
         if((end-start)>2000){
             LOG.warn("waiting proxy more then 2 seconds!");
+            //距离上次释放超过10秒
+            if(System.currentTimeMillis()-inner.pool.release>10000)
+                inner.pool.proxyLeak = true;
+        }else{
+            inner.pool.proxyLeak = false;
         }
         return proxyInfo;
     }

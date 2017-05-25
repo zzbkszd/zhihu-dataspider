@@ -16,6 +16,9 @@ common.http.proxy.source=http://api.xicidaili.com/free2016.txt
 common.http.proxy.delay=5000
 common.http.timeout=8000
 
+common.http.executor.max=100
+common.http.request.max=100
+
 
 
 

@@ -62,15 +62,15 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
         DBUtils dbUtils = DBUtils.getMysqlIns();
         List<Question> questions = null;
         try {
-            questions = dbUtils.queryOrm("select * from question where attention is null limit ?,1000",(page*1000)).to(Question.class);
+            questions = dbUtils.queryOrm("select * from question where attention is null limit 1000").to(Question.class);
             for (Question question : questions) {
                 getCtx().execTask(new Update(question,requestCenter,dbUtils));
             }
+            page++;
             LOG.info("update page "+page+" success");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        page++;
         return questions.size()>0;
     }
 
@@ -108,6 +108,8 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
                     count.incrementAndGet();
                     long end = System.currentTimeMillis();
                     LOG.info("update question "+question.getTitle()+" success in "+(end-start)+" millis seconds");
+                }else{
+//                    LOG.warn("question content is null ! - "+question.getTitle());
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

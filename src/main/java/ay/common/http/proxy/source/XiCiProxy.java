@@ -1,18 +1,10 @@
 package ay.common.http.proxy.source;
 
-import ay.common.http.SimpleHttpClient;
-import ay.common.http.handler.StringResponseHandler;
-import ay.common.http.proxy.ProxyDaemon;
+import ay.common.http.HttpUtil;
 import ay.common.http.proxy.ProxyInfo;
 import ay.common.http.proxy.ProxySource;
-import org.apache.http.HttpResponse;
-
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.regex.Pattern;
 
 /**
  * Created by SHIZHIDA on 2017/5/22.
@@ -20,7 +12,12 @@ import java.util.regex.Pattern;
 public class XiCiProxy extends ProxySource {
     @Override
     public List<ProxyInfo> getProxy() {
-        String ips = new SimpleHttpClient().Get("http://api.xicidaili.com/free2016.txt").executeForString();
+        String ips = null;
+        try {
+            ips = new HttpUtil().get("http://api.xicidaili.com/free2016.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return fromText(ips);
     }
 }

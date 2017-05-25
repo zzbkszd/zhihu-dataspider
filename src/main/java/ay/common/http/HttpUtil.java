@@ -1,17 +1,6 @@
 package ay.common.http;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
+import okhttp3.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -26,7 +15,7 @@ import java.util.Map;
  */
 public class HttpUtil {
 
-    CloseableHttpClient httpclient = HttpClients.createDefault();
+    OkHttpClient http = new OkHttpClient();
 
     public Document getHtml(String url) throws IOException {
         String body = get(url);
@@ -34,62 +23,13 @@ public class HttpUtil {
         return doc;
     }
 
-    public String post(String url, Map<String,String> params){
-
-        HttpPost post = new HttpPost(url);
-        post.addHeader("charset","utf-8");
-
-        List<NameValuePair> nvpairs = new ArrayList<>();
-        for (Map.Entry<String, String> entry : params.entrySet()) {
-            NameValuePair valuePair = new BasicNameValuePair(entry.getKey(),entry.getValue());
-            nvpairs.add(valuePair);
-        }
-        HttpEntity entity = null;
-        try {
-            entity = new UrlEncodedFormEntity(nvpairs);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        post.setEntity(entity);
-
-        String response = null;
-        try {
-            response = httpclient.execute(post,STR_HANDLER);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return response;
-    }
-
     public String get(String url) throws IOException {
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        HttpGet httpget = new HttpGet(url);
-
-        System.out.println("Executing request " + httpget.getRequestLine());
-
-        httpget.setHeader("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36");
-        httpget.setHeader("authorization","Bearer Mi4wQUJCTVdKM0lSUWdBWUFJUWc0UnRDeGNBQUFCaEFsVk5jVm96V1FCSDFPbEo4LXhpVlJ6SG1TU2NkV3QzWlIzY2R3|1494292166|4bcc17a16e272d38e6b1396f2eb24666b75919cb");
-        httpget.setHeader("x-udid","AGACEIOEbQuPTsrGA4MGMz5hroc55uog23Q=");
-//         Create a custom response handler
-        String responseBody = httpclient.execute(httpget, STR_HANDLER);
-        return responseBody;
+        Request request = new Request.Builder().url(url)
+                .header("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36")
+                .header("authorization","Bearer Mi4wQUJCTVdKM0lSUWdBWUFJUWc0UnRDeGNBQUFCaEFsVk5jVm96V1FCSDFPbEo4LXhpVlJ6SG1TU2NkV3QzWlIzY2R3|1494292166|4bcc17a16e272d38e6b1396f2eb24666b75919cb")
+                .header("x-udid","AGACEIOEbQuPTsrGA4MGMz5hroc55uog23Q=")
+                .get().build();
+        return http.newCall(request).execute().body().string();
     }
-
-    private static ResponseHandler<String> STR_HANDLER;
-    static{
-        STR_HANDLER = response -> {int status = response.getStatusLine().getStatusCode();
-            if (status >= 200 && status < 300) {
-                HttpEntity entity = response.getEntity();
-                return entity != null ? EntityUtils.toString(entity) : null;
-            } else {
-                throw new ClientProtocolException("Unexpected response status: " + status);
-            }};
-    }
-
-
 
 }

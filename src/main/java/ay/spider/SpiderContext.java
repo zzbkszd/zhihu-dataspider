@@ -1,9 +1,13 @@
 package ay.spider;
 
 import ay.common.http.proxy.ProxyDaemon;
+import ay.common.http.proxy.ProxyPool;
 import ay.spider.thread.ThreadChain;
 import ay.spider.thread.WatchedTask;
 import ay.spider.thread.WatchedThread;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import sun.security.provider.ConfigFile;
 
 import java.util.*;
 import java.util.concurrent.*;
@@ -14,6 +18,7 @@ import java.util.concurrent.*;
  */
 public class SpiderContext {
 
+    private Log log = LogFactory.getLog(SpiderContext.class);
     private long threadKey = 0;
 
     List<ThreadChain> chains = new ArrayList<>();
@@ -84,5 +89,21 @@ public class SpiderContext {
     }
 
 
-
+    public void flexExecutor() {
+        int poolsize = ProxyPool.size();
+        int activeTasks = executor.getActiveCount();
+        int totalProxy = activeTasks+poolsize;
+        //空闲代理数量是执行线程的4倍以上时,或者线程池剩余数量不足
+        if(poolsize/activeTasks>=4 || ProxyPool.isLeak()){
+            int shouldBe = totalProxy/5;
+            shouldBe = (shouldBe>100)?100:shouldBe;
+            //重置线程池大小
+            executor.setCorePoolSize(shouldBe);
+            executor.setMaximumPoolSize((shouldBe*5/4));
+            log.info("flex executing pool core size:"+shouldBe+" and max size:"+shouldBe*5/4);
+        }
+        if(ProxyPool.isLeak()){
+            ProxyPool.releaseLeak();
+        }
+    }
 }

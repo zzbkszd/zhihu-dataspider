@@ -32,7 +32,7 @@ public class WatchedTask extends WatchedThread {
         startTime = System.currentTimeMillis();
         localThread = Thread.currentThread();
         task.run();
-        LOG.info("Task "+getKey()+" has finished in thread "+Thread.currentThread().getName());
+//        LOG.info("Task "+getKey()+" has finished in thread "+Thread.currentThread().getName());
         getCtx().unregistTask(this);
         localThread = null;
         return false;
@@ -52,15 +52,7 @@ public class WatchedTask extends WatchedThread {
         }
         if(costTime>60000){
             LOG.error("undead thread!!! "+localThread.getName()+" state is:"+localThread.getState().name());
-            LOG.error("That thread is interrupted"+localThread.isInterrupted());
-//            StackTraceElement[] stacks = localThread.getStackTrace();
-//            for (StackTraceElement stack : stacks) {
-//                LOG.error("stoping @:"+stack.getClassName()+" method:"+stack.getMethodName()+" line:"+stack.getLineNumber());
-//            }
         }
-//        if(executeFuture.isCancelled()){
-//            getCtx().unregistTask(this);
-//        }
 
         return createReport().title("task",getKey())
                 .re("thread",localThread.getName()).re("costed time : ",""+costTime)

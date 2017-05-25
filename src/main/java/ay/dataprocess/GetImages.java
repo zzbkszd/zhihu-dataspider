@@ -1,14 +1,8 @@
 package ay.dataprocess;
 
-import ay.common.file.io.FileIO;
-import ay.common.http.handler.ByteResponseHandler;
-import ay.common.http.SimpleHttpClient;
-import ay.common.jdbc.DBUtils;
-import org.apache.http.HttpResponse;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,32 +17,32 @@ public class GetImages {
 
 
     public static void main(String[] args) throws Exception {
-        DBUtils dbUtils = DBUtils.getMysqlIns();
-        SimpleHttpClient httpClient = new SimpleHttpClient();
-        ByteResponseHandler downloadResponseHandler = new ByteResponseHandler();
-
-        List<Map<String,Object>> answers = dbUtils.query("select * from answer limit 150000,50000");
+//        DBUtils dbUtils = DBUtils.getMysqlIns();
+//        SimpleHttpClient httpClient = new SimpleHttpClient();
+//        ByteResponseHandler downloadResponseHandler = new ByteResponseHandler();
 //
-//        List<String> good_imgs = new ArrayList<>();
-
-        for (Map<String, Object> answer : answers) {
-            String content = (String) answer.get("content");
-            int id = (int) answer.get("id");
-            int voteup_count = (int) answer.get("voteup_count");
-            List<String> images = parseImgs(content);
-            if(images.size()>0){
-                if(voteup_count/images.size()>100){
-                    System.out.printf("catch %d images from answer %d with %d voteups \n",images.size(),id,voteup_count);
-                    for (String image : images) {
-                        System.out.println("download: "+image);
-                        HttpResponse response = httpClient.Get(image).execute();
-                        FileIO img = new FileIO("G:\\data\\"+image.substring(image.lastIndexOf('/')));
-                        byte[] data = downloadResponseHandler.handleResponse(response);
-                        img.write(data);
-                    }
-                }
-            }
-        }
+//        List<Map<String,Object>> answers = dbUtils.query("select * from answer limit 150000,50000");
+////
+////        List<String> good_imgs = new ArrayList<>();
+//
+//        for (Map<String, Object> answer : answers) {
+//            String content = (String) answer.get("content");
+//            int id = (int) answer.get("id");
+//            int voteup_count = (int) answer.get("voteup_count");
+//            List<String> images = parseImgs(content);
+//            if(images.size()>0){
+//                if(voteup_count/images.size()>100){
+//                    System.out.printf("catch %d images from answer %d with %d voteups \n",images.size(),id,voteup_count);
+//                    for (String image : images) {
+//                        System.out.println("download: "+image);
+//                        HttpResponse response = httpClient.Get(image).execute();
+//                        FileIO img = new FileIO("G:\\data\\"+image.substring(image.lastIndexOf('/')));
+//                        byte[] data = downloadResponseHandler.handleResponse(response);
+//                        img.write(data);
+//                    }
+//                }
+//            }
+//        }
 //        StringBuilder builder = new StringBuilder();
 //        builder.append("<html><head></head><body>");
 //        for (String good_img : good_imgs) {

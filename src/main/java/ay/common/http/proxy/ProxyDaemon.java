@@ -1,23 +1,20 @@
 package ay.common.http.proxy;
 
-import ay.common.http.SimpleHttpClient;
-import ay.common.http.handler.StringResponseHandler;
-import ay.common.http.proxy.source.ProxyFile;
+import ay.common.http.HttpUtil;
 import ay.common.http.proxy.source.XiCiProxy;
+import ay.common.util.CommonConfig;
 import ay.spider.SpiderContext;
 import ay.spider.thread.Dist;
 import ay.spider.thread.WatchedThread;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.http.HttpResponse;
-import org.apache.http.util.EntityUtils;
-
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.net.Proxy;
 import java.util.List;
 import java.util.Optional;
-import java.util.Scanner;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -97,18 +94,25 @@ public class ProxyDaemon extends WatchedThread<Void,Void> {
 
         @Override
         public void run() {
-            SimpleHttpClient httpClient = new SimpleHttpClient();
-            String response = httpClient.Get("http://www.baidu.com")
-                    .proxy(proxyInfo)
-                    .setRetryProxy(false)
-                    .executeForString();
-            if(StringUtils.isNotEmpty(response)){
+            try {
+                OkHttpClient client = new OkHttpClient.Builder().proxy(new Proxy(Proxy.Type.HTTP,proxyInfo.address()))
+                        .connectTimeout(CommonConfig.getHttpTimeout(), TimeUnit.MILLISECONDS)
+                        .readTimeout(CommonConfig.getHttpTimeout(), TimeUnit.MILLISECONDS)
+                        .writeTimeout(CommonConfig.getHttpTimeout(), TimeUnit.MILLISECONDS)
+                        .build();
+                Request request = new Request.Builder().url("http://www.baidu.com").get().build();
+                String response = client.newCall(request).execute().body().string();
+                if(StringUtils.isNotEmpty(response)){
 //                LOG.info("proxy:"+proxyInfo+" test successed!");
-                this.proxyDaemon.successCount.incrementAndGet();
-                ProxyPool.add(proxyInfo);
-            }else{
+                    this.proxyDaemon.successCount.incrementAndGet();
+                    ProxyPool.add(proxyInfo);
+                }else{
+                    this.proxyDaemon.failCount.incrementAndGet();
+                }
+            } catch (IOException e) {
                 this.proxyDaemon.failCount.incrementAndGet();
             }
+
         }
     }
 }

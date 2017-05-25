@@ -2,6 +2,7 @@ package ay.common.jdbc;
 
 import ay.common.util.StrUtil;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.reflect.FieldUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -54,6 +55,8 @@ public class ClassUtil {
     }
 
     public static Field getFieldByName(Object obj, String name){
+
+        FieldUtils.getDeclaredField(obj.getClass(),name,true);
 
         String[] names = new String[]{
                 StringUtils.uncapitalize(name),

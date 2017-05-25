@@ -1,7 +1,8 @@
 package ay.zhihu;
 
-import ay.common.http.SimpleHttpClient;
-import ay.common.http.handler.StringResponseHandler;
+import ay.common.http.proxy.ProxyInfo;
+import ay.common.http.proxy.ProxyPool;
+import ay.common.util.CommonConfig;
 import ay.zhihu.api.ApiDecoder;
 import ay.zhihu.api.PagedApi;
 import ay.zhihu.api.QuestionApi;
@@ -9,11 +10,15 @@ import ay.zhihu.pojo.Question;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 
 import java.io.IOException;
+import java.net.Proxy;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 请求中心
@@ -21,8 +26,6 @@ import java.util.List;
  */
 public class RequestCenter {
 
-    SimpleHttpClient http = new SimpleHttpClient();
-    StringResponseHandler stringHandler = new StringResponseHandler();
 
     public List<JsonObject> getAllFollowees(String userKey) throws IOException {
         return requestAllPage(userKey,RouterCenter::getFolloweesApi,RequestCenter::pagedDataDecoder);
@@ -56,11 +59,22 @@ public class RequestCenter {
     }
 
     private String requestData(String url){
-        return http.Get(url).setHeader("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36")
-                .setHeader("authorization","Bearer Mi4wQUJCTVdKM0lSUWdBWUFJUWc0UnRDeGNBQUFCaEFsVk5jVm96V1FCSDFPbEo4LXhpVlJ6SG1TU2NkV3QzWlIzY2R3|1494292166|4bcc17a16e272d38e6b1396f2eb24666b75919cb")
-                .setHeader("x-udid","AGACEIOEbQuPTsrGA4MGMz5hroc55uog23Q=")
-                .autoProxy(false)
-                .executeForString();
+        ProxyInfo proxyInfo = ProxyPool.get();
+        OkHttpClient client = new OkHttpClient.Builder().proxy(new Proxy(Proxy.Type.HTTP,proxyInfo.address()))
+                .connectTimeout(CommonConfig.getHttpTimeout(), TimeUnit.MILLISECONDS)
+                .readTimeout(CommonConfig.getHttpTimeout(), TimeUnit.MILLISECONDS)
+                .writeTimeout(CommonConfig.getHttpTimeout(), TimeUnit.MILLISECONDS)
+                .build();
+        Request request = new Request.Builder().url(url).get().build();
+        try {
+            String data =  client.newCall(request).execute().body().string();
+//            proxyInfo.revert();
+            return data;
+        } catch (IOException e) {
+            return "";
+        } finally {
+            proxyInfo.revert();
+        }
     }
 
     /**
