@@ -1,5 +1,7 @@
 package ay.zhihu;
 
+import ay.common.http.ProxyHttpClient;
+import ay.common.http.StaticCookieJar;
 import ay.common.http.proxy.ProxyInfo;
 import ay.common.http.proxy.ProxyPool;
 import ay.common.util.CommonConfig;
@@ -12,6 +14,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 
 import java.io.IOException;
 import java.net.Proxy;
@@ -19,6 +22,7 @@ import java.net.ProxySelector;
 import java.net.SocketAddress;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -29,6 +33,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class RequestCenter {
 
+
+    ProxyHttpClient proxyHttpClient = new ProxyHttpClient();
 
     public List<JsonObject> getAllFollowees(String userKey) throws IOException {
         return requestAllPage(userKey,RouterCenter::getFolloweesApi,RequestCenter::pagedDataDecoder);
@@ -62,25 +68,7 @@ public class RequestCenter {
     }
 
     private String requestData(String url){
-        ProxyInfo proxyInfo = ProxyPool.get();
-
-        OkHttpClient client = new OkHttpClient.Builder().proxy(new Proxy(Proxy.Type.HTTP,proxyInfo.address()))
-                .connectTimeout(CommonConfig.getHttpTimeout(), TimeUnit.MILLISECONDS)
-                .readTimeout(CommonConfig.getHttpTimeout(), TimeUnit.MILLISECONDS)
-                .writeTimeout(CommonConfig.getHttpTimeout(), TimeUnit.MILLISECONDS)
-                .build();
-        Request request = new Request.Builder().url(url).get()
-                .header("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36")
-                .build();
-        try {
-            String data =  client.newCall(request).execute().body().string();
-//            proxyInfo.revert();
-            return data;
-        } catch (IOException e) {
-            return "";
-        } finally {
-            proxyInfo.revert();
-        }
+        return proxyHttpClient.getString(url);
     }
 
     /**
