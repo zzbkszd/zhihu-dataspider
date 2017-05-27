@@ -64,11 +64,12 @@ public class ProxyPool {
     public static synchronized ProxyInfo get(){
         long start = System.currentTimeMillis();
 //        System.out.println("last proxy count:"+inner.pool.pool.size());
+//        System.out.println("get proxy from "+Thread.currentThread().getName());
         ProxyInfo proxyInfo = inner.pool.getProxy();
         long end = System.currentTimeMillis();
         if((end-start)>2000){
             LOG.warn("waiting proxy more then 2 seconds!");
-            //距离上次释放超过10秒
+            //距离上次释放超过10秒,才可以重新锁定
             if(System.currentTimeMillis()-inner.pool.release>10000)
                 inner.pool.proxyLeak = true;
         }else{

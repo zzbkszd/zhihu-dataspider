@@ -1,6 +1,7 @@
 package ay.common.http.proxy;
 
 import ay.common.http.HttpUtil;
+import ay.common.http.proxy.source.ProxyFile;
 import ay.common.http.proxy.source.XiCiProxy;
 import ay.common.util.CommonConfig;
 import ay.spider.SpiderContext;

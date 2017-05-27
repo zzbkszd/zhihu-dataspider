@@ -22,6 +22,12 @@ public class StaticCookieJar implements CookieJar {
         }
     }
 
+    public static void printAllCookies(){
+        for (Cookie cookie : CookieCache.cookies) {
+            System.out.println(cookie.toString());
+        }
+    }
+
     @Override
     public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
         CookieCache.save(cookies);

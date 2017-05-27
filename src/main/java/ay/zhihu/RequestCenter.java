@@ -1,5 +1,6 @@
 package ay.zhihu;
 
+import ay.common.file.io.FileIO;
 import ay.common.http.ProxyHttpClient;
 import ay.common.http.StaticCookieJar;
 import ay.common.http.proxy.ProxyInfo;
@@ -35,6 +36,15 @@ public class RequestCenter {
 
 
     ProxyHttpClient proxyHttpClient = new ProxyHttpClient();
+//    FileIO failedUrl ;
+
+    public RequestCenter (){
+//        try {
+//            failedUrl = new FileIO("D:\\data\\fail.dat");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+    }
 
     public List<JsonObject> getAllFollowees(String userKey) throws IOException {
         return requestAllPage(userKey,RouterCenter::getFolloweesApi,RequestCenter::pagedDataDecoder);
@@ -52,6 +62,8 @@ public class RequestCenter {
         }
         Question question = QuestionApi.questionInfo(http);
         question.setId(questionId);
+//        if(question.getTopics()==null && failedUrl!=null)
+//            failedUrl.append((url+"\n").getBytes());
         return question;
     }
 

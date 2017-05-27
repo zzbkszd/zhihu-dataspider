@@ -1,6 +1,7 @@
 package ay.common.http;
 
 
+import ay.common.file.io.FileIO;
 import ay.common.http.proxy.ProxyDaemon;
 import ay.common.http.proxy.ProxyInfo;
 import ay.common.http.proxy.ProxyPool;
@@ -34,23 +35,29 @@ public class ProxyHttpClient {
     OkHttpClient httpClient;
     Log log = LogFactory.getLog(ProxyHttpClient.class);
 
-    ThreadLocal<ProxyInfo> currentProxy = null;
+    ThreadLocal<ProxyInfo> currentProxy = new ThreadLocal<>();
 
 
     public ProxyHttpClient (){
         httpClient = new OkHttpClient.Builder()
                 .proxySelector(new PoolProxySelector()).connectTimeout(CommonConfig.getHttpTimeout(), TimeUnit.MILLISECONDS)
-                .readTimeout(CommonConfig.getHttpTimeout(), TimeUnit.MILLISECONDS)
+                .readTimeout(CommonConfig.getHttpTimeout(), TimeUnit.MILLISECONDS).cookieJar(new StaticCookieJar())
                 .writeTimeout(CommonConfig.getHttpTimeout(), TimeUnit.MILLISECONDS).build();
     }
 
-    public synchronized String getString(String url){
+    public String getString(String url){
         Request request = new Request.Builder().url(url)
                 .header("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36").get().build();
         try {
-            String content = httpClient.newCall(request).execute().body().string();
-            if(StringUtils.isNotEmpty(content)){
+            Response response = httpClient.newCall(request).execute();
+            String content="";
+            if(response.code()>=200 && response.code()<300){
+                content = response.body().string();
                 currentProxy.get().revert();
+                currentProxy.remove();
+            } else{
+                log.error("proxy not revert!");
+                System.out.println(content);
             }
             return content;
         } catch (IOException e) {
@@ -71,12 +78,17 @@ public class ProxyHttpClient {
             }
         }
         ProxyHttpClient httpClient = new ProxyHttpClient();
-        for(int i=0;i<100;i++) {
-            String web = httpClient.getString("https://www.zhihu.com/question/39479153");
-            System.out.println(web);
-            Question question = QuestionApi.questionInfo(web);
-            System.out.println(question.getTopics());
+        try {
+            FileIO failed = new FileIO("D:\\data\\fail.dat");
+            String[] urls= failed.getContent().split("\\n");
+            for (String url : urls) {
+                System.out.println(url);
+                System.out.println(httpClient.getString(url));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
         context.stop();
     }
 
@@ -84,15 +96,15 @@ public class ProxyHttpClient {
 
         @Override
         public List<Proxy> select(URI uri) {
-            currentProxy.set( ProxyPool.get());
-//                        System.out.println(proxyInfo);
-            Proxy proxy = new Proxy(Proxy.Type.HTTP,currentProxy.get().address());
+            ProxyInfo proxyInfo = ProxyPool.get();
+            currentProxy.set(proxyInfo);
+            Proxy proxy = new Proxy(Proxy.Type.HTTP,proxyInfo.address());
             return Arrays.asList(proxy);
         }
 
         @Override
         public void connectFailed(URI uri, SocketAddress sa, IOException ioe) {
-            ProxyPool.remove(currentProxy.get());
+//            ProxyPool.remove(currentProxy.get());
             log.error(ioe.getMessage());
         }
     }
