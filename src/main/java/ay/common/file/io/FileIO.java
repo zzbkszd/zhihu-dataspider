@@ -1,5 +1,7 @@
 package ay.common.file.io;
 
+import ay.common.util.IOUtil;
+
 import java.io.*;
 
 /**
@@ -20,10 +22,26 @@ public class FileIO {
                 create = file.getParentFile().mkdirs() && file.createNewFile();
             else create = file.createNewFile();
             if(!create){
-                throw new Exception("Create File fail!");
+                throw new Exception("Create File fail!:"+path);
             }
         }
     }
+
+
+
+    public void copyTo(FileIO target){
+        try {
+            InputStream inputStream = new FileInputStream(file);
+            OutputStream outputStream = new FileOutputStream(target.file);
+            IOUtil.copy(inputStream,outputStream);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     public String getContent(){
         return getContent("UTF-8");

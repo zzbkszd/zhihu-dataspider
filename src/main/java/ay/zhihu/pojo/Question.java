@@ -13,6 +13,15 @@ public class Question {
 
     String topics,description;
     int answers,view,attention;
+    Timestamp updatetime;
+
+    public Timestamp getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(Timestamp updateTime) {
+        this.updatetime = updateTime;
+    }
 
     public String getDescription() {
         return description;

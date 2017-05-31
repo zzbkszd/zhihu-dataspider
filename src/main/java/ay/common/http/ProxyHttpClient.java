@@ -47,21 +47,21 @@ public class ProxyHttpClient {
 
     public String getString(String url){
         Request request = new Request.Builder().url(url)
-                .header("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36").get().build();
+                .header("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36")
+                .header("Connection","close")
+                .get().build();
         try {
             Response response = httpClient.newCall(request).execute();
             String content="";
             if(response.code()>=200 && response.code()<300){
                 content = response.body().string();
-                currentProxy.get().revert();
-                currentProxy.remove();
-            } else{
-                log.error("proxy not revert!");
-                System.out.println(content);
+                response.body().close();
             }
             return content;
         } catch (IOException e) {
             return "";
+        } finally {
+            currentProxy.get().revert();
         }
     }
 

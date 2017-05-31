@@ -9,7 +9,7 @@ public class Answer {
 
     int id,questionId,answerId,voteup_count,comment_count;
     String content,authorId;
-    Timestamp create_time;
+    Timestamp created_time;
 
     public int getId() {
         return id;
@@ -67,11 +67,11 @@ public class Answer {
         this.authorId = authorId;
     }
 
-    public Timestamp getCreate_time() {
-        return create_time;
+    public Timestamp getCreated_time() {
+        return created_time;
     }
 
-    public void setCreate_time(Timestamp create_time) {
-        this.create_time = create_time;
+    public void setCreated_time(Timestamp created_time) {
+        this.created_time = created_time;
     }
 }

@@ -28,7 +28,11 @@ public class QuestionApi {
         if(topicElements.size()==0){
             return question;
         }
-        String topicsStr = topicElements.first().text();
+        StringBuilder topicBuilder = new StringBuilder();
+        for (Element element : topicElements.first().select(".Tag-content")) {
+            topicBuilder.append("{").append(element.text()).append("} ");
+        }
+        String topicsStr = topicBuilder.toString();
         Element title = html.select(".QuestionHeader-title").first();
         Element desc = html.select(".RichText").first();
         if(desc != null)
