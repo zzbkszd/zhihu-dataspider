@@ -20,6 +20,7 @@ public class ProxyInfo implements Delayed {
     public ProxyInfo(String ip,int port){
         this.ip = ip;
         this.port = port;
+        this.able = true;
     }
 
     public String getIp() {
@@ -93,6 +94,7 @@ public class ProxyInfo implements Delayed {
      * 归还代理
      */
     public void revert() {
+        if(able)
         ProxyPool.add(this);
     }
 }

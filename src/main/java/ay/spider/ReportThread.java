@@ -45,6 +45,12 @@ public class ReportThread extends WatchedThread<Void,Void> {
             report.append(getCtx().taskHolder.get(i).getWatchedReport());
         }
         report.append("----------------------------------------------------------------------\n");
+        if(activeTask==0){
+            report.append("all thread dead! close context now!");
+            getCtx().stop();
+            System.out.println(report.toString());
+            return false;
+        }
         System.out.println(report.toString());
         return true;
     }

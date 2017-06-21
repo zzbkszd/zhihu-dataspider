@@ -81,6 +81,7 @@ public class SpiderContext {
                 iter.next().close();
             }
         }
+        executor.shutdown();
     }
 
 

@@ -66,6 +66,7 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
             questions = dbUtils.queryOrm("select * from question where attention is null limit 1000").to(Question.class);
             for (Question question : questions) {
                 getCtx().execTask(new Update(question,requestCenter,dbUtils));
+                LOG.info("executing task for question:"+question.getTitle());
             }
             page++;
             LOG.info("update page "+page+" success");
@@ -98,7 +99,7 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
             long start = System.currentTimeMillis();
             Question q = center.getQuestionDetail(question.getQuestionId());
             if(q==null){
-                LOG.error("null question:"+question.getTitle());
+//                LOG.error("null question:"+question.getTitle());
                 return;
             }
             try {
@@ -110,7 +111,7 @@ public class UpdateQuestionInfo extends WatchedThread<Void,Void>{
                     long end = System.currentTimeMillis();
                     LOG.info("update question "+question.getTitle()+" success in "+(end-start)+" millis seconds");
                 }else{
-                    LOG.warn("question content is null ! - "+question.getTitle());
+//                    LOG.warn("question content is null ! - "+question.getTitle());
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

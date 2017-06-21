@@ -7,14 +7,9 @@ import ay.common.http.proxy.ProxyInfo;
 import ay.common.http.proxy.ProxyPool;
 import ay.common.util.CommonConfig;
 import ay.spider.SpiderContext;
-import ay.zhihu.RequestCenter;
-import ay.zhihu.api.QuestionApi;
-import ay.zhihu.pojo.Question;
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -55,8 +50,8 @@ public class ProxyHttpClient {
             String content="";
             if(response.code()>=200 && response.code()<300){
                 content = response.body().string();
-                response.body().close();
             }
+            response.body().close();
             return content;
         } catch (IOException e) {
             return "";
@@ -104,7 +99,8 @@ public class ProxyHttpClient {
 
         @Override
         public void connectFailed(URI uri, SocketAddress sa, IOException ioe) {
-//            ProxyPool.remove(currentProxy.get());
+            if(ioe.getMessage().contains("Failed to connect"))
+                currentProxy.get().setAble(false);
             log.error(ioe.getMessage());
         }
     }
